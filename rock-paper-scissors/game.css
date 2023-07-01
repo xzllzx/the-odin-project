@@ -1,0 +1,15 @@
+button.choose {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+}
+
+#rock {
+  background-color: blue;
+}
+#paper {
+  background-color: green;
+}
+#scissors {
+  background-color: pink;
+}
