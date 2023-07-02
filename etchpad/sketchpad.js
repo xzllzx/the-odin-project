@@ -15,32 +15,30 @@ function changeToBlue(e) {
   e.target.classList.add("hover");
 }
 
-// Previously used for adding/removing class, instead of random color on hover
+function changeToRandom(e) {
+  e.target.dataset["hoverCount"] =
+    parseInt(e.target.getAttribute("data-hover-count")) + 1;
+  // Generate random color hex code
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  e.target.style.backgroundColor = `#${randomColor}`;
+}
+
 function changeBack(e) {
-  e.target.classList.remove("hover");
+  // Previously used for adding/removing class, instead of random color on hover
+  //   e.target.classList.remove("hover");
+  let hoverCount = e.target.getAttribute("data-hover-count");
+  let newColor = 255 - hoverCount * 25.5;
+  setTimeout(function () {
+    e.target.style.backgroundColor = `rgb(${newColor}, ${newColor}, ${newColor})`;
+    if (hoverCount >= 5) e.target.style.color = "white";
+  }, 500);
 }
 
 function addHoverListener() {
   let squares = document.querySelectorAll(".square");
   squares.forEach((square) => {
-    square.addEventListener("mouseover", function (e) {
-      // Generate random color hex code
-      square.dataset["hoverCount"] =
-        parseInt(e.target.getAttribute("data-hover-count")) + 1;
-      let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-      e.target.style.backgroundColor = `#${randomColor}`;
-    });
-    square.addEventListener("mouseout", function (e) {
-      //   const colors = e.target.style.backgroundColor.slice(4, -1).split(", ");
-      //   colors.forEach((color, index) => {
-      //     colors[index] = parseFloat(color) - 25.5;
-      //   });
-      let hoverCount = e.target.getAttribute("data-hover-count");
-      let newColor = 255 - hoverCount * 25.5;
-      console.log(newColor);
-      e.target.style.backgroundColor = `rgb(${newColor}, ${newColor}, ${newColor})`;
-      if (hoverCount >= 5) e.target.style.color = "white";
-    });
+    square.addEventListener("mouseover", changeToRandom);
+    square.addEventListener("mouseout", changeBack);
   });
 }
 
