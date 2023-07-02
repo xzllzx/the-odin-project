@@ -25,11 +25,21 @@ function addHoverListener() {
   squares.forEach((square) => {
     square.addEventListener("mouseover", function (e) {
       // Generate random color hex code
+      square.dataset["hoverCount"] =
+        parseInt(e.target.getAttribute("data-hover-count")) + 1;
       let randomColor = Math.floor(Math.random() * 16777215).toString(16);
       e.target.style.backgroundColor = `#${randomColor}`;
     });
     square.addEventListener("mouseout", function (e) {
-      e.target.style.backgroundColor = "#FF0000";
+      //   const colors = e.target.style.backgroundColor.slice(4, -1).split(", ");
+      //   colors.forEach((color, index) => {
+      //     colors[index] = parseFloat(color) - 25.5;
+      //   });
+      let hoverCount = e.target.getAttribute("data-hover-count");
+      let newColor = 255 - hoverCount * 25.5;
+      console.log(newColor);
+      e.target.style.backgroundColor = `rgb(${newColor}, ${newColor}, ${newColor})`;
+      if (hoverCount >= 5) e.target.style.color = "white";
     });
   });
 }
@@ -43,7 +53,10 @@ function createGrid(gridRows) {
       let square = document.createElement("div");
       square.className = "square";
       square.id = `${i}-${j}`;
+      // Track number of times cell has been hovered over
+      square.dataset["hoverCount"] = 0;
       square.textContent = `${j}`;
+      square.style.backgroundColor = "rgb(255, 255, 255)";
       row.appendChild(square);
     }
     container.appendChild(row);
