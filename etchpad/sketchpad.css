@@ -1,0 +1,25 @@
+.row {
+  display: inline-block;
+}
+
+.square {
+  background-color: #ff0000;
+  box-sizing: border-box;
+  height: 60px;
+  width: 60px;
+  border: 5px;
+  border-color: black;
+  border-style: ridge;
+}
+
+.hover {
+  background-color: green;
+}
+
+button.gridselect {
+  background-color: grey;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  width: 300px;
+  margin-left: 330px;
+}
