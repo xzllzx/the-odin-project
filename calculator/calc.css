@@ -1,0 +1,44 @@
+* {
+  font-size: 80px;
+}
+
+.history {
+  font-size: x-small;
+  font-style: italic;
+}
+
+.row {
+  box-sizing: border-box;
+  display: block;
+}
+
+.container {
+  width: 100%;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 150px;
+  width: 25%;
+  border: 5px ridge black;
+  vertical-align: middle;
+}
+
+.result {
+  background-color: grey;
+  display: block;
+  box-sizing: border-box;
+  height: 150px;
+  width: 100%;
+  text-align: right;
+  border: 5px ridge black;
+  padding-right: 40px;
+  line-height: 100px;
+}
+
+.hover {
+  background-color: navy;
+}
