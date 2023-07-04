@@ -30,6 +30,7 @@ function deleteLast() {
   }
 }
 
+// Change number to positive or negative sign
 function changeSign() {
   if (num2 || operator) {
     if (num2.charAt(0) == "-") num2 = num2.slice(1);
@@ -42,6 +43,7 @@ function changeSign() {
   }
 }
 
+// Perform calculations after pressing an operator / =
 function calculate(num1, operator, num2) {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
@@ -57,6 +59,7 @@ function calculate(num1, operator, num2) {
   }
 }
 
+// Calculation helper functions
 function add(a, b) {
   return a + b;
 }
@@ -73,6 +76,7 @@ function divide(a, b) {
   return a / b;
 }
 
+// Accepting operators
 function operate(e) {
   // First operator
   if (operator == "") {
@@ -112,39 +116,32 @@ function setResultToNum1() {
   num2 = "";
 }
 
+// Main logic function for accepting click inputs
 function clickButton(e) {
   input = e.target.textContent;
-  if (input == "A/C") {
-    clear();
-  } else if (input == "DEL") {
+  if (input == "A/C") clear();
+  else if (input == "+/-") changeSign();
+  else if (["+", "-", "*", "/"].includes(input)) operate(e);
+  else if (input == "DEL") {
     if (initCalc) deleteLast();
     else clear();
     // If input is a number
-  } else if (input == "+/-") {
-    changeSign();
   } else if (!isNaN(input) || input == ".") {
     // num1
     if (operator == "") {
-      // num1 currently stores result of previous calculation - overwrite
+      // num1 stores result of previous calculation - start new expression
       if (!initCalc) clear();
       num1 += input;
       // num2
-    } else {
-      num2 += input;
-    }
+    } else num2 += input;
     result.textContent += input;
     // Only accept one operator: Evaluate if a subsequent operator was selected
-  } else if (["+", "-", "*", "/"].includes(input)) {
-    operate(e);
   } else if (input == "=") {
-    if (num2 != "") {
-      // Compute now
+    if (num2) {
       selectedOperator.classList.remove("hover");
       result.textContent = calculate(num1, operator, num2);
       setResultToNum1();
-    } else if (operator == "") {
-      setResultToNum1();
-    }
+    } else if (operator == "") setResultToNum1();
   }
 }
 
