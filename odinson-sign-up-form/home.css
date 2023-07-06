@@ -1,0 +1,32 @@
+:root {
+  --max-width: 100%;
+  --left-width: 30%;
+  --right-width: calc(var(--max-width) - var(--left-width, 30%));
+
+  height: 100%;
+}
+
+.left {
+  position: relative;
+  width: var(--left-width);
+  float: left;
+}
+
+.right {
+  position: relative;
+  width: var(--right-width);
+  float: right;
+}
+
+img.background {
+  width: 100%;
+  min-height: 100%;
+  z-index: -1000;
+}
+
+#welcome {
+  position: relative;
+  z-index: 1;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
