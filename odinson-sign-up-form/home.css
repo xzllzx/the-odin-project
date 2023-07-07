@@ -5,6 +5,10 @@
   color: black;
 }
 
+:focus {
+  background-color: cyan;
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -48,8 +52,8 @@ img.background {
   display: flex;
   /* height: 30%; */
   flex: 1;
-  background-color: gray;
-  color: white;
+  background-color: #fffafa;
+  color: black;
   justify-content: center;
 }
 
@@ -62,11 +66,12 @@ img.background {
   display: flex;
   /* height: 30%; */
   flex: 1;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding-top: 5%;
   flex-direction: column;
   align-items: left;
+  border: 1px ridge #facafa;
 }
 
 .r-mid {
@@ -76,15 +81,25 @@ img.background {
 
 input {
   height: 25px;
+  font-size: 70%;
+  padding-left: 6px;
   width: 200px;
   margin-right: 60px;
 }
 
 label {
   /* margin-left: auto; */
-  font-size: 70%;
+  font-weight: 600;
+  font-size: 60%;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+p.wrong-password {
+  box-sizing: border-box;
+  margin-top: -10px;
+  font-size: x-small;
+  color: white;
 }
 
 .right-bottom {
@@ -94,7 +109,7 @@ label {
 }
 
 button.sign-up {
-  background-color: green;
+  background-color: #596d48;
   font-size: large;
   color: white;
   border-radius: 5px;
@@ -104,6 +119,10 @@ button.sign-up {
 input,
 label {
   display: block;
+}
+
+input {
+  border-color: #e5e7eb;
 }
 
 a.login-link {

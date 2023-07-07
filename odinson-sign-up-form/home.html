@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./home.js"></script>
-    <link rel="stylesheet" href="./home.css" defer />
+    <script src="./home.js" defer></script>
+    <link rel="stylesheet" href="./home.css" />
   </head>
   <body>
     <div class="left-container">
@@ -50,12 +50,15 @@
             <div class="r-mid" id="3">
               <p>
                 <label for="password">Password</label
-                ><input type="password" id="password" />
+                ><input type="password" class="error" id="password" />
               </p>
               <p>
                 <label for="confirm_password">Confirm password</label
-                ><input type="password" id="confirm_password" />
+                ><input type="password" class="error" id="confirm_password" />
               </p>
+            </div>
+            <div class="r-mid" id="4">
+              <p class="wrong-password">* Passwords do not match</p>
             </div>
           </form>
         </div>
