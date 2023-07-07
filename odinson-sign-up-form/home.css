@@ -1,32 +1,88 @@
 :root {
-  --max-width: 100%;
-  --left-width: 30%;
-  --right-width: calc(var(--max-width) - var(--left-width, 30%));
-
-  height: 100%;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  box-sizing: border-box;
+  color: black;
 }
 
-.left {
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.left-container {
   position: relative;
-  width: var(--left-width);
+  width: 35%;
   float: left;
 }
 
-.right {
+.right-container {
   position: relative;
-  width: var(--right-width);
+  width: 65%;
   float: right;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: stretch; */
+  align-items: stretch;
 }
 
 img.background {
   width: 100%;
   min-height: 100%;
-  z-index: -1000;
 }
 
-#welcome {
-  position: relative;
-  z-index: 1;
-  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.right-top,
+.right-middle,
+.right-bottom {
+  padding-left: 5%;
+  padding-right: 20%;
+}
+
+.right-top,
+.right-bottom {
+  display: flex;
+  /* height: 30%; */
+  flex: 1;
+  background-color: antiquewhite;
+  justify-content: center;
+}
+
+.right-top {
+  padding-top: 10%;
+  padding-bottom: 3%;
+}
+
+.right-middle {
+  display: flex;
+  /* height: 30%; */
+  flex: 1;
+  background-color: white;
+  padding-top: 5%;
+  justify-content: left;
+  align-items: stretch;
+}
+
+.r-mid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.right-bottom {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  display: block;
+}
+
+button.sign-up {
+  background-color: green;
+  font-size: large;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 30px 10px 30px;
+}
+
+input,
+label {
+  display: block;
 }

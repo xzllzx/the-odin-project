@@ -8,43 +8,71 @@
     <link rel="stylesheet" href="./home.css" defer />
   </head>
   <body>
-    <div class="left">
+    <div class="left-container">
       <img class="background" src="hisoka.png" alt="Hisoka's stunned face" />
     </div>
-    <div class="right">
-      <img class="background" src="pack.png" alt="A Hearthstone pack opening" />
-      <div id="welcome">
-        <h1>
-          This is not a real online service! You know you need something like
-          this in your life to help you realize your deepest dreams. Sign up
-          <i>now</i> to get started.
-        </h1>
-        <h1>You <i>know</i> you want to.</h1>
+    <div class="right-container">
+      <div class="right-top">
+        <div class="welcome" id="1">
+          <h1>
+            This is not a real online service! You know you need something like
+            this in your life to help you realize your deepest dreams.
+            <br />Sign up <i>now</i> to get started.
+          </h1>
+          <h1>You <i>know</i> you want to.</h1>
+        </div>
       </div>
-      <form action="example.com/path" method="post">
-        <!-- (p>label[for]+input[type][id])*6 -->
-        <p>
-          <label for="first_name">First name</label
-          ><input type="text" id="first_name" />
-        </p>
-        <p>
-          <label for="last_name">Last name</label
-          ><input type="text" id="last_name" />
-        </p>
-        <p><label for="email">Email</label><input type="email" id="email" /></p>
-        <p>
-          <label for="phone_number">Phone number</label
-          ><input type="tel" id="phone_number" />
-        </p>
-        <p>
-          <label for="password">Password</label
-          ><input type="password" id="password" />
-        </p>
-        <p>
-          <label for="confirm_password">Confirm password</label
-          ><input type="password" id="confirm_password" />
-        </p>
-      </form>
+      <div class="right-middle">
+        <div class="welcome" id="2"><h1>Let's do this!</h1></div>
+        <div class="form">
+          <form action="example.com/path" method="post">
+            <!-- (p>label[for]+input[type][id])*6 -->
+            <div class="r-mid" id="1">
+              <p>
+                <label for="first_name">First name</label
+                ><input type="text" id="first_name" />
+              </p>
+              <p>
+                <label for="last_name">Last name</label>
+                <input type="text" id="last_name" />
+              </p>
+            </div>
+            <div class="r-mid" id="2">
+              <p>
+                <label for="email">Email</label
+                ><input type="email" id="email" />
+              </p>
+              <p>
+                <label for="phone_number">Phone number</label
+                ><input type="tel" id="phone_number" />
+              </p>
+            </div>
+            <div class="r-mid" id="3">
+              <p>
+                <label for="password">Password</label
+                ><input type="password" id="password" />
+              </p>
+              <p>
+                <label for="confirm_password">Confirm password</label
+                ><input type="password" id="confirm_password" />
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="right-bottom">
+        <button class="sign-up"><b>Create Account</b></button>
+        <div class="login">
+          <p>
+            Already have an account?
+            <a
+              href="https://non-existant-top-xzllzx.com/login"
+              class="login-link"
+              >Log in</a
+            >
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
