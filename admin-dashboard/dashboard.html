@@ -34,7 +34,7 @@
           /><img src="./shield-check.svg" alt="Privacy Button" class="icon" />
         </div>
         <div class="sidebar-right">
-          <a href="./dashboard.html" class="page dashboard">Dashboard</a>
+          <a href="./dashboard.html" class="page" id="dashboard">Dashboard</a>
           <div class="page"></div>
           <a href="./dashboard.html" class="page" id="home">Home</a
           ><a href="./dashboard.html" class="page" id="profile">Profile</a
@@ -52,10 +52,25 @@
       </div>
       <div class="header">
         <div id="header-row-1">
-          <button class="btn icon" id="search">Placeholder</button>
-          <div class="search-bar">Bar goes header</div>
-          <button class="btn icon" id="notifications">Placeholder</button
-          ><img
+          <div class="header-icon-container">
+            <img src="./search.svg" alt="Search Button" class="icon" />
+          </div>
+          <div class="search-bar">
+            <input
+              type="text"
+              name="search-input"
+              id="search-input"
+              placeholder="Search..."
+            />
+          </div>
+          <div class="header-icon-container">
+            <img
+              src="./bell-ring.svg"
+              alt="Notifications Button"
+              class="icon"
+            />
+          </div>
+          <img
             src="./hisoka.png"
             alt="Hisoka's profile picture"
             class="profile-picture"
@@ -72,9 +87,9 @@
             Hi there,
             <h2>Morgan Oakley (@morgan)</h2>
           </div>
-          <button class="btn" id="new-post">New</button
-          ><button class="btn" id="upload">Upload</button
-          ><button class="btn" id="share">Share</button>
+          <button class="header-btn" id="new-post">New</button
+          ><button class="header-btn" id="upload">Upload</button
+          ><button class="header-btn" id="share">Share</button>
         </div>
       </div>
       <!-- .main-content>(.projects-section>.content-header+(.project#project-$>h2.title+p.description+button.btn#favourite+button.btn#hide+button.btn#share)*6)+(.announcements-section>.content-header+#announcement)+.trending-section>.content-header+#trending -->
