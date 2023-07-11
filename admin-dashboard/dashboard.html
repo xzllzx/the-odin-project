@@ -10,21 +10,45 @@
   <body>
     <div id="entire-page">
       <div class="sidebar">
-        <a href="./dashboard.html" class="page dashboard">Dashboard</a>
-        <div class="page"></div>
-        <a href="./dashboard.html" class="page" id="home">Home</a
-        ><a href="./dashboard.html" class="page" id="profile">Profile</a
-        ><a href="./dashboard.html" class="page" id="messages">Messages</a
-        ><a href="./dashboard.html" class="page" id="history">History</a
-        ><a href="./dashboard.html" class="page" id="tasks">Tasks</a
-        ><a href="./dashboard.html" class="page" id="communities"
-          >Communities</a
-        >
-        <div class="page"></div>
-        <a href="./dashboard.html" class="page help" id="settings"
-          >⚙️ Settings</a
-        ><a href="./dashboard.html" class="page help" id="support">Support</a
-        ><a href="./dashboard.html" class="page help" id="privacy">Privacy</a>
+        <div class="sidebar-left">
+          <img class="icon" src="./view-dashboard.svg" alt="Dashboard Button" />
+          <div class="page"></div>
+          <img src="./home.svg" alt="Home Button" class="icon" /><img
+            src="./card-account-details-outline.svg"
+            alt="Profile Button"
+            class="icon"
+          /><img src="./message.svg" alt="Messages Button" class="icon" /><img
+            src="./clock-time-five.svg"
+            alt="History Button"
+            class="icon"
+          /><img src="./tasks.svg" alt="Tasks Button" class="icon" /><img
+            src="./communities.svg"
+            alt="Communities Button"
+            class="icon"
+          />
+          <div class="page"></div>
+          <img src="./cog-outline.svg" alt="Settings Button" class="icon" /><img
+            src="./help-box-outline.svg"
+            alt="Help Button"
+            class="icon"
+          /><img src="./shield-check.svg" alt="Privacy Button" class="icon" />
+        </div>
+        <div class="sidebar-right">
+          <a href="./dashboard.html" class="page dashboard">Dashboard</a>
+          <div class="page"></div>
+          <a href="./dashboard.html" class="page" id="home">Home</a
+          ><a href="./dashboard.html" class="page" id="profile">Profile</a
+          ><a href="./dashboard.html" class="page" id="messages">Messages</a
+          ><a href="./dashboard.html" class="page" id="history">History</a
+          ><a href="./dashboard.html" class="page" id="tasks">Tasks</a
+          ><a href="./dashboard.html" class="page" id="communities"
+            >Communities</a
+          >
+          <div class="page"></div>
+          <a href="./dashboard.html" class="page help" id="settings">Settings</a
+          ><a href="./dashboard.html" class="page help" id="support">Support</a
+          ><a href="./dashboard.html" class="page help" id="privacy">Privacy</a>
+        </div>
       </div>
       <div class="header">
         <div id="header-row-1">
@@ -55,56 +79,72 @@
       </div>
       <!-- .main-content>(.projects-section>.content-header+(.project#project-$>h2.title+p.description+button.btn#favourite+button.btn#hide+button.btn#share)*6)+(.announcements-section>.content-header+#announcement)+.trending-section>.content-header+#trending -->
       <div class="main-content">
-        <div class="projects-section">
+        <div class="section projects-container">
           <div class="content-header" id="project-header">Your Projects</div>
           <div class="project" id="project-1">
             <h2 class="title">Super Cool Project</h2>
-            <p class="description">Sed tempus ut lacus</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">Sed tempus ut lacus Sed tempus ut lacu</p>
+            <button class="project-btn" id="favourite">
+              <img
+                class="icon"
+                src="./star-plus-outline.svg"
+                alt="favourite Button"
+              /></button
+            ><button class="project-btn" id="hide">
+              <img
+                class="icon"
+                src="./eye-plus-outline.svg"
+                alt="Share Button"
+              /></button
+            ><button class="project-btn" id="share">
+              <img class="icon" src="./share-variant.svg" alt="Share Button" />
+            </button>
           </div>
           <div class="project" id="project-2">
             <h2 class="title">Less Cool Project</h2>
-            <p class="description">Nullam condimentum ipsum</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">
+              Nullam condimentum ipsum Nullam condimentum ipsu
+            </p>
+            <button class="project-btn" id="favourite">☆</button
+            ><button class="project-btn" id="hide">👁</button
+            ><button class="project-btn" id="share">🔗</button>
           </div>
           <div class="project" id="project-3">
             <h2 class="title">Impossible App</h2>
-            <p class="description">In hac habitasse</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">In hac habitasse In hac habitass</p>
+            <button class="project-btn" id="favourite">☆</button
+            ><button class="project-btn" id="hide">👁</button
+            ><button class="project-btn" id="share">🔗</button>
           </div>
           <div class="project" id="project-4">
             <h2 class="title">Easy Peasy App</h2>
-            <p class="description">Etiam cursus eros</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">Etiam cursus eros Etiam cursus ero</p>
+            <button class="project-btn" id="favourite">☆</button
+            ><button class="project-btn" id="hide">👁</button
+            ><button class="project-btn" id="share">🔗</button>
           </div>
           <div class="project" id="project-5">
             <h2 class="title">Ad Blocker</h2>
-            <p class="description">Block em ads</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">Block em ads Block em ad</p>
+            <button class="project-btn" id="favourite">☆</button
+            ><button class="project-btn" id="hide">👁</button
+            ><button class="project-btn" id="share">🔗</button>
           </div>
           <div class="project" id="project-6">
             <h2 class="title">Money Maker</h2>
-            <p class="description">10 ChatGPT apps you must try!</p>
-            <button class="btn" id="favourite"></button
-            ><button class="btn" id="hide"></button
-            ><button class="btn" id="share"></button>
+            <p class="description">
+              10 ChatGPT apps you must try! 10 ChatGPT apps you must tr
+            </p>
+            <button class="project-btn" id="favourite">☆</button
+            ><button class="project-btn" id="hide">👁</button
+            ><button class="project-btn" id="share">🔗</button>
           </div>
         </div>
-        <div class="announcements-section">
+        <div class="section announcements-container">
           <div class="content-header">Announcements</div>
           <div id="announcement">Site Maintenance bla</div>
         </div>
-        <div class="trending-section">
+        <div class="section trending-container">
           <div class="content-header">Trending</div>
           <div id="trending">@tegan blabla</div>
         </div>
