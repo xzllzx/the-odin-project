@@ -11,7 +11,12 @@
     <div id="entire-page">
       <div class="sidebar">
         <div class="sidebar-left">
-          <img class="icon" src="./view-dashboard.svg" alt="Dashboard Button" />
+          <img
+            class="icon"
+            id="dashboard-icon"
+            src="./view-dashboard.svg"
+            alt="Dashboard Button"
+          />
           <div class="page"></div>
           <img src="./home.svg" alt="Home Button" class="icon" /><img
             src="./card-account-details-outline.svg"
@@ -70,7 +75,7 @@
               class="icon"
             />
           </div>
-          <div id="small-profile-picture">
+          <div class="small-profile-picture-container">
             <img
               src="./hisoka.png"
               alt="Hisoka's profile picture"
@@ -80,7 +85,7 @@
           <div class="name">Morgan Oakley</div>
         </div>
         <div id="header-row-2">
-          <div id="large-profile-picture">
+          <div class="large-profile-picture-container">
             <img
               src="./hisoka.png"
               alt="Hisoka's profile picture"
@@ -102,70 +107,252 @@
           <div class="content-header" id="project-header">Your Projects</div>
           <div class="feed project" id="project-1">
             <h2 class="title">Super Cool Project</h2>
-            <p class="description">Sed tempus ut lacus Sed tempus ut lacu</p>
-            <button class="project-btn" id="favourite">
-              <img
-                class="icon"
-                src="./star-plus-outline.svg"
-                alt="favourite Button"
-              /></button
-            ><button class="project-btn" id="hide">
-              <img
-                class="icon"
-                src="./eye-plus-outline.svg"
-                alt="Share Button"
-              /></button
-            ><button class="project-btn" id="share">
-              <img class="icon" src="./share-variant.svg" alt="Share Button" />
-            </button>
+            <p class="description">
+              Sed tempus ut lacus ut scelerisque. Suspendisse sollicitudin nibh
+              erat, id facilisis felis accumsan nec.
+            </p>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
           <div class="feed project" id="project-2">
             <h2 class="title">Less Cool Project</h2>
             <p class="description">
-              Nullam condimentum ipsum Nullam condimentum ipsu
+              Nullam condimentum ipsum ut lectus vehicula consectetur. Quisque
+              sed dolor tincidunt, consectetur sapien et, facilisis dolor. Duis
+              sem purus, dignissim ut sapien in, varius pellentesque lacus.
             </p>
-            <button class="project-btn" id="favourite">☆</button
-            ><button class="project-btn" id="hide">👁</button
-            ><button class="project-btn" id="share">🔗</button>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
           <div class="feed project" id="project-3">
             <h2 class="title">Impossible App</h2>
-            <p class="description">In hac habitasse In hac habitass</p>
-            <button class="project-btn" id="favourite">☆</button
-            ><button class="project-btn" id="hide">👁</button
-            ><button class="project-btn" id="share">🔗</button>
+            <p class="description">
+              In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a
+              placerat velit sagittis id.
+            </p>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
           <div class="feed project" id="project-4">
             <h2 class="title">Easy Peasy App</h2>
-            <p class="description">Etiam cursus eros Etiam cursus ero</p>
-            <button class="project-btn" id="favourite">☆</button
-            ><button class="project-btn" id="hide">👁</button
-            ><button class="project-btn" id="share">🔗</button>
+            <p class="description">
+              Etiam cursus eros ac efficitur fringilla. Vestibulum dignissim
+              urna eget accumsan aliquam. Curabitur dignissim nisi in tortor
+              commodo, ac bibendum magna tincidunt.
+            </p>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
           <div class="feed project" id="project-5">
             <h2 class="title">Ad Blocker</h2>
-            <p class="description">Block em ads Block em ad</p>
-            <button class="project-btn" id="favourite">☆</button
-            ><button class="project-btn" id="hide">👁</button
-            ><button class="project-btn" id="share">🔗</button>
+            <p class="description">
+              Quisque eget rutrum nisl. Nam augue justo, cursus vitae metus vel,
+              pharetra hendrerit felis. Aliquam sed malesuada eros.
+            </p>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
           <div class="feed project" id="project-6">
             <h2 class="title">Money Maker</h2>
             <p class="description">
-              10 ChatGPT apps you must try! 10 ChatGPT apps you must tr
+              Praesent convallis, libero quis congue elementum, nunc ante
+              faucibus sapien, ac scelerisque tortor purus sit amet ex.
+              Pellentesque mollis nec sem vel aliquam.
             </p>
-            <button class="project-btn" id="favourite">☆</button
-            ><button class="project-btn" id="hide">👁</button
-            ><button class="project-btn" id="share">🔗</button>
+            <div class="project-button-container">
+              <button class="project-btn" id="favourite">
+                <img
+                  class="icon"
+                  src="./star-plus-outline.svg"
+                  alt="favourite Button"
+                /></button
+              ><button class="project-btn" id="hide">
+                <img
+                  class="icon"
+                  src="./eye-plus-outline.svg"
+                  alt="Share Button"
+                /></button
+              ><button class="project-btn" id="share">
+                <img
+                  class="icon"
+                  src="./share-variant.svg"
+                  alt="Share Button"
+                />
+              </button>
+            </div>
           </div>
         </div>
         <div class="section announcements-container">
           <div class="content-header">Announcements</div>
-          <div class="feed" id="announcement">Site Maintenance bla</div>
+          <div class="feed" id="announcement">
+            <div id="announcement-1">
+              <h3>Site Maintenance bla</h3>
+              <p>
+                Vestibulum condimentum tellus lacus, in accumsan elit maximus
+                ac. Donec hendrerit sodales congue...
+              </p>
+            </div>
+            <div id="announcement-2">
+              <hr />
+              <h3>Community Share Day</h3>
+              <p>
+                Nam vel lectus tincidunt, rutrum nulla eu, ornare libero.
+                Aliquam dictum accumsan porttitor...
+              </p>
+            </div>
+            <div id="announcement-3">
+              <hr />
+              <h3>Updated Privacy Policy</h3>
+              <p>
+                Phasellus efficitur nisi eget elit consectetur, eget condimentum
+                ante auctor. Cras fringilla sagittis sem in mattis...
+              </p>
+            </div>
+          </div>
         </div>
         <div class="section trending-container">
           <div class="content-header">Trending</div>
-          <div class="feed" id="trending">@tegan blabla</div>
+          <div class="feed" id="trending">
+            <div class="small-profile-picture-container">
+              <img
+                src="alisus.png"
+                alt="Alisus profile picture"
+                class="profile-picture"
+              />
+            </div>
+            <div class="user-description-container">
+              <h4>@tegan</h4>
+              <p class="user-description">World Peace Builder</p>
+            </div>
+            <div class="small-profile-picture-container">
+              <img
+                src="current_limit.png"
+                alt="Dio profile picture"
+                class="profile-picture"
+              />
+            </div>
+            <div class="user-description-container">
+              <h4>@morgan</h4>
+              <p class="user-description">Super Cool Project</p>
+            </div>
+            <div class="small-profile-picture-container">
+              <img
+                src="hisoka.png"
+                alt="Hisoka profile picture"
+                class="profile-picture"
+              />
+            </div>
+            <div class="user-description-container">
+              <h4>@kendall</h4>
+              <p class="user-description">Life Changing App</p>
+            </div>
+            <div class="small-profile-picture-container">
+              <img
+                src="maldchamp.jpg"
+                alt="Maldchamp profile picture"
+                class="profile-picture"
+              />
+            </div>
+            <div class="user-description-container">
+              <h4>@alex</h4>
+              <p class="user-description">No Traffic Maker</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
