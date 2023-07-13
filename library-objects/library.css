@@ -1,0 +1,79 @@
+#addBookFormDiv {
+  background-color: brown;
+  color: white;
+}
+
+* {
+  font-size: large;
+}
+
+label {
+  font-size: larger;
+  font-weight: bold;
+}
+
+form {
+  /* grid-column: 1/5; */
+  display: grid;
+  grid-template: 3fr 1fr / repeat(4, 1fr);
+  /* grid-template: repeat(5, 1fr) / 1fr 2fr; */
+}
+
+input,
+label {
+  display: flex;
+  margin: 20px;
+  align-items: center;
+}
+
+input {
+  width: 80%;
+  padding: 5px;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  transform: scale(2, 2);
+}
+
+section.submit-div {
+  grid-row: 2;
+  grid-column: 1/5;
+  display: flex;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  border-radius: 10%;
+  font-weight: bold;
+  padding: 0px 20px 0px 20px;
+}
+
+.shelf {
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  overflow: auto;
+}
+
+.book {
+  display: grid;
+  /* grid-template-rows: 2fr 1fr 2fr 1fr 1fr 1fr 1fr; */
+  grid-template-rows: repeat(7, 1fr);
+  text-align: center;
+  border: 5px ridge gray;
+  align-items: stretch;
+  background-color: red;
+}
+
+.read {
+  background-color: blue;
+}
+
+h1,
+h2,
+p {
+  /* padding: 0px; */
+  margin: 10px 0px 0px 0px;
+  padding-bottom: 0px;
+}
