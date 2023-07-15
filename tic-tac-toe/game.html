@@ -9,7 +9,13 @@
   </head>
   <body>
     <div class="turn-header">Player X's turn</div>
-    <div class="scoreboard"></div>
+    <div class="scoreboard">
+      <div class="player" id="player-0">X</div>
+      <div class="player" id="player-1">O</div>
+      <div class="score" id="score-0">0</div>
+      <div class="score" id="score-1">0</div>
+    </div>
+    <div class="message" id="error">Cell has already been selected!</div>
     <div class="gameBoard">
       <div class="cell" id="cell-0"></div>
       <div class="cell" id="cell-1"></div>
@@ -23,7 +29,7 @@
     </div>
     <!-- .gameBoard>.col.square#col$*3>.row.square#row$*3 -->
     <div class="new-game-container">
-      <button class="new-game hidden">Start new game</button>
+      <button class="new-game">Start new game</button>
       <button class="reset-scores">Reset scores</button>
     </div>
   </body>

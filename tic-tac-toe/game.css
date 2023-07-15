@@ -4,8 +4,48 @@
   font-size: 50px;
 }
 
+.scoreboard {
+  height: 100px;
+  width: 400px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+}
+
+.player,
+.score {
+  font-size: x-large;
+  text-align: center;
+}
+
+#player-0 {
+  background-color: darkgreen;
+}
+#player-1 {
+  background-color: darkblue;
+}
+#score-0 {
+  background-color: green;
+}
+#score-1 {
+  background-color: blue;
+}
+
+.message#error {
+  text-align: center;
+  vertical-align: center;
+  margin: 20px;
+  font-size: larger;
+  font-weight: bold;
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .gameBoard {
-  width: 700px;
+  width: 600px;
   margin: auto;
   display: grid;
   grid-template: repeat(3, 200px) / repeat(3, 200px);
@@ -17,14 +57,14 @@
   vertical-align: center;
   font-size: 150px;
   color: red;
-  border: 10px outset navy;
+  border: 10px outset gray;
   background-color: black;
   width: 100%;
   height: 100%;
 }
 
 .new-game-container {
-  width: 700px;
+  width: 600px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 300px);

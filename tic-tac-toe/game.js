@@ -1,9 +1,12 @@
 const cellElements = document.querySelectorAll(".cell");
 const headerDiv = document.querySelector(".turn-header");
-const scoreboardDiv = document.querySelector(".scoreboard");
+const score0 = document.querySelector(".scoreboard > #score-0");
+const score1 = document.querySelector(".scoreboard > #score-1");
+const errorMessage = document.querySelector(".message#error");
 const newGameButton = document.querySelector("button.new-game");
 const resetButton = document.querySelector("button.reset-scores");
 
+// Creates game board to store state
 const Gameboard = (function () {
   let gameBoard = [];
 
@@ -33,6 +36,7 @@ const playerFactory = (playerId, score) => {
   return { playerId, playerToken, score };
 };
 
+// Controls game logic
 const GameController = (function () {
   const rows = 3,
     cols = 3;
@@ -44,18 +48,18 @@ const GameController = (function () {
   let gameEnd = 0;
 
   const getScoreBoard = () => {
-    console.log(
-      `${player0.playerToken} ${player0.score} - ${player1.playerToken} ${player1.score}`
-    );
+    score0.textContent = player0.score;
+    score1.textContent = player1.score;
   };
 
   const triggerWin = (player) => {
     gameEnd = 1;
 
     headerDiv.textContent = `Player ${player.playerToken} wins!`;
-    scoreboardDiv.textContent = `${
-      player.playerToken
-    } now has ${++player.score} point${player.score > 1 ? "s" : ""}`;
+
+    player.score++;
+
+    getScoreBoard();
   };
 
   const checkGameEnd = () => {
@@ -107,6 +111,8 @@ const GameController = (function () {
   };
 
   const playMove = (e) => {
+    errorMessage.classList.add("hidden");
+
     if (!gameEnd && e.target.textContent == "") {
       const cell = e.target.id.split("-")[1];
       const row = Math.floor(cell / 3);
@@ -117,15 +123,18 @@ const GameController = (function () {
 
       e.target.textContent = players[activePlayer].playerToken;
 
-      checkGameEnd();
       toggleActivePlayer();
-    } else if (gameEnd) console.log("Game has already ended");
-    else console.log("Cell has already been selected");
+      checkGameEnd();
+    } else if (gameEnd)
+      headerDiv.textContent = "Game has already ended - start a new game!";
+    else errorMessage.classList.remove("hidden");
 
     e.stopPropagation();
   };
 
   const newGame = () => {
+    errorMessage.classList.add("hidden");
+
     Gameboard.createGameBoard(rows, cols);
 
     headerDiv.textContent = `Player ${players[activePlayer].playerToken}'s turn`;
@@ -140,6 +149,7 @@ const GameController = (function () {
   const resetScore = () => {
     player0.score = 0;
     player1.score = 0;
+    getScoreBoard();
   };
 
   return { playMove, getScoreBoard, newGame, resetScore };
