@@ -1,0 +1,44 @@
+.turn-header {
+  text-align: center;
+  vertical-align: center;
+  font-size: 50px;
+}
+
+.gameBoard {
+  width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(3, 200px) / repeat(3, 200px);
+}
+
+.cell {
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: center;
+  font-size: 150px;
+  color: red;
+  border: 10px outset navy;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+.new-game-container {
+  width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+}
+
+button {
+  box-sizing: border-box;
+  border: 5px solid brown;
+  margin: 20px;
+  font-size: large;
+}
+
+.highlight {
+  /* display: none; */
+  background-color: red;
+  font-size: larger;
+}
