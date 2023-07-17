@@ -73,11 +73,31 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if (b != 0 && !isNaN(b)) return a / b;
+  else return "NaN";
+}
+
+function acceptDecimalNumber() {
+  // num1
+  if (operator == "") {
+    // num1 stores result of previous calculation - start new expression
+    if (!initCalc) clear();
+    if (input == "." && num1.includes(".")) {
+      clear();
+      history.textContent = "Two decimal points is invalid";
+      return;
+    } else num1 += input;
+    // num2
+  } else if (input == "." && num2.includes(".")) {
+    clear();
+    history.textContent = "Two decimal points is invalid";
+    return;
+  } else num2 += input;
+  result.textContent += input;
 }
 
 // Accepting operators
-function operate(e) {
+function acceptOperator(e) {
   // First operator
   if (operator == "") {
     operator = input;
@@ -121,27 +141,28 @@ function clickButton(e) {
   input = e.target.textContent;
   if (input == "A/C") clear();
   else if (input == "+/-") changeSign();
-  else if (["+", "-", "*", "/"].includes(input)) operate(e);
+  else if (["+", "-", "*", "/"].includes(input)) acceptOperator(e);
+  else if (!isNaN(input) || input == ".") acceptDecimalNumber();
   else if (input == "DEL") {
     if (initCalc) deleteLast();
     else clear();
     // If input is a number
-  } else if (!isNaN(input) || input == ".") {
-    // num1
-    if (operator == "") {
-      // num1 stores result of previous calculation - start new expression
-      if (!initCalc) clear();
-      num1 += input;
-      // num2
-    } else num2 += input;
-    result.textContent += input;
-    // Only accept one operator: Evaluate if a subsequent operator was selected
-  } else if (input == "=") {
+  }
+  // Only accept one operator: Evaluate if a subsequent operator was selected
+  else if (input == "=") {
     if (num2) {
       selectedOperator.classList.remove("hover");
       result.textContent = calculate(num1, operator, num2);
-      setResultToNum1();
+      if (result.textContent != "NaN") setResultToNum1();
+      else {
+        clear();
+        history.textContent = "DIVIDE BY ZERO ERROR";
+      }
     } else if (operator == "") setResultToNum1();
+    else {
+      clear();
+      history.textContent = "SYNTAX ERROR";
+    }
   }
 }
 
@@ -152,4 +173,14 @@ function allButtonsListen() {
   });
 }
 
+function keydownListen() {
+  // page = document.querySelectorAll(".div");
+  container.addEventListener("keydown", (event) => {
+    console.log(event.keyCode);
+  });
+  // 0-9 => 48-57
+  // +, -, *, / => 61, 173, ///56, 191
+}
+
 allButtonsListen();
+keydownListen();

@@ -3,7 +3,7 @@
 }
 
 .history {
-  font-size: x-small;
+  font-size: smaller;
   font-style: italic;
 }
 
@@ -25,6 +25,15 @@
   width: 25%;
   border: 5px ridge black;
   vertical-align: middle;
+}
+
+.operator {
+  color: black;
+  background-color: lightblue;
+}
+.special {
+  color: black;
+  background-color: green;
 }
 
 .result {
