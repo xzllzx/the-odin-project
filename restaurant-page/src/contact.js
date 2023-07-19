@@ -4,7 +4,6 @@ function contactPage() {
   const contactPageDiv = document.createElement("div");
   contactPageDiv.classList.add("page");
   contactPageDiv.id = "contact";
-  contactPageDiv.innerHTML = "This is the Contact Page";
 
   contactPageDiv.append(...contactDetails());
   contactPageDiv.appendChild(locationPic());

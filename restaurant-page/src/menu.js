@@ -60,6 +60,18 @@ function addAllFood(div) {
   div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
 
   div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
 }
 
 export { menuPage };

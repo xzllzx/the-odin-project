@@ -21,6 +21,11 @@ function profilePic() {
   myProfilePicture.id = "profile-picture";
   pictureContainer.appendChild(myProfilePicture);
 
+  const chefDescription = document.createElement("div");
+  chefDescription.id = "chef-description";
+  chefDescription.innerHTML = "Chef Mario";
+  pictureContainer.appendChild(chefDescription);
+
   return pictureContainer;
 }
 

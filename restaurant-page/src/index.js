@@ -56,11 +56,11 @@ function addMainContent() {
 
 // Main Section - Home Page
 displaySectionDiv.appendChild(homePageDiv);
-homePageDiv.classList.add("hidden");
+// homePageDiv.classList.add("hidden");
 
 // Main Section - Menu Page
 displaySectionDiv.appendChild(menuPageDiv);
-// menuPageDiv.classList.add("hidden");
+menuPageDiv.classList.add("hidden");
 
 // Main Section - Contact Page
 displaySectionDiv.appendChild(contactPageDiv);
