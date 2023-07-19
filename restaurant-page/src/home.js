@@ -7,6 +7,7 @@ function homePage() {
   homePageDiv.innerHTML = "The best McFortnite burgers in all the lands!";
 
   homePageDiv.appendChild(profilePic());
+  homePageDiv.appendChild(reviewDiv());
 
   return homePageDiv;
 }
@@ -27,6 +28,14 @@ function profilePic() {
   pictureContainer.appendChild(chefDescription);
 
   return pictureContainer;
+}
+
+function reviewDiv() {
+  const reviewDiv = document.createElement("div");
+  reviewDiv.id = "home-review";
+  reviewDiv.innerHTML = `"Greatest McFortnite I've ever tasted" - Mr Bean`;
+
+  return reviewDiv;
 }
 
 export { homePage };

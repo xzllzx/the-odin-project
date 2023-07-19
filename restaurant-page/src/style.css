@@ -83,6 +83,11 @@ img {
   font-style: italic;
 }
 
+#home-review {
+  text-align: center;
+  font-style: italic;
+}
+
 .page#menu {
   /* grid-template:  / repeat(2, 1fr); */
   /* grid-template-columns: repeat(2, 1fr); */
