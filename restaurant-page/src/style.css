@@ -1,5 +1,5 @@
 * {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 html,
@@ -21,9 +21,9 @@ body {
   display: grid;
   place-items: center;
   grid-template: repeat(2, 1fr) / repeat(3, 1fr);
-  opacity: 0.7;
-  background-color: blue;
+  background-color: rgb(0, 0, 255, 0.7);
   color: red;
+  font-size: larger;
 }
 
 .header .restaurant-name {
@@ -52,11 +52,32 @@ body {
   width: 80%;
   display: grid;
   justify-content: center;
-  opacity: 0.7;
-  background-color: green;
+  background-color: rgb(0, 255, 0, 0.7);
   color: red;
 }
 
-:hidden {
+.page {
+  display: grid;
+  place-items: center;
+}
+
+.page#home {
+  grid-template: 1fr 10fr;
+}
+
+img {
+  opacity: 1;
+}
+
+.picture-container .picture {
+  opacity: 1;
+}
+
+.picture-container #profile-picture {
+  border-radius: 50%;
+  border: 3px solid magenta;
+}
+
+.hidden {
   display: none;
 }

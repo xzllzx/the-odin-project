@@ -1,8 +1,23 @@
 import "./style.css";
 import { homePage } from "./home.js";
-import { loadMenu } from "./menu.js";
+import { menuPage } from "./menu.js";
+import { contactPage } from "./contact.js";
 
 const contentDiv = document.querySelector("div#content");
+
+const headerDiv = addHeader();
+
+contentDiv.appendChild(headerDiv);
+
+const homeButtonDiv = addHeaderPages("Home");
+const menuButtonDiv = addHeaderPages("Menu");
+const contactButtonDiv = addHeaderPages("Contact");
+
+const displaySectionDiv = addMainContent();
+
+const homePageDiv = homePage();
+const menuPageDiv = menuPage();
+const contactPageDiv = contactPage();
 
 // Header
 function addHeader() {
@@ -18,22 +33,14 @@ function addHeader() {
 function addHeaderPages(page) {
   const pageButton = document.createElement("button");
   pageButton.innerHTML = page;
-  pageButton.classList.add("page");
+  pageButton.classList.add("page-button");
   return pageButton;
 }
 
-const headerDiv = addHeader();
-contentDiv.appendChild(headerDiv);
+const buttonDivs = [homeButtonDiv, menuButtonDiv, contactButtonDiv];
+headerDiv.append(...buttonDivs);
 
-const homeButtonDiv = addHeaderPages("Home");
-const menuButtonDiv = addHeaderPages("Menu");
-const contactButtonDiv = addHeaderPages("Contact");
-headerDiv.append(homeButtonDiv, menuButtonDiv, contactButtonDiv);
-
-// ["Home", "Menu", "Contact"].forEach((page) => {
-//   headerDiv.appendChild(addHeaderPages(page));
-// });
-
+// Main Section
 function addMainContent() {
   const mainSection = document.createElement("div");
   mainSection.classList.add("main-content");
@@ -47,13 +54,34 @@ function addMainContent() {
   return displaySection;
 }
 
-const displaySectionDiv = addMainContent();
-
 // Main Section - Home Page
-const homePageDiv = homePage();
 displaySectionDiv.appendChild(homePageDiv);
-// contentDiv.appendChild(homePageDiv);
 
-// Main Section - Home Page
-// const menuPageDiv = menuPage();
-// contentDiv.appendChild(menuPageDiv);
+// Main Section - Menu Page
+displaySectionDiv.appendChild(menuPageDiv);
+menuPageDiv.classList.add("hidden");
+
+// Main Section - Contact Page
+displaySectionDiv.appendChild(contactPageDiv);
+contactPageDiv.classList.add("hidden");
+
+// Page Navigation
+const pageArr = [homePageDiv, menuPageDiv, contactPageDiv];
+
+function showPage(targetPage) {
+  for (const page of pageArr) {
+    if (page === targetPage) {
+      page.classList.remove("hidden");
+
+      //   for (const child of page.childNodes) {
+      //     if (child.nodeType === Node.ELEMENT_NODE) {
+      //       addClassToElementAndChildren(child, className);
+      //     }
+      //   }
+    } else page.classList.add("hidden");
+  }
+}
+
+homeButtonDiv.addEventListener("click", () => showPage(homePageDiv));
+menuButtonDiv.addEventListener("click", () => showPage(menuPageDiv));
+contactButtonDiv.addEventListener("click", () => showPage(contactPageDiv));
