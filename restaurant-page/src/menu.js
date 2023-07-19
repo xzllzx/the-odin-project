@@ -1,10 +1,10 @@
 import mcfortniteImage from "./mcfortnite.png";
+import tallBurgerImage from "./tall-burger.jpg";
 
 function menuPage() {
   const menuPageDiv = document.createElement("div");
   menuPageDiv.classList.add("page");
   menuPageDiv.id = "menu";
-  menuPageDiv.innerHTML = "This is the Menu Page";
 
   addAllFood(menuPageDiv);
 
@@ -46,6 +46,20 @@ function addAllFood(div) {
       "Hamburger, Salt, Pepper, Toothpicks, a crippling addiction to Fortnite, floss"
     )
   );
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(
+    food(
+      mcfortniteImage,
+      "McFortnite Burger",
+      "Hamburger, Salt, Pepper, Toothpicks, a crippling addiction to Fortnite, floss"
+    )
+  );
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
+
+  div.append(food(tallBurgerImage, "Mini Burger", "For people on a diet"));
 }
 
 export { menuPage };
