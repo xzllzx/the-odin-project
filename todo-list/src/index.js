@@ -1,4 +1,11 @@
-const todoList = (title, description, dueDate, priority, notes, checklist) => {
-  // title, description, dueDate and priority. You might also want to include notes or even a checklist
-  return { title, description, dueDate, priority, notes, checklist };
-};
+import "./style.css";
+import { addHeader, addSidebar, addMainContent } from "./main_dom.js";
+
+const contentDiv = document.querySelector("div#content");
+const headerDiv = addHeader();
+const sidebarDiv = addSidebar();
+const mainContentDiv = addMainContent();
+
+contentDiv.appendChild(headerDiv);
+contentDiv.appendChild(sidebarDiv);
+contentDiv.appendChild(mainContentDiv);
