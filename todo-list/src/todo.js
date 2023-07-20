@@ -4,5 +4,6 @@ const todoList = (title, description, dueDate, priority, notes, checklist) => {
 };
 
 const createTodo = () => {
+  newTodo = new todoList();
   console.log("Created Todo list");
 };

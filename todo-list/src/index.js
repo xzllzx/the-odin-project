@@ -1,11 +1,7 @@
 import "./style.css";
-import { addHeader, addSidebar, addMainContent } from "./main_dom.js";
 
-const contentDiv = document.querySelector("div#content");
-const headerDiv = addHeader();
-const sidebarDiv = addSidebar();
-const mainContentDiv = addMainContent();
+const headerDiv = document.querySelector("#header");
+const sidebarDiv = document.querySelector("#sidebar");
+const mainContentDiv = document.querySelector("#main-content");
 
-contentDiv.appendChild(headerDiv);
-contentDiv.appendChild(sidebarDiv);
-contentDiv.appendChild(mainContentDiv);
+console.log(headerDiv, sidebarDiv, mainContentDiv);
