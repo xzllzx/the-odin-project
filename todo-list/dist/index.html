@@ -41,7 +41,7 @@
     </nav>
     <div id="main-content">
       <div class="temp">Main</div>
-      <form class="create-todo hidden" action="" method="post">
+      <form class="create-todo" action="" method="post">
         <!-- title, description, dueDate, priority, notes, checklist -->
         <label for="title">Title</label>
         <input type="text" name="title" id="title" />
@@ -49,12 +49,22 @@
         <input type="text" name="description" id="description" />
         <label for="due-date">Due Date</label>
         <input type="date" name="due-date" id="due-date" />
-        <!-- <label for="priority">priority</label>
-        <input type="text" name="priority" id="priority" />
-        <label for="notes">notes</label>
-        <input type="text" name="notes" id="notes" />
-        <label for="checklist">Checklist</label>
-        <input type="text" name="checklist" id="checklist" /> -->
+        <fieldset>
+          <legend>Priority</legend>
+          <div class="switch-field">
+            <input type="radio" name="priority" id="low" value="low" />
+            <label for="low">Low</label>
+            <input type="radio" name="priority" id="medium" value="medium" />
+            <label for="medium">Medium</label>
+            <input type="radio" name="priority" id="high" value="high" />
+            <label for="high">High</label>
+          </div>
+        </fieldset>
+        <!-- <div class="toggle">
+          <label class="toggle-label low-label" for="low">Low</label>
+          <label class="toggle-label medium-label" for="medium">Medium</label>
+          <label class="toggle-label high-label" for="high">High</label>
+        </div> -->
         <button type="submit">Submit</button>
       </form>
     </div>
