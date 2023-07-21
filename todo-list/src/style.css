@@ -79,7 +79,7 @@ form {
   display: grid;
 }
 
-form.create-todo {
+form.create-task {
   width: 80%;
   grid-template-columns: 1fr 1fr;
 }

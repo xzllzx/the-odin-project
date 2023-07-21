@@ -1,23 +1,23 @@
 import "./style.css";
-import { showTodoForm, hideTodoForm } from "./todo-form-dom.js";
-import { createTodo } from "./todo.js";
+import { showTaskForm, hideTaskForm } from "./task-form-dom.js";
 
 const headerDiv = document.querySelector("#header");
 const sidebarDiv = document.querySelector("#sidebar");
 const mainContentDiv = document.querySelector("#main-content");
 
-const createTodoButton = document.querySelector("button.create-todo");
-const createTodoForm = document.querySelector("form.create-todo");
-const submitTodoForm = document.querySelector(
-  `form.create-todo button[type='submit']`
+const createTaskButton = document.querySelector("button.create-task");
+const createTaskForm = document.querySelector("form.create-task");
+const submitTaskForm = document.querySelector(
+  `form.create-task button[type='submit']`
 );
 
 console.log(headerDiv, sidebarDiv, mainContentDiv);
 
-createTodoButton.addEventListener("click", showTodoForm);
-submitTodoForm.addEventListener("click", (e) => {
-  createTodo(e);
-  hideTodoForm(e);
+createTaskButton.addEventListener("click", showTaskForm);
+
+submitTaskForm.addEventListener("click", (e) => {
+  createTask(e);
+  hideTaskForm(e);
 });
 
-// submitTodoForm.addEventListener("click", parseTodoInput);
+// submitTaskForm.addEventListener("click", parseTaskInput);
