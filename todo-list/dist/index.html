@@ -40,20 +40,17 @@
       <button class="create-task">+</button>
     </nav>
     <div id="main-content">
-      <div class="display-task">
+      <div class="display-tasks" id="all-tasks">
         <table>
-          <tr>
-            <th class="header-title">Test</th>
-            <th class="header-description">Two</th>
-            <th class="header-duedate">3</th>
-            <th class="header-priority">four</th>
-          </tr>
-          <tr>
-            <td>page-group</td>
-            <td>hk</td>
-            <td>jjjj</td>
-            <td>lk</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="col" class="header-title">Task</th>
+              <th scope="col" class="header-description">Description</th>
+              <th scope="col" class="header-duedate">Due Date</th>
+              <th scope="col" class="header-priority">Priority</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
         </table>
       </div>
       <form class="create-form hidden" id="create-task" action="" method="post">

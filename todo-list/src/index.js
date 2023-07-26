@@ -1,8 +1,8 @@
 import "./style.css";
-import { createTask } from "./task.js";
-import { createProject } from "./project.js";
-import { showTaskForm, showProjectForm, hideForms } from "./task-form-dom.js";
+import { showTaskForm } from "./task-form-dom.js";
+import { submitTask, submitProject } from "./controller.js";
 
+// DOM Elements
 const headerDiv = document.querySelector("#header");
 const sidebarDiv = document.querySelector("#sidebar");
 const mainContentDiv = document.querySelector("#main-content");
@@ -17,18 +17,9 @@ const submitProjectForm = document.querySelector(
   `form#create-project button[type='submit']`
 );
 
-console.log(headerDiv, sidebarDiv, mainContentDiv);
-
+// Event listeners
 createTaskButton.addEventListener("click", showTaskForm);
-
-submitTaskForm.addEventListener("click", (e) => {
-  createTask(e);
-  hideForms(e);
-});
-
-submitProjectForm.addEventListener("click", (e) => {
-  createProject(e);
-  hideForms(e);
-});
+submitTaskForm.addEventListener("click", submitTask);
+submitProjectForm.addEventListener("click", submitProject);
 
 // submitTaskForm.addEventListener("click", parseTaskInput);

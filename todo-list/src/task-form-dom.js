@@ -12,7 +12,7 @@ const showProjectForm = () => {
 
 const hideForms = (e) => {
   createForms.forEach((form) => {
-    form.classList.remove("hidden");
+    form.classList.add("hidden");
   });
   e.preventDefault();
 };
