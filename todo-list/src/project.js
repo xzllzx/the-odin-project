@@ -1,3 +1,5 @@
+import { parseProjectInput } from "./task-form-dom.js";
+
 const allProjects = [];
 
 const Project = (projectName) => {
@@ -5,9 +7,15 @@ const Project = (projectName) => {
   return { projectName, taskList };
 };
 
-const createProject = (projectName) => {
-  const newProject = Project(projectName);
+const createProject = () => {
+  const formdata = parseProjectInput();
+  console.log(formdata);
+
+  const inputName = formdata.get("project-name");
+
+  const newProject = Project(inputName);
   allProjects.push(newProject);
+  console.log(allProjects);
   return { newProject };
 };
 

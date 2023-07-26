@@ -6,9 +6,22 @@ const Task = (title, description, dueDate, priority) => {
 };
 
 const createTask = () => {
-  const inputArr = parseTaskInput();
-  const newTask = Task(...inputArr);
-  console.log(`Created Task list: ${inputArr}`);
+  const formdata = parseTaskInput();
+  console.log(formdata);
+
+  const inputTitle = formdata.get("title");
+  const inputDescription = formdata.get("description");
+  const inputDueDate = formdata.get("due-date");
+  const inputPriority = formdata.get("priority");
+
+  const newTask = Task(
+    inputTitle,
+    inputDescription,
+    inputDueDate,
+    inputPriority
+  );
+
+  console.log(newTask);
 };
 
 export { createTask };

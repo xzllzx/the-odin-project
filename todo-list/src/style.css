@@ -79,7 +79,7 @@ form {
   display: grid;
 }
 
-form.create-task {
+form#create-task {
   width: 80%;
   grid-template-columns: 1fr 1fr;
 }
@@ -134,4 +134,10 @@ input[type="radio"] {
 .hidden {
   display: none;
   background-color: navy;
+}
+
+/* Project Page */
+li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
