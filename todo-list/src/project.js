@@ -10,8 +10,8 @@ const Project = (projectName) => {
 // Stores all projects
 const defaultProject = Project("Default");
 
-const createProject = () => {
-  const formdata = parseProjectInput();
+const createProject = (e) => {
+  const formdata = new FormData(e.target.parentNode);
 
   const inputName = formdata.get("project-name");
 

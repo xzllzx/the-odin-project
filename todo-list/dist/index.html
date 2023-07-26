@@ -8,36 +8,40 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="header"><div id="website-name">TO-DO LIST WEBSITE</div></div>
+    <div id="header">
+      <div id="website-name">TO-DO LIST WEBSITE</div>
+      <button class="create-task">Create Task</button>
+    </div>
     <nav id="sidebar">
       <ul class="nav">
         <li>
           <div class="page-group" id="home-button">
             <button class="page-link">Home</button>
-            <div class="notif-count">7</div>
           </div>
         </li>
         <li>
           <div class="page-group" id="today-button">
             <button class="page-link">Today</button>
-            <div class="notif-count">3</div>
           </div>
         </li>
         <li>
           <div class="page-group" id="week-button">
             <button class="page-link">Week</button>
-            <div class="notif-count">300</div>
-          </div>
-        </li>
-        <li>
-          <div class="page-group" id="projects-button">
-            <button class="page-link">Projects</button>
-            <div class="notif-count">3000</div>
           </div>
         </li>
       </ul>
+      <ul class="projects">
+        <div>Projects</div>
+        <li>
+          <div class="page-group">
+            <button class="page-link">Homework</button>
+          </div>
+        </li>
+        <li>
+          <button class="create-project">Create Project</button>
+        </li>
+      </ul>
       <!-- ul>li>(.page-group#>button.page-link+.notif-count)*4 -->
-      <button class="create-task">+</button>
     </nav>
     <div id="main-content">
       <div class="display-tasks" id="all-tasks">

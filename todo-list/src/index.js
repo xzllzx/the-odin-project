@@ -1,5 +1,5 @@
 import "./style.css";
-import { showTaskForm } from "./task-form-dom.js";
+import { showForm } from "./task-form-dom.js";
 import { submitTask, submitProject } from "./controller.js";
 
 // DOM Elements
@@ -12,14 +12,16 @@ const createTaskForm = document.querySelector("form#create-task");
 const submitTaskForm = document.querySelector(
   `form#create-task button[type='submit']`
 );
+
+const createProjectButton = document.querySelector("button.create-project");
 const createProjectForm = document.querySelector("form#create-project");
 const submitProjectForm = document.querySelector(
   `form#create-project button[type='submit']`
 );
 
 // Event listeners
-createTaskButton.addEventListener("click", showTaskForm);
+createTaskButton.addEventListener("click", showForm);
+createProjectButton.addEventListener("click", showForm);
+
 submitTaskForm.addEventListener("click", submitTask);
 submitProjectForm.addEventListener("click", submitProject);
-
-// submitTaskForm.addEventListener("click", parseTaskInput);
