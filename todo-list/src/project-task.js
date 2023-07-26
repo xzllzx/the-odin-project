@@ -9,6 +9,7 @@ const Project = (projectName) => {
 };
 
 // FUNCTIONS
+// Create a new task
 const createTask = (e) => {
   const formdata = new FormData(e.target.parentNode);
   const project = allProjects[parseInt(formdata.get("project"))];
@@ -24,18 +25,23 @@ const createTask = (e) => {
   return newTask;
 };
 
+// Create a new project
 const createProject = (e) => {
   const formdata = new FormData(e.target.parentNode);
   const newProject = Project(formdata.get("project-name"));
-  allProjects.push(newProject);
+
+  addProjectToList(newProject);
+  console.log(allProjects);
   return newProject;
 };
 
+// Add new tasks to a project's task list
 const addTaskToProject = (project, task) => {
   project.taskList.push(task);
   return project;
 };
 
+// Add new projects to a list containing all projects
 const addProjectToList = (project) => {
   allProjects.push(project);
   return allProjects;

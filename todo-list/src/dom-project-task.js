@@ -1,3 +1,5 @@
+import { allProjects } from "./project-task";
+
 const createForms = document.querySelectorAll("form.create-form");
 
 const showForm = (e) => {
@@ -55,4 +57,22 @@ const addProjectToSidebar = (project) => {
   return { project };
 };
 
-export { showForm, hideForms, displayAllTasks, addProjectToSidebar };
+const addProjectToTaskDropdown = (project) => {
+  const projectsDropdown = document.querySelector("#project");
+
+  const projectOption = document.createElement("option");
+  projectOption.value = allProjects.length - 1;
+  projectOption.innerHTML = project.projectName;
+
+  projectsDropdown.appendChild(projectOption);
+
+  return { project };
+};
+
+export {
+  showForm,
+  hideForms,
+  displayAllTasks,
+  addProjectToSidebar,
+  addProjectToTaskDropdown,
+};
