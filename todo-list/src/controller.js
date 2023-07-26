@@ -1,10 +1,9 @@
 import {
+  createTask,
   createProject,
-  addTaskToProject,
   addProjectToList,
   defaultProject,
-} from "./project.js";
-import { createTask } from "./task.js";
+} from "./project-task.js";
 import {
   displayAllTasks,
   hideForms,
@@ -16,7 +15,6 @@ const allTasksTable = document.querySelector("#all-tasks > table");
 const submitTask = (e) => {
   const newTask = createTask(e);
   hideForms(e);
-  addTaskToProject(defaultProject, newTask);
   displayAllTasks(allTasksTable, defaultProject);
 };
 
