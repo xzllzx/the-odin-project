@@ -22,7 +22,8 @@ const createTask = (e) => {
   );
 
   addTaskToProject(project, newTask);
-  return newTask;
+  if (project !== defaultProject) addTaskToProject(defaultProject, newTask);
+  return project;
 };
 
 // Create a new project

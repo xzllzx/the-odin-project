@@ -1,5 +1,6 @@
-import { allProjects } from "./project-task";
+import { allProjects, defaultProject } from "./project-task";
 
+const homeButton = document.querySelector("#home-button");
 const createForms = document.querySelectorAll("form.create-form");
 
 const showForm = (e) => {
@@ -15,10 +16,16 @@ const hideForms = (e) => {
   e.preventDefault();
 };
 
-const displayAllTasks = (table, project) => {
+const displayAllTasks = (project) => {
   // Remove all rows and re-populate?
-  table.querySelector("tbody").remove();
-  const tableBody = document.createElement("tbody");
+  const allTasksTable = document.querySelector("#all-tasks > table");
+  const oldtbody = allTasksTable.querySelector("tbody");
+  const newtbody = document.createElement("tbody");
+
+  if (oldtbody) oldtbody.remove();
+
+  // console.log(e.target);
+  console.log(`project is: ${project}`);
 
   for (const task of project.taskList) {
     const newRow = document.createElement("tr");
@@ -34,10 +41,10 @@ const displayAllTasks = (table, project) => {
       newRow.appendChild(newCell);
     }
 
-    tableBody.appendChild(newRow);
+    newtbody.appendChild(newRow);
   }
 
-  table.appendChild(tableBody);
+  allTasksTable.appendChild(newtbody);
 };
 
 const addProjectToSidebar = (project) => {
@@ -49,6 +56,10 @@ const addProjectToSidebar = (project) => {
   const newProjectLink = document.createElement("button");
   newProjectLink.classList.add("page-link");
   newProjectLink.innerHTML = project.projectName;
+
+  newProjectLink.addEventListener("click", function () {
+    displayAllTasks(project);
+  });
 
   newSidebarGroup.appendChild(newProjectLink);
   newProjectElement.appendChild(newSidebarGroup);
@@ -68,6 +79,11 @@ const addProjectToTaskDropdown = (project) => {
 
   return { project };
 };
+
+// Initialization
+homeButton.addEventListener("click", function () {
+  displayAllTasks(defaultProject);
+});
 
 export {
   showForm,

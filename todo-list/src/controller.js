@@ -6,12 +6,10 @@ import {
   addProjectToTaskDropdown,
 } from "./dom-project-task.js";
 
-const allTasksTable = document.querySelector("#all-tasks > table");
-
 const submitTask = (e) => {
-  createTask(e);
+  const project = createTask(e);
   hideForms(e);
-  displayAllTasks(allTasksTable, defaultProject);
+  displayAllTasks(project);
 };
 
 const submitProject = (e) => {
