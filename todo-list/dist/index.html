@@ -10,7 +10,7 @@
   <body>
     <div id="header">
       <div id="website-name">TO-DO LIST WEBSITE</div>
-      <button class="create-task">Create Task</button>
+      <button class="create-task">New Task</button>
     </div>
     <nav id="sidebar">
       <ul class="nav">
@@ -30,6 +30,7 @@
           </div>
         </li>
       </ul>
+      <hr />
       <ul class="projects">
         <div>Projects</div>
         <li>
@@ -37,10 +38,10 @@
             <button class="page-link">Homework</button>
           </div>
         </li>
-        <li>
-          <button class="create-project">Create Project</button>
-        </li>
       </ul>
+      <div>
+        <button class="create-project">New Project</button>
+      </div>
       <!-- ul>li>(.page-group#>button.page-link+.notif-count)*4 -->
     </nav>
     <div id="main-content">
@@ -65,17 +66,15 @@
         <input type="text" name="description" id="description" />
         <label for="due-date">Due Date</label>
         <input type="date" name="due-date" id="due-date" />
-        <fieldset>
-          <legend>Priority</legend>
-          <div class="switch-field">
-            <input type="radio" name="priority" id="low" value="low" />
-            <label for="low">Low</label>
-            <input type="radio" name="priority" id="medium" value="medium" />
-            <label for="medium">Medium</label>
-            <input type="radio" name="priority" id="high" value="high" />
-            <label for="high">High</label>
-          </div>
-        </fieldset>
+        <legend>Priority</legend>
+        <div class="switch-field">
+          <input type="radio" name="priority" id="low" value="low" />
+          <label for="low">Low</label>
+          <input type="radio" name="priority" id="medium" value="medium" />
+          <label for="medium">Medium</label>
+          <input type="radio" name="priority" id="high" value="high" />
+          <label for="high">High</label>
+        </div>
         <!-- <div class="toggle">
           <label class="toggle-label low-label" for="low">Low</label>
           <label class="toggle-label medium-label" for="medium">Medium</label>
@@ -95,16 +94,6 @@
         <input type="text" name="project-name" id="project-name" />
         <button type="submit">Submit</button>
       </form>
-
-      <div class="page project">
-        <div class="page header">
-          <ul class="project-list">
-            <li class="project-item">
-              <div class="project-name"></div>
-              <div class="project-due-date"></div>
-            </li>
-          </ul>
-        </div>
         <!-- .page.header>ul.project-list>li.project-item>.project-name+.project-due-date -->
         <!-- .page.header>ul.project.name+.project.due-date -->
       </div>

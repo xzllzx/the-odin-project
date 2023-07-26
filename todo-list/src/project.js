@@ -1,28 +1,32 @@
-import { parseProjectInput } from "./task-form-dom.js";
-
-const allProjects = [];
-
 const Project = (projectName) => {
   const taskList = [];
   return { projectName, taskList };
 };
 
-// Stores all projects
-const defaultProject = Project("Default");
-
 const createProject = (e) => {
   const formdata = new FormData(e.target.parentNode);
-
-  const inputName = formdata.get("project-name");
-
-  const newProject = Project(inputName);
+  const newProject = Project(formdata.get("project-name"));
   allProjects.push(newProject);
-  return { newProject };
+  return newProject;
 };
 
 const addTaskToProject = (project, task) => {
   project.taskList.push(task);
-  return { project };
+  return project;
 };
 
-export { createProject, addTaskToProject, defaultProject };
+const addProjectToList = (project) => {
+  allProjects.push(project);
+  return allProjects;
+};
+
+const allProjects = [];
+const defaultProject = Project("Default");
+
+export {
+  createProject,
+  addTaskToProject,
+  addProjectToList,
+  allProjects,
+  defaultProject,
+};

@@ -1,5 +1,5 @@
 import "./style.css";
-import { showForm } from "./task-form-dom.js";
+import { showForm } from "./dom-project-task.js";
 import { submitTask, submitProject } from "./controller.js";
 
 // DOM Elements
