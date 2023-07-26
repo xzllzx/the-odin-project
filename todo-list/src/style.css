@@ -74,6 +74,23 @@ nav#sidebar ul {
   padding: 20px;
 }
 
+/* ----- SHOW TASKS ----- */
+.display-task {
+  display: grid;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5px 10px;
+}
+
 /* ----- CREATE TODO FORM ----- */
 form {
   display: grid;
