@@ -26,6 +26,42 @@ const createTask = (e) => {
   return project;
 };
 
+// Get sub-set of tasks?
+const getTodayTasks = (e) => {
+  todayProject.taskList = [];
+
+  const today = new Date().toLocaleDateString();
+
+  for (const Task of defaultProject.taskList) {
+    let taskDate = new Date(Task.dueDate).toLocaleDateString();
+    if (today === taskDate) {
+      todayProject.taskList.push(Task);
+    }
+  }
+
+  console.log(todayProject);
+  return todayProject;
+};
+
+const getWeekTasks = (e) => {
+  weekProject.taskList = [];
+
+  const today = new Date().toLocaleDateString();
+  let sevenDaysLater = new Date();
+  sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
+  sevenDaysLater = sevenDaysLater.toLocaleDateString();
+
+  for (const Task of defaultProject.taskList) {
+    let taskDate = new Date(Task.dueDate).toLocaleDateString();
+    if (today <= taskDate && taskDate <= sevenDaysLater) {
+      weekProject.taskList.push(Task);
+    }
+  }
+
+  console.log(weekProject);
+  return weekProject;
+};
+
 // Create a new project
 const createProject = (e) => {
   const formdata = new FormData(e.target.parentNode);
@@ -51,14 +87,20 @@ const addProjectToList = (project) => {
 // INITIALIZE
 const allProjects = [];
 const defaultProject = Project("Default");
+const todayProject = Project("Today");
+const weekProject = Project("Week");
 
 addProjectToList(defaultProject);
 
 export {
   createTask,
+  getTodayTasks,
+  getWeekTasks,
   createProject,
   addTaskToProject,
   addProjectToList,
   allProjects,
   defaultProject,
+  todayProject,
+  weekProject,
 };
