@@ -15,9 +15,16 @@ const hideForms = (e) => {
   e.preventDefault();
 };
 
-const getCurrentPage = (e) => {
+const setCurrentPage = (e) => {
+  const allButtons = document.querySelectorAll("button.page-link");
+  const pageName = document.querySelector("#page-name");
+
+  for (const button of allButtons) {
+    button.classList.remove("selected-page");
+  }
+  e.target.classList.add("selected-page");
   const currentProject = e.target.parentNode.id.slice(0, -7);
-  console.log(currentProject);
+  pageName.innerHTML = currentProject;
 
   return currentProject;
 };
@@ -62,7 +69,7 @@ const addProjectToSidebar = (project) => {
   newProjectLink.innerHTML = project.projectName;
 
   newProjectLink.addEventListener("click", function (e) {
-    getCurrentPage(e);
+    setCurrentPage(e);
     displayAllTasks(project);
   });
 
@@ -88,7 +95,7 @@ const addProjectToTaskDropdown = (project) => {
 export {
   showForm,
   hideForms,
-  getCurrentPage,
+  setCurrentPage,
   displayAllTasks,
   addProjectToSidebar,
   addProjectToTaskDropdown,

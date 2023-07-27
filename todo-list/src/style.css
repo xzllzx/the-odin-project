@@ -63,6 +63,14 @@ nav#sidebar ul {
   text-align: left;
 }
 
+button.selected-page {
+  font-weight: bold;
+}
+
+button.selected-page::before {
+  content: "// ";
+}
+
 ul.projects > li > * > * {
   font-size: 20px;
 }
@@ -77,6 +85,10 @@ ul.projects > li > * {
   grid-column: 2;
   background-color: rgb(50, 50, 50);
   padding: 20px;
+}
+
+#page-name {
+  font-size: 36px;
 }
 
 /* ----- SHOW TASKS ----- */
