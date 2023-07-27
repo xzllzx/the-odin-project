@@ -15,6 +15,13 @@ const hideForms = (e) => {
   e.preventDefault();
 };
 
+const getCurrentPage = (e) => {
+  const currentProject = e.target.parentNode.id.slice(0, -7);
+  console.log(currentProject);
+
+  return currentProject;
+};
+
 const displayAllTasks = (project) => {
   // Remove all rows and re-populate?
   const allTasksTable = document.querySelector("#all-tasks > table");
@@ -22,9 +29,6 @@ const displayAllTasks = (project) => {
   const newtbody = document.createElement("tbody");
 
   if (oldtbody) oldtbody.remove();
-
-  // console.log(e.target);
-  console.log(`project is: ${project}`);
 
   for (const task of project.taskList) {
     const newRow = document.createElement("tr");
@@ -52,11 +56,13 @@ const addProjectToSidebar = (project) => {
   const newProjectElement = document.createElement("li");
   const newSidebarGroup = document.createElement("div");
   newSidebarGroup.classList.add("page-group");
+  newSidebarGroup.id = `${project.projectName}-button`;
   const newProjectLink = document.createElement("button");
   newProjectLink.classList.add("page-link");
   newProjectLink.innerHTML = project.projectName;
 
-  newProjectLink.addEventListener("click", function () {
+  newProjectLink.addEventListener("click", function (e) {
+    getCurrentPage(e);
     displayAllTasks(project);
   });
 
@@ -82,6 +88,7 @@ const addProjectToTaskDropdown = (project) => {
 export {
   showForm,
   hideForms,
+  getCurrentPage,
   displayAllTasks,
   addProjectToSidebar,
   addProjectToTaskDropdown,

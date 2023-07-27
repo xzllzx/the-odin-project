@@ -43,7 +43,6 @@ const getTodayTasks = () => {
     }
   }
 
-  console.log(todayProject);
   return todayProject;
 };
 
@@ -61,7 +60,6 @@ const getWeekTasks = () => {
     }
   }
 
-  console.log(weekProject);
   return weekProject;
 };
 

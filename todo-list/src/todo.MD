@@ -1,0 +1,2 @@
+- Get the current page user is on, and call displayAllTask only on the relevant project
+- Highlight current page in sidebar

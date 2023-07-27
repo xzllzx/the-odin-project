@@ -29,14 +29,9 @@ body {
 }
 
 #website-name {
-  /* grid-column: 1; */
   font-weight: bolder;
   font-size: 48px;
   padding-left: 20px;
-}
-
-#header > button.create-task {
-  /* grid-column: 2; */
 }
 
 /* ----- SIDEBAR ----- */

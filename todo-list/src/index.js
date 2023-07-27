@@ -1,5 +1,9 @@
 import "./style.css";
-import { showForm, displayAllTasks } from "./dom-project-task.js";
+import {
+  showForm,
+  getCurrentPage,
+  displayAllTasks,
+} from "./dom-project-task.js";
 import { submitTask, submitProject } from "./controller.js";
 import { getAllTasks, getTodayTasks, getWeekTasks } from "./project-task.js";
 
@@ -9,6 +13,8 @@ const sidebarDiv = document.querySelector("#sidebar");
 const mainContentDiv = document.querySelector("#main-content");
 
 // Sidebar
+const allButtons = document.querySelectorAll("button.page-link");
+
 const homeButton = document.querySelector("#home-button");
 const todayButton = document.querySelector("#today-button");
 const weekButton = document.querySelector("#week-button");
@@ -31,6 +37,10 @@ createProjectButton.addEventListener("click", showForm);
 
 submitTaskForm.addEventListener("click", submitTask);
 submitProjectForm.addEventListener("click", submitProject);
+
+for (const button of allButtons) {
+  button.addEventListener("click", getCurrentPage);
+}
 
 // Display projects
 homeButton.addEventListener("click", function () {
