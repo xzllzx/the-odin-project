@@ -1,6 +1,5 @@
 import { allProjects, defaultProject } from "./project-task";
 
-const homeButton = document.querySelector("#home-button");
 const createForms = document.querySelectorAll("form.create-form");
 
 const showForm = (e) => {
@@ -79,11 +78,6 @@ const addProjectToTaskDropdown = (project) => {
 
   return { project };
 };
-
-// Initialization
-homeButton.addEventListener("click", function () {
-  displayAllTasks(defaultProject);
-});
 
 export {
   showForm,

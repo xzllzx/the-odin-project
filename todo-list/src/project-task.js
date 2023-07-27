@@ -27,7 +27,11 @@ const createTask = (e) => {
 };
 
 // Get sub-set of tasks?
-const getTodayTasks = (e) => {
+const getAllTasks = () => {
+  return defaultProject;
+};
+
+const getTodayTasks = () => {
   todayProject.taskList = [];
 
   const today = new Date().toLocaleDateString();
@@ -43,16 +47,15 @@ const getTodayTasks = (e) => {
   return todayProject;
 };
 
-const getWeekTasks = (e) => {
+const getWeekTasks = () => {
   weekProject.taskList = [];
 
-  const today = new Date().toLocaleDateString();
+  const today = new Date();
   let sevenDaysLater = new Date();
-  sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
-  sevenDaysLater = sevenDaysLater.toLocaleDateString();
+  sevenDaysLater.setDate(today.getDate() + 7);
 
   for (const Task of defaultProject.taskList) {
-    let taskDate = new Date(Task.dueDate).toLocaleDateString();
+    let taskDate = new Date(Task.dueDate);
     if (today <= taskDate && taskDate <= sevenDaysLater) {
       weekProject.taskList.push(Task);
     }
@@ -94,6 +97,7 @@ addProjectToList(defaultProject);
 
 export {
   createTask,
+  getAllTasks,
   getTodayTasks,
   getWeekTasks,
   createProject,

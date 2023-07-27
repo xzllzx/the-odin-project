@@ -1,7 +1,7 @@
 import "./style.css";
-import { showForm } from "./dom-project-task.js";
+import { showForm, displayAllTasks } from "./dom-project-task.js";
 import { submitTask, submitProject } from "./controller.js";
-import { getTodayTasks, getWeekTasks } from "./project-task.js";
+import { getAllTasks, getTodayTasks, getWeekTasks } from "./project-task.js";
 
 // Main DOM Elements
 const headerDiv = document.querySelector("#header");
@@ -25,12 +25,21 @@ const submitProjectForm = document.querySelector(
   `form#create-project button[type='submit']`
 );
 
-// Event listeners
+// EVENT LISTENERS
 createTaskButton.addEventListener("click", showForm);
 createProjectButton.addEventListener("click", showForm);
 
 submitTaskForm.addEventListener("click", submitTask);
 submitProjectForm.addEventListener("click", submitProject);
 
-todayButton.addEventListener("click", getTodayTasks);
-weekButton.addEventListener("click", getWeekTasks);
+// Display projects
+homeButton.addEventListener("click", function () {
+  displayAllTasks(getAllTasks());
+});
+
+todayButton.addEventListener("click", function () {
+  displayAllTasks(getTodayTasks());
+});
+weekButton.addEventListener("click", function () {
+  displayAllTasks(getWeekTasks());
+});
