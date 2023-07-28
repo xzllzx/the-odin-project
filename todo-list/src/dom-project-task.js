@@ -1,6 +1,12 @@
 import { allProjects } from "./project-task";
 
-import { defaultProject, getProjectById } from "./initialize";
+import {
+  defaultProject,
+  getProjectById,
+  getTodayTasks,
+  getWeekTasks,
+  todayProject,
+} from "./initialize";
 
 const createForms = document.querySelectorAll("form.create-form");
 let currentProject = defaultProject;
@@ -46,6 +52,8 @@ const displayAllTasks = (project) => {
   const newtbody = document.createElement("tbody");
 
   if (oldtbody) oldtbody.remove();
+
+  console.log(project);
 
   for (const task of project.taskList) {
     const newRow = document.createElement("tr");

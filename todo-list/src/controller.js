@@ -10,7 +10,7 @@ import {
   addProjectToSidebar,
   addProjectToTaskDropdown,
 } from "./dom-project-task";
-import { defaultProject } from "./initialize";
+import { defaultProject, getTodayTasks, getWeekTasks } from "./initialize";
 
 const submitTask = (e) => {
   const taskAndProject = createTaskFromForm(e);
@@ -18,6 +18,8 @@ const submitTask = (e) => {
   const project = taskAndProject[1];
   addTaskToProject(project, task);
   if (project != defaultProject) addTaskToProject(defaultProject, task);
+  getTodayTasks();
+  getWeekTasks();
   hideForms(e);
   displayAllTasks(getCurrentPage());
 };

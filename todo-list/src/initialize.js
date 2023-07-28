@@ -38,7 +38,8 @@ const getTodayTasks = () => {
 const getWeekTasks = () => {
   weekProject.taskList = [];
 
-  const today = new Date();
+  let today = new Date();
+  today.setDate(today.getDate() - 1);
   let sevenDaysLater = new Date();
   sevenDaysLater.setDate(today.getDate() + 7);
 
