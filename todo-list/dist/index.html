@@ -15,17 +15,17 @@
     <nav id="sidebar">
       <ul class="nav">
         <li>
-          <div class="page-group" id="all-projects-button">
+          <div class="page-group" id="button-all-projects">
             <button class="page-link selected-page">All Projects</button>
           </div>
         </li>
         <li>
-          <div class="page-group" id="today-button">
+          <div class="page-group" id="button-today">
             <button class="page-link">Today</button>
           </div>
         </li>
         <li>
-          <div class="page-group" id="week-button">
+          <div class="page-group" id="button-week">
             <button class="page-link">Week</button>
           </div>
         </li>
@@ -55,16 +55,15 @@
         </table>
       </div>
       <form class="create-form hidden" id="create-task" action="" method="post">
-        <!-- title, description, dueDate, priority, notes, checklist -->
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" />
+        <input type="text" name="title" id="title" required />
         <label for="description">Description</label>
-        <input type="text" name="description" id="description" />
+        <input type="text" name="description" id="description" required />
         <label for="due-date">Due Date</label>
-        <input type="date" name="due-date" id="due-date" />
+        <input type="date" name="due-date" id="due-date" required />
         <legend>Priority</legend>
         <div class="switch-field">
-          <input type="radio" name="priority" id="low" value="low" />
+          <input type="radio" name="priority" id="low" value="low" required />
           <label for="low">Low</label>
           <input type="radio" name="priority" id="medium" value="medium" />
           <label for="medium">Medium</label>
@@ -73,7 +72,7 @@
         </div>
         <label for="project">Project</label>
         <select name="project" id="project">
-          <option value="0">Default</option>
+          <option value="0" >Default</option>
         </select>
         <button type="submit">Submit</button>
       </form>

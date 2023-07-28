@@ -10,70 +10,35 @@ const Project = (projectName) => {
 
 // FUNCTIONS
 // Create a new task
-const createTask = (title, description, dueDate, priority, project) => {
+const createTask = (title, description, dueDate, priority) => {
   const newTask = Task(title, description, dueDate, priority);
-  addTaskToProject(project, newTask);
-  if (project !== defaultProject) addTaskToProject(defaultProject, newTask);
+  return newTask;
 };
 
 const createTaskFromForm = (e) => {
   const formdata = new FormData(e.target.parentNode);
 
-  createTask(
+  const newTask = createTask(
     formdata.get("title"),
     formdata.get("description"),
     formdata.get("due-date"),
-    formdata.get("priority"),
-    allProjects[parseInt(formdata.get("project"))]
+    formdata.get("priority")
   );
-};
 
-// Get sub-set of tasks?
-const getAllTasks = () => {
-  return defaultProject;
-};
-
-const getTodayTasks = () => {
-  todayProject.taskList = [];
-
-  const today = new Date().toLocaleDateString();
-
-  for (const Task of defaultProject.taskList) {
-    let taskDate = new Date(Task.dueDate).toLocaleDateString();
-    if (today === taskDate) {
-      todayProject.taskList.push(Task);
-    }
-  }
-
-  return todayProject;
-};
-
-const getWeekTasks = () => {
-  weekProject.taskList = [];
-
-  const today = new Date();
-  let sevenDaysLater = new Date();
-  sevenDaysLater.setDate(today.getDate() + 7);
-
-  for (const Task of defaultProject.taskList) {
-    let taskDate = new Date(Task.dueDate);
-    if (today <= taskDate && taskDate <= sevenDaysLater) {
-      weekProject.taskList.push(Task);
-    }
-  }
-
-  return weekProject;
+  return [newTask, allProjects[parseInt(formdata.get("project"))]];
 };
 
 // Create a new project
 const createProject = (projectName) => {
   const newProject = Project(projectName);
   addProjectToProjectsList(newProject);
+  return newProject;
 };
 
 const createProjectFromDom = (e) => {
   const formdata = new FormData(e.target.parentNode);
-  createProject(formdata.get("project-name"));
+  const newProject = createProject(formdata.get("project-name"));
+  return newProject;
 };
 
 // Add new tasks to a project's task list
@@ -90,13 +55,6 @@ const addProjectToProjectsList = (project) => {
 // List of all projects
 const allProjects = [];
 
-// Tasks
-
-// Projects
-const defaultProject = createProject("Default");
-const todayProject = createProject("Today");
-const weekProject = createProject("Week");
-
 export {
   allProjects,
   createTask,
@@ -105,10 +63,4 @@ export {
   createProjectFromDom,
   addTaskToProject,
   addProjectToProjectsList,
-  defaultProject,
-  todayProject,
-  weekProject,
-  getAllTasks,
-  getTodayTasks,
-  getWeekTasks,
 };

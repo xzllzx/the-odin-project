@@ -1,13 +1,23 @@
-import { createTaskFromForm, createProjectFromDom } from "./project-task";
+import {
+  createTaskFromForm,
+  createProjectFromDom,
+  addTaskToProject,
+} from "./project-task";
 import {
   displayAllTasks,
   hideForms,
+  getCurrentPage,
   addProjectToSidebar,
   addProjectToTaskDropdown,
 } from "./dom-project-task";
+import { defaultProject } from "./initialize";
 
 const submitTask = (e) => {
-  createTaskFromForm(e);
+  const taskAndProject = createTaskFromForm(e);
+  const task = taskAndProject[0];
+  const project = taskAndProject[1];
+  addTaskToProject(project, task);
+  if (project != defaultProject) addTaskToProject(defaultProject, task);
   hideForms(e);
   displayAllTasks(getCurrentPage());
 };

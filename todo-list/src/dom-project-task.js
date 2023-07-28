@@ -1,6 +1,9 @@
 import { allProjects } from "./project-task";
 
+import { defaultProject, getProjectById } from "./initialize";
+
 const createForms = document.querySelectorAll("form.create-form");
+let currentProject = defaultProject;
 
 const showForm = (e) => {
   hideForms(e);
@@ -27,10 +30,13 @@ const setCurrentPage = (e) => {
     button.classList.remove("selected-page");
   }
   e.target.classList.add("selected-page");
-  const currentProjectName = e.target.parentNode.id.slice(0, -7);
-  pageName.innerHTML = currentProjectName;
 
-  return currentProjectName;
+  const currentProjectId = e.target.parentNode.id.slice(7);
+  // Default pages: All, Today, Week
+  currentProject = getProjectById(currentProjectId);
+
+  pageName.innerHTML = currentProject.projectName;
+  return currentProject;
 };
 
 const displayAllTasks = (project) => {
@@ -62,12 +68,13 @@ const displayAllTasks = (project) => {
 };
 
 const addProjectToSidebar = (project) => {
+  console.log(project);
   const sidebarProjects = document.querySelector("nav#sidebar > ul.projects");
 
   const newProjectElement = document.createElement("li");
   const newSidebarGroup = document.createElement("div");
   newSidebarGroup.classList.add("page-group");
-  newSidebarGroup.id = `${project.projectName}-button`;
+  newSidebarGroup.id = `button-${allProjects.length}`;
   const newProjectLink = document.createElement("button");
   newProjectLink.classList.add("page-link");
   newProjectLink.innerHTML = project.projectName;
@@ -80,8 +87,6 @@ const addProjectToSidebar = (project) => {
   newSidebarGroup.appendChild(newProjectLink);
   newProjectElement.appendChild(newSidebarGroup);
   sidebarProjects.appendChild(newProjectElement);
-
-  return { project };
 };
 
 const addProjectToTaskDropdown = (project) => {
@@ -92,15 +97,15 @@ const addProjectToTaskDropdown = (project) => {
   projectOption.innerHTML = project.projectName;
 
   projectsDropdown.appendChild(projectOption);
-
-  return { project };
 };
 
 export {
   showForm,
   hideForms,
+  getCurrentPage,
   setCurrentPage,
   displayAllTasks,
   addProjectToSidebar,
   addProjectToTaskDropdown,
+  currentProject,
 };
