@@ -1,4 +1,4 @@
-import { allProjects, defaultProject } from "./project-task";
+import { allProjects } from "./project-task";
 
 const createForms = document.querySelectorAll("form.create-form");
 
@@ -15,6 +15,10 @@ const hideForms = (e) => {
   e.preventDefault();
 };
 
+const getCurrentPage = () => {
+  return currentProject;
+};
+
 const setCurrentPage = (e) => {
   const allButtons = document.querySelectorAll("button.page-link");
   const pageName = document.querySelector("#page-name");
@@ -23,10 +27,10 @@ const setCurrentPage = (e) => {
     button.classList.remove("selected-page");
   }
   e.target.classList.add("selected-page");
-  const currentProject = e.target.parentNode.id.slice(0, -7);
-  pageName.innerHTML = currentProject;
+  const currentProjectName = e.target.parentNode.id.slice(0, -7);
+  pageName.innerHTML = currentProjectName;
 
-  return currentProject;
+  return currentProjectName;
 };
 
 const displayAllTasks = (project) => {

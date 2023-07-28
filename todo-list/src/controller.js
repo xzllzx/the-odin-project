@@ -1,19 +1,19 @@
-import { createTask, createProject, defaultProject } from "./project-task.js";
+import { createTaskFromForm, createProjectFromDom } from "./project-task";
 import {
   displayAllTasks,
   hideForms,
   addProjectToSidebar,
   addProjectToTaskDropdown,
-} from "./dom-project-task.js";
+} from "./dom-project-task";
 
 const submitTask = (e) => {
-  const project = createTask(e);
+  createTaskFromForm(e);
   hideForms(e);
-  displayAllTasks(project);
+  displayAllTasks(getCurrentPage());
 };
 
 const submitProject = (e) => {
-  const newProject = createProject(e);
+  const newProject = createProjectFromDom(e);
   hideForms(e);
   addProjectToSidebar(newProject);
   addProjectToTaskDropdown(newProject);
