@@ -8,12 +8,14 @@ import {
   todayProject,
 } from "./initialize";
 
+const formContainer = document.querySelector(".form-container");
 const createForms = document.querySelectorAll("form.create-form");
 let currentProject = defaultProject;
 
 const showForm = (e) => {
   hideForms(e);
   const targetForm = document.querySelector(`form#${e.target.classList}`);
+  formContainer.classList.add("overlay");
   targetForm.classList.remove("hidden");
 };
 
@@ -21,6 +23,7 @@ const hideForms = (e) => {
   createForms.forEach((form) => {
     form.classList.add("hidden");
   });
+  formContainer.classList.remove("overlay");
   e.preventDefault();
 };
 
