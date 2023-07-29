@@ -20,18 +20,43 @@ function importAllImages() {
 function showPreviousPicture() {
   if (count <= 0) count += imageCount;
   pictureImage.src = imageList[--count];
+  console.log(count);
 }
 
 function showNextPicture() {
   if (count >= imageCount - 1) count -= imageCount;
   pictureImage.src = imageList[++count];
+  console.log(count);
+}
+
+function skipToImage(index, image) {
+  count = index;
+  console.log(count);
+  pictureImage.src = image;
+}
+
+function populateImageSlider() {
+  const imageSlider = document.querySelector(".picture-slider");
+  for (const [index, image] of imageList.entries()) {
+    const navDot = document.createElement("span");
+    navDot.className = "circle";
+    navDot.innerHTML = index;
+
+    navDot.addEventListener("click", function () {
+      skipToImage(index, image);
+    });
+
+    imageSlider.appendChild(navDot);
+  }
 }
 
 // INITIALIZE VALUES
 const imageList = importAllImages();
 
-let count = 0;
+let count = -1;
 const imageCount = imageList.length;
+showNextPicture();
+populateImageSlider();
 
 // ADD EVENT LISTENERS
 previousArrow.addEventListener("click", showPreviousPicture);

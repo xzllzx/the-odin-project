@@ -35,7 +35,6 @@ body {
   opacity: 30%;
   border: none;
   background-color: #04aa6d;
-  padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
@@ -58,15 +57,13 @@ body {
 .picture-slider {
   opacity: 30%;
   background-color: rgb(5, 0, 255);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  justify-items: center;
+  overflow-x: scroll;
 }
 
 span.circle {
   height: 50px;
   width: 50px;
+  margin: 30px;
   background-color: rgb(255, 0, 255);
   border-radius: 50%;
   cursor: pointer;
