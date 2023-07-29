@@ -66,8 +66,12 @@ span.circle {
   min-height: 50px;
   min-width: 50px;
   margin: 20px;
-  background-color: rgb(255, 0, 255);
+  background-color: rgb(75, 0, 75);
   border-radius: 50%;
   cursor: pointer;
   text-align: center;
+}
+
+span.circle.current {
+  background-color: rgb(255, 0, 125);
 }

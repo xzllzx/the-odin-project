@@ -20,19 +20,19 @@ function importAllImages() {
 function showPreviousPicture() {
   if (count <= 0) count += imageCount;
   pictureImage.src = imageList[--count];
-  console.log(count);
+  highlightCurrentSlide(count);
 }
 
 function showNextPicture() {
   if (count >= imageCount - 1) count -= imageCount;
   pictureImage.src = imageList[++count];
-  console.log(count);
+  highlightCurrentSlide(count);
 }
 
 function skipToImage(index, image) {
   count = index;
-  console.log(count);
   pictureImage.src = image;
+  highlightCurrentSlide(count);
 }
 
 function populateImageSlider() {
@@ -41,6 +41,7 @@ function populateImageSlider() {
     const navDot = document.createElement("span");
     navDot.className = "circle";
     navDot.innerHTML = index;
+    navDot.id = `slide-${index}`;
 
     navDot.addEventListener("click", function () {
       skipToImage(index, image);
@@ -50,13 +51,24 @@ function populateImageSlider() {
   }
 }
 
+function highlightCurrentSlide(count) {
+  const allSlides = document.querySelectorAll("span.circle");
+  const currentSlide = document.querySelector(`span#slide-${count}`);
+  for (const slide of allSlides) {
+    slide.classList.remove("current");
+  }
+  currentSlide.classList.add("current");
+  currentSlide.scrollIntoView({ inline: "center" });
+}
+
 // INITIALIZE VALUES
 const imageList = importAllImages();
-
 let count = -1;
 const imageCount = imageList.length;
-showNextPicture();
 populateImageSlider();
+showNextPicture();
+// Every 5 seconds, advance image
+setInterval(showNextPicture, 5000);
 
 // ADD EVENT LISTENERS
 previousArrow.addEventListener("click", showPreviousPicture);
