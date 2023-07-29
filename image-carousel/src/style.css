@@ -55,15 +55,17 @@ body {
 
 /* PICTURE SLIDER */
 .picture-slider {
-  opacity: 30%;
-  background-color: rgb(5, 0, 255);
   overflow-x: scroll;
+  height: 100%;
+  background-color: rgb(50, 0, 155);
+  display: flex;
+  align-items: center;
 }
 
 span.circle {
-  height: 50px;
-  width: 50px;
-  margin: 30px;
+  min-height: 50px;
+  min-width: 50px;
+  margin: 20px;
   background-color: rgb(255, 0, 255);
   border-radius: 50%;
   cursor: pointer;
