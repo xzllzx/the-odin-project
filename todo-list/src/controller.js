@@ -11,11 +11,13 @@ import {
   addProjectToTaskDropdown,
 } from "./dom-project-task";
 import { defaultProject, getTodayTasks, getWeekTasks } from "./initialize";
+import { validateTask } from "./form-validation";
 
 const submitTask = (e) => {
   const taskAndProject = createTaskFromForm(e);
   const task = taskAndProject[0];
   const project = taskAndProject[1];
+  validateTask(e);
   addTaskToProject(project, task);
   if (project != defaultProject) addTaskToProject(defaultProject, task);
   getTodayTasks();
@@ -26,6 +28,7 @@ const submitTask = (e) => {
 
 const submitProject = (e) => {
   const newProject = createProjectFromDom(e);
+  // validateProject(e);
   hideForms(e);
   addProjectToSidebar(newProject);
   addProjectToTaskDropdown(newProject);
