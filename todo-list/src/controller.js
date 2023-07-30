@@ -11,7 +11,7 @@ import {
   addProjectToTaskDropdown,
 } from "./dom-project-task";
 import { defaultProject, getTodayTasks, getWeekTasks } from "./initialize";
-import { validateForm } from "./form-validation";
+import { validateForm } from "./form";
 
 const submitTask = (e) => {
   const taskAndProject = createTaskFromForm(e);

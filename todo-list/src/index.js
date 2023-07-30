@@ -1,15 +1,14 @@
 import "./style.css";
-import { showForm, setCurrentPage, displayAllTasks } from "./dom-project-task";
+import {
+  showForm,
+  setCurrentPage,
+  displayAllTasks,
+  hideForms,
+} from "./dom-project-task";
 import { submitTask, submitProject } from "./controller";
 import { getAllTasks, getTodayTasks, getWeekTasks } from "./initialize";
 
-// Main DOM Elements
-const headerDiv = document.querySelector("#header");
-const sidebarDiv = document.querySelector("#sidebar");
-const mainContentDiv = document.querySelector("#main-content");
-
 // Sidebar
-
 const allProjectsButton = document.querySelector("#button-all-projects");
 const todayButton = document.querySelector("#button-today");
 const weekButton = document.querySelector("#button-week");
@@ -19,6 +18,7 @@ const createTaskFromFormForm = document.querySelector("form#create-task");
 const submitTaskForm = document.querySelector(
   `form#create-task button[type='submit']`
 );
+const closeFormButton = document.querySelector("button.exit-button");
 
 const createProjectFromDomButton = document.querySelector(
   "button.create-project"
@@ -50,3 +50,5 @@ weekButton.addEventListener("click", function (e) {
   displayAllTasks(getWeekTasks());
   setCurrentPage(e);
 });
+
+closeFormButton.addEventListener("click", hideForms);

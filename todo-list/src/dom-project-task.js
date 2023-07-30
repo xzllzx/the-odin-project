@@ -8,6 +8,7 @@ import {
   todayProject,
 } from "./initialize";
 
+const pageOverlay = document.querySelector(".page-overlay");
 const formContainer = document.querySelector(".form-container");
 const createForms = document.querySelectorAll("form.create-form");
 let currentProject = defaultProject;
@@ -15,15 +16,17 @@ let currentProject = defaultProject;
 const showForm = (e) => {
   hideForms(e);
   const targetForm = document.querySelector(`form#${e.target.classList}`);
-  formContainer.classList.add("overlay");
+  pageOverlay.classList.add("overlay");
+  formContainer.classList.remove("hidden");
   targetForm.classList.remove("hidden");
 };
 
 const hideForms = (e) => {
+  formContainer.classList.add("hidden");
   createForms.forEach((form) => {
     form.classList.add("hidden");
   });
-  formContainer.classList.remove("overlay");
+  pageOverlay.classList.remove("overlay");
   e.preventDefault();
 };
 
