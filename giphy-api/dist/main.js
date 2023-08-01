@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("const GIPHY_API_KEY = \"reL5IV4XuSvA84Pu73Vbr4bKolmQtAHh\";\r\n\r\nconst img = document.querySelector(\"img\");\r\n\r\nfetch(\r\n  `https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=cats`,\r\n  {\r\n    mode: \"cors\",\r\n  }\r\n)\r\n  .then(function (response) {\r\n    return response.json();\r\n  })\r\n  .then(function (response) {\r\n    img.src = response.data.images.original.url;\r\n  });\r\n\n\n//# sourceURL=webpack://giphy-api/./src/index.js?");
+eval("const GIPHY_API_KEY = \"reL5IV4XuSvA84Pu73Vbr4bKolmQtAHh\";\r\n\r\nconst img = document.querySelector(\"img\");\r\n\r\nfunction fetchGif(searchTerm) {\r\n  fetch(\r\n    `https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${searchTerm}`,\r\n    {\r\n      mode: \"cors\",\r\n    }\r\n  )\r\n    .then(function (response) {\r\n      return response.json();\r\n    })\r\n    .then(function (response) {\r\n      img.src = response.data.images.original.url;\r\n    });\r\n}\r\n\r\n// fetchGif(\"cats\");\r\n\r\nasync function asyncFetchGif(searchTerm) {\r\n  const response = await fetch(\r\n    `https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${searchTerm}`,\r\n    { mode: \"cors\" }\r\n  );\r\n  const responseJson = await response.json();\r\n  img.src = responseJson.data.images.original.url;\r\n}\r\n\r\nasyncFetchGif(\"cats\");\r\n\n\n//# sourceURL=webpack://giphy-api/./src/index.js?");
 
 /***/ })
 
