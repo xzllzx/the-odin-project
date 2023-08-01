@@ -16,7 +16,7 @@
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   asyncFetchWeather: () => (/* binding */ asyncFetchWeather)\n/* harmony export */ });\nconst WEATHER_API_KEY = \"0571d321e15347b785b103547230108\";\r\n\r\nasync function asyncFetchWeather(apiMethod, location) {\r\n  console.log(WEATHER_API_KEY);\r\n  const response = await fetch(\r\n    `http://api.weatherapi.com/v1/${apiMethod}.json?key=${WEATHER_API_KEY}?q=${location}`,\r\n    { mode: \"cors\" }\r\n  );\r\n  const responseJson = await response.json();\r\n  console.log(responseJson);\r\n  //   img.src = responseJson.data.images.original.url;\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://giphy-api/./src/fetch_weather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   asyncFetchWeather: () => (/* binding */ asyncFetchWeather)\n/* harmony export */ });\nconst WEATHER_API_KEY = \"fae555df8ade413a8a6104143230108\";\r\n\r\nasync function asyncFetchWeather(apiMethod, location) {\r\n  const response = await fetch(\r\n    `https://api.weatherapi.com/v1/${apiMethod}.json?key=${WEATHER_API_KEY}&q=${location}`\r\n  );\r\n  const responseJson = await response.json();\r\n  console.log(responseJson);\r\n  //   img.src = responseJson.data.images.original.url;\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://giphy-api/./src/fetch_weather.js?");
 
 /***/ }),
 
