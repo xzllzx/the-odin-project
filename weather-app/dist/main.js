@@ -16,7 +16,7 @@
   \**************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"../node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ \"../node_modules/css-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);\n// Imports\n\n\n\nvar ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./images/background.jpg */ \"./src/images/background.jpg\"), __webpack_require__.b);\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `* {\r\n  box-sizing: border-box;\r\n  font-family: \"Trebuchet MS\", \"Lucida Sans Unicode\", \"Lucida Grande\",\r\n    \"Lucida Sans\", Arial, sans-serif;\r\n  font-size: 24px;\r\n  overflow: hidden;\r\n}\r\n\r\nhtml,\r\nbody {\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nbody {\r\n  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});\r\n  background-position: center center;\r\n  background-size: cover;\r\n}\r\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://giphy-api/./src/style.css?../node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"../node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ \"../node_modules/css-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);\n// Imports\n\n\n\nvar ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./images/background.jpg */ \"./src/images/background.jpg\"), __webpack_require__.b);\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `* {\r\n  box-sizing: border-box;\r\n  font-family: \"Trebuchet MS\", \"Lucida Sans Unicode\", \"Lucida Grande\",\r\n    \"Lucida Sans\", Arial, sans-serif;\r\n  font-size: 24px;\r\n  overflow: hidden;\r\n}\r\n\r\nhtml,\r\nbody,\r\n.content {\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\nbody {\r\n  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});\r\n  background-position: center center;\r\n  background-size: cover;\r\n}\r\n\r\n.content {\r\n  display: grid;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  grid-template-rows: repeat(2, 1fr);\r\n}\r\n\r\n/* MAIN CONTAINERS */\r\n\r\n/* TOP LEFT */\r\n.top-left {\r\n  margin: 40px;\r\n  display: grid;\r\n  grid-template-rows: repeat(7, 1fr);\r\n}\r\n\r\n/* TOP RIGHT */\r\n.top-right {\r\n  margin: 40px;\r\n  display: grid;\r\n  grid-template-rows: repeat(4, 1fr);\r\n}\r\n\r\n.top-right > .container {\r\n  display: grid;\r\n  grid-template-columns: repeat(2, 1fr);\r\n  grid-template-rows: repeat(2, 1fr);\r\n}\r\n\r\n.top-right > .container > .icon-container {\r\n  grid-column: 1;\r\n  grid-row: 1/3;\r\n  display: grid;\r\n  justify-items: end;\r\n  align-items: center;\r\n}\r\n\r\nimg.icon {\r\n  height: 80%;\r\n  width: 80%;\r\n  margin-right: 20px;\r\n}\r\n\r\n.top-right > .container > .title {\r\n  font-size: 16px;\r\n}\r\n\r\n.top-right > .container > .value {\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n}\r\n\r\n/* BOTTOM */\r\n.bottom {\r\n  grid-column: 1/4;\r\n  grid-row: 2;\r\n  margin: 40px;\r\n  display: grid;\r\n  grid-template-rows: repeat(2, 1fr);\r\n}\r\n`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://giphy-api/./src/style.css?../node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -130,6 +130,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/dom.js":
+/*!********************!*\
+  !*** ./src/dom.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   loadIcons: () => (/* binding */ loadIcons),\n/* harmony export */   loadImages: () => (/* binding */ loadImages)\n/* harmony export */ });\n/* harmony import */ var _images_background_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./images/background.jpg */ \"./src/images/background.jpg\");\n/* harmony import */ var _images_feels_like_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/feels-like-icon.svg */ \"./src/images/feels-like-icon.svg\");\n/* harmony import */ var _images_humidity_icon_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/humidity-icon.svg */ \"./src/images/humidity-icon.svg\");\n/* harmony import */ var _images_rain_icon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/rain-icon.svg */ \"./src/images/rain-icon.svg\");\n/* harmony import */ var _images_wind_icon_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images/wind-icon.svg */ \"./src/images/wind-icon.svg\");\n\r\n\r\n\r\n\r\n\r\n\r\nfunction loadImages() {\r\n  const background = document.querySelector(\"img.background\");\r\n  background.src = _images_background_jpg__WEBPACK_IMPORTED_MODULE_0__;\r\n}\r\n\r\nfunction loadIcons() {\r\n  const iconContainers = document.querySelectorAll(\".icon-container\");\r\n  const iconList = [_images_feels_like_icon_svg__WEBPACK_IMPORTED_MODULE_1__, _images_humidity_icon_svg__WEBPACK_IMPORTED_MODULE_2__, _images_rain_icon_svg__WEBPACK_IMPORTED_MODULE_3__, _images_wind_icon_svg__WEBPACK_IMPORTED_MODULE_4__];\r\n\r\n  iconContainers.forEach((container, index) => {\r\n    const img = container.querySelector(\"img\");\r\n    img.src = iconList[index];\r\n  });\r\n}\r\n\r\nfunction populateSlider() {\r\n  const imageSlider = document.querySelector(\".picture-slider\");\r\n  for (const [index, image] of imageList.entries()) {\r\n    const navDot = document.createElement(\"span\");\r\n    navDot.innerHTML = index;\r\n\r\n    navDot.addEventListener(\"click\", function () {\r\n      skipToImage(index, image);\r\n    });\r\n\r\n    imageSlider.appendChild(navDot);\r\n  }\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://giphy-api/./src/dom.js?");
+
+/***/ }),
+
 /***/ "./src/fetch_weather.js":
 /*!******************************!*\
   !*** ./src/fetch_weather.js ***!
@@ -146,7 +156,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controller */ \"./src/controller.js\");\n\r\n\r\n\r\n\r\nconst clickBtn = document.querySelector(\"button.temp\");\r\n\r\nclickBtn.addEventListener(\"click\", function () {\r\n  (0,_controller__WEBPACK_IMPORTED_MODULE_1__.getWeather)(\"Singapore\");\r\n});\r\n\r\n(0,_controller__WEBPACK_IMPORTED_MODULE_1__.getWeather)(\"Singapore\");\r\n\n\n//# sourceURL=webpack://giphy-api/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controller */ \"./src/controller.js\");\n\r\n\r\n\r\n\r\n\r\nconst clickBtn = document.querySelector(\"button.temp\");\r\n\r\nclickBtn.addEventListener(\"click\", function () {\r\n  (0,_controller__WEBPACK_IMPORTED_MODULE_2__.getWeather)(\"Singapore\");\r\n});\r\n\r\n(0,_controller__WEBPACK_IMPORTED_MODULE_2__.getWeather)(\"Singapore\");\r\n\r\n(0,_dom__WEBPACK_IMPORTED_MODULE_1__.loadIcons)();\r\n\n\n//# sourceURL=webpack://giphy-api/./src/index.js?");
 
 /***/ }),
 
@@ -167,6 +177,46 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("module.exports = __webpack_require__.p + \"dd2d56efbb2bb325c9d9.jpg\";\n\n//# sourceURL=webpack://giphy-api/./src/images/background.jpg?");
+
+/***/ }),
+
+/***/ "./src/images/feels-like-icon.svg":
+/*!****************************************!*\
+  !*** ./src/images/feels-like-icon.svg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"405e6f076bd4be317761.svg\";\n\n//# sourceURL=webpack://giphy-api/./src/images/feels-like-icon.svg?");
+
+/***/ }),
+
+/***/ "./src/images/humidity-icon.svg":
+/*!**************************************!*\
+  !*** ./src/images/humidity-icon.svg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"303319376ae0250ca39f.svg\";\n\n//# sourceURL=webpack://giphy-api/./src/images/humidity-icon.svg?");
+
+/***/ }),
+
+/***/ "./src/images/rain-icon.svg":
+/*!**********************************!*\
+  !*** ./src/images/rain-icon.svg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"0bd5fa03ba8d0574a282.svg\";\n\n//# sourceURL=webpack://giphy-api/./src/images/rain-icon.svg?");
+
+/***/ }),
+
+/***/ "./src/images/wind-icon.svg":
+/*!**********************************!*\
+  !*** ./src/images/wind-icon.svg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"0866ba7edc80af545c77.svg\";\n\n//# sourceURL=webpack://giphy-api/./src/images/wind-icon.svg?");
 
 /***/ })
 
