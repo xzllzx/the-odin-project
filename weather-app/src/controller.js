@@ -3,9 +3,14 @@ import { parseLocation, parseCurrent, parseForecast } from "./parse_weather";
 
 function getWeather() {
   let { location, current, forecast } = asyncFetchForecast("Singapore");
-  // parseLocation(location);
-  //   parseCurrent(current);
-  parseForecast(forecast);
+
+  const locationData = parseLocation(location);
+  const currentData = parseCurrent(current);
+  const forecastData = parseForecast(forecast);
+
+  console.log(locationData);
+  console.log(currentData);
+  console.log(forecastData);
 }
 
 export { getWeather };

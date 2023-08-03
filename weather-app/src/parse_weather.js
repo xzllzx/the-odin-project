@@ -1,12 +1,7 @@
 function parseLocation(location) {
   const place = location.name;
   const date = new Date(location.localtime);
-  console.log(place);
-  console.log(date);
-  console.log(date.toDateString());
-  console.log(date.toTimeString());
-  console.log(date.toISOString());
-  return;
+  return { place, date };
 }
 
 function parseCurrent(current) {
@@ -15,7 +10,7 @@ function parseCurrent(current) {
     tempF,
     feelsLikeC,
     feelsLikeF,
-    condition,
+    conditionText,
     conditionIcon,
     windSpeed,
   ] = [
@@ -28,7 +23,15 @@ function parseCurrent(current) {
     current.wind_kph,
   ];
 
-  return;
+  return {
+    tempC,
+    tempF,
+    feelsLikeC,
+    feelsLikeF,
+    conditionText,
+    conditionIcon,
+    windSpeed,
+  };
 }
 
 function parseForecast(forecast) {
@@ -37,8 +40,6 @@ function parseForecast(forecast) {
   const todayDate = new Date();
   const dailyList = [];
   const hourlyList = [];
-
-  console.log(`todayDate is ${todayDate}`);
 
   for (const day of forecast.forecastday) {
     dailyList.push(day);
@@ -54,9 +55,13 @@ function parseForecast(forecast) {
     }
   }
 
-  console.log(dailyList);
-  console.log(hourlyList);
-  return;
+  // console.log(dailyList);
+  // console.log(hourlyList);
+
+  const weekData = parseDays(dailyList);
+  const dayData = parseHours(hourlyList);
+
+  return { weekData, dayData };
 }
 
 function within24Hours(currentEpoch, targetEpoch) {
@@ -65,16 +70,55 @@ function within24Hours(currentEpoch, targetEpoch) {
   else return false;
 }
 
-function parseDays(days) {
-  return;
+function parseDays(dayList) {
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const weekData = [];
+
+  for (const day of dayList) {
+    const dateTime = new Date(day.date);
+    const weekday = weekdays[dateTime.getDay()];
+    const maxTempC = day.day.maxtemp_c;
+    const minTempC = day.day.mintemp_c;
+    const maxTempF = day.day.maxtemp_f;
+    const minTempF = day.day.mintemp_f;
+    const conditionText = day.day.condition.text;
+    const conditionIcon = "https:" + day.day.condition.icon;
+    weekData.push({
+      weekday,
+      maxTempC,
+      minTempC,
+      maxTempF,
+      minTempF,
+      conditionText,
+      conditionIcon,
+    });
+  }
+
+  return weekData;
 }
 
-function parseHours(day) {
-  console.log(day);
-  for (const hour of day.hour) {
-    console.log(hour);
+function parseHours(hourList) {
+  const dayData = [];
+
+  for (const hour of hourList) {
+    const dateTime = new Date(hour.date);
+    const timeHour = dateTime.getHours();
+    const tempC = hour.temp_c;
+    const tempF = hour.temp_f;
+    const conditionText = hour.condition.text;
+    const conditionIcon = "https:" + hour.condition.icon;
+    dayData.push({ timeHour, tempC, tempF, conditionText, conditionIcon });
   }
-  return;
+
+  return dayData;
 }
 
 export { parseLocation, parseCurrent, parseForecast };
