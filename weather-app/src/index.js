@@ -3,7 +3,7 @@ import { loadIcons } from "./dom";
 
 import { getWeather } from "./controller";
 
-import { populateSlider } from "./dom";
+import { populateDailySlider, populateWeeklySlider } from "./dom";
 
 const clickBtn = document.querySelector("button.temp");
 
@@ -15,4 +15,5 @@ const data = getWeather("Singapore");
 
 loadIcons();
 
-populateSlider(data.forecastData.weekData);
+populateDailySlider(data.forecastData.dayData);
+populateWeeklySlider(data.forecastData.weekData);

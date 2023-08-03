@@ -109,13 +109,15 @@ function parseHours(hourList) {
   const dayData = [];
 
   for (const hour of hourList) {
-    const dateTime = new Date(hour.date);
+    console.log(hour);
+    const dateTime = new Date(hour.time);
     const timeHour = dateTime.getHours();
+    const time = `${timeHour % 12 || 12} ${timeHour < 12 ? "am" : "pm"}`;
     const tempC = hour.temp_c + " °C";
     const tempF = hour.temp_f + " °F";
     const conditionText = hour.condition.text;
     const conditionIcon = "https:" + hour.condition.icon;
-    dayData.push({ timeHour, tempC, tempF, conditionText, conditionIcon });
+    dayData.push({ time, tempC, tempF, conditionText, conditionIcon });
   }
 
   return dayData;

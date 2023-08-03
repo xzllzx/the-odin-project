@@ -85,11 +85,21 @@ img.icon {
 }
 
 .slider {
-  overflow-x: scroll;
+  overflow: scroll;
 }
 
 .slider.daily {
   display: grid;
+  grid-template-columns: repeat(25, 1fr);
+}
+
+.hour-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.slider.weekly {
+  display: none;
   grid-template-columns: repeat(8, 1fr);
 }
 
