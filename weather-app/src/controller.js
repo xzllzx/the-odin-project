@@ -8,10 +8,6 @@ function getWeather() {
   const currentData = parseCurrent(current);
   const forecastData = parseForecast(forecast);
 
-  console.log(locationData);
-  console.log(currentData);
-  console.log(forecastData);
-
   return { locationData, currentData, forecastData };
 }
 

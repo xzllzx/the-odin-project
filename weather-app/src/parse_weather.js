@@ -14,12 +14,12 @@ function parseCurrent(current) {
     conditionIcon,
     windSpeed,
   ] = [
-    current.temp_c,
-    current.temp_f,
-    current.feelslike_c,
-    current.feelslike_f,
+    current.temp_c + " °C",
+    current.temp_f + " °F",
+    current.feelslike_c + " °C",
+    current.feelslike_f + " °F",
     current.condition.text,
-    current.condition.icon,
+    "https:" + current.condition.icon,
     current.wind_kph,
   ];
 
@@ -109,7 +109,6 @@ function parseHours(hourList) {
   const dayData = [];
 
   for (const hour of hourList) {
-    console.log(hour);
     const dateTime = new Date(hour.time);
     const timeHour = dateTime.getHours();
     const time = `${timeHour % 12 || 12} ${timeHour < 12 ? "am" : "pm"}`;

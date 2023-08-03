@@ -7881,8 +7881,6 @@ function asyncFetchForecast(targetLocation) {
 
   responseJson = JSON.parse(responseJson);
 
-  console.log(responseJson);
-
   return responseJson;
 }
 

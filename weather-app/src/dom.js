@@ -19,6 +19,36 @@ function loadIcons() {
   });
 }
 
+function addConditionIcon(parentElement, conditionData) {
+  const conditionImage = parentElement.querySelector(`img.condition-icon`);
+  conditionImage.alt = conditionData.conditionText;
+  conditionImage.src = conditionData.conditionIcon;
+
+  return conditionImage;
+}
+
+function populateTopLeft(data) {
+  console.log(data);
+  const topLeftDiv = document.querySelector(".top-left");
+
+  const conditionTextDiv = topLeftDiv.querySelector(".condition");
+  const locationDiv = topLeftDiv.querySelector(".location");
+  const dateDiv = topLeftDiv.querySelector(".date");
+  // const timeDiv = topLeftDiv.querySelector(".time");
+  const celsiusDiv = topLeftDiv.querySelector(".celsius");
+  const fahrenheitDiv = topLeftDiv.querySelector(".fahrenheit");
+
+  conditionTextDiv.textContent = data.currentData.conditionText;
+  locationDiv.textContent = data.locationData.place;
+  dateDiv.textContent = data.locationData.date;
+  celsiusDiv.textContent = data.currentData.tempC;
+  fahrenheitDiv.textContent = data.currentData.tempF;
+
+  addConditionIcon(topLeftDiv, data.currentData);
+}
+
+function populateTopRight(data) {}
+
 function populateDailySlider(dayData) {
   const imageSlider = document.querySelector(".slider.daily");
 
@@ -30,15 +60,13 @@ function populateDailySlider(dayData) {
     // hourContainer.textContent = JSON.stringify(hour);
 
     for (const attribute in hour) {
-      const div = hourContainer.querySelector(`#${attribute}`);
+      const div = hourContainer.querySelector(`.${attribute}`);
       if (div) {
         div.textContent = hour[attribute];
       }
     }
 
-    const conditionImage = hourContainer.querySelector(`img.condition-icon`);
-    conditionImage.alt = hour.conditionText;
-    conditionImage.src = hour.conditionIcon;
+    addConditionIcon(hourContainer, hour);
   }
 }
 
@@ -51,16 +79,69 @@ function populateWeeklySlider(weekData) {
     );
 
     for (const attribute in day) {
-      const div = weekdayContainer.querySelector(`#${attribute}`);
+      const div = weekdayContainer.querySelector(`.${attribute}`);
       if (div) {
         div.textContent = day[attribute];
       }
     }
 
-    const conditionImage = weekdayContainer.querySelector(`img.condition-icon`);
-    conditionImage.alt = day.conditionText;
-    conditionImage.src = day.conditionIcon;
+    addConditionIcon(weekdayContainer, day);
   }
 }
 
-export { loadImages, loadIcons, populateDailySlider, populateWeeklySlider };
+function addToggleTemperature() {
+  const toggleCelsius = document.querySelector("button.toggle-celsius");
+  const toggleFahrenheit = document.querySelector("button.toggle-fahrenheit");
+
+  const celsiusDivs = document.querySelectorAll(".celsius");
+  const fahrenheitDivs = document.querySelectorAll(".fahrenheit");
+
+  toggleCelsius.addEventListener("click", function () {
+    for (const div of celsiusDivs) {
+      div.style.display = "block";
+    }
+
+    for (const div of fahrenheitDivs) {
+      div.style.display = "none";
+    }
+  });
+
+  toggleFahrenheit.addEventListener("click", function () {
+    for (const div of celsiusDivs) {
+      div.style.display = "none";
+    }
+
+    for (const div of fahrenheitDivs) {
+      div.style.display = "block";
+    }
+  });
+}
+
+function addToggleSliders() {
+  const toggleSliderDaily = document.querySelector("button.daily");
+  const toggleSliderWeekly = document.querySelector("button.weekly");
+
+  const sliderDaily = document.querySelector(".slider.daily");
+  const sliderWeekly = document.querySelector(".slider.weekly");
+
+  toggleSliderDaily.addEventListener("click", function () {
+    sliderDaily.style.display = "grid";
+    sliderWeekly.style.display = "none";
+  });
+
+  toggleSliderWeekly.addEventListener("click", function () {
+    sliderDaily.style.display = "none";
+    sliderWeekly.style.display = "grid";
+  });
+}
+
+export {
+  loadImages,
+  loadIcons,
+  populateTopLeft,
+  populateTopRight,
+  populateDailySlider,
+  populateWeeklySlider,
+  addToggleTemperature,
+  addToggleSliders,
+};
