@@ -10,6 +10,7 @@ function parseCurrent(current) {
     tempF,
     feelsLikeC,
     feelsLikeF,
+    humidity,
     conditionText,
     conditionIcon,
     windSpeed,
@@ -18,9 +19,10 @@ function parseCurrent(current) {
     current.temp_f + " °F",
     current.feelslike_c + " °C",
     current.feelslike_f + " °F",
+    current.humidity + " %",
     current.condition.text,
     "https:" + current.condition.icon,
-    current.wind_kph,
+    current.wind_kph + " km/h",
   ];
 
   return {
@@ -28,6 +30,7 @@ function parseCurrent(current) {
     tempF,
     feelsLikeC,
     feelsLikeF,
+    humidity,
     conditionText,
     conditionIcon,
     windSpeed,
@@ -91,6 +94,7 @@ function parseDays(dayList) {
     const minTempF = day.day.mintemp_f + " °F";
     const conditionText = day.day.condition.text;
     const conditionIcon = "https:" + day.day.condition.icon;
+    const rainChance = day.day.daily_chance_of_rain + " %";
     weekData.push({
       weekday,
       maxTempC,
@@ -99,6 +103,7 @@ function parseDays(dayList) {
       minTempF,
       conditionText,
       conditionIcon,
+      rainChance,
     });
   }
 

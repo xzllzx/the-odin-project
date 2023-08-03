@@ -44,6 +44,15 @@ body {
   grid-template-columns: 1fr 1fr;
 }
 
+/* TOP MIDDLE */
+.top-middle {
+  margin: 40px;
+}
+
+button.refresh {
+  display: none;
+}
+
 /* TOP RIGHT */
 .top-right {
   margin: 40px;
@@ -94,7 +103,7 @@ img.icon {
 }
 
 .slider.daily {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(25, 180px);
 }
 
@@ -105,7 +114,7 @@ img.icon {
 }
 
 .slider.weekly {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(8, 180px);
 }
 

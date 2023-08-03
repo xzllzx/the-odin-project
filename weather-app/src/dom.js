@@ -28,7 +28,6 @@ function addConditionIcon(parentElement, conditionData) {
 }
 
 function populateTopLeft(data) {
-  console.log(data);
   const topLeftDiv = document.querySelector(".top-left");
 
   const conditionTextDiv = topLeftDiv.querySelector(".condition");
@@ -40,14 +39,32 @@ function populateTopLeft(data) {
 
   conditionTextDiv.textContent = data.currentData.conditionText;
   locationDiv.textContent = data.locationData.place;
-  dateDiv.textContent = data.locationData.date;
+  dateDiv.textContent = new Date();
   celsiusDiv.textContent = data.currentData.tempC;
   fahrenheitDiv.textContent = data.currentData.tempF;
 
   addConditionIcon(topLeftDiv, data.currentData);
 }
 
-function populateTopRight(data) {}
+function populateTopRight(data) {
+  console.log(data);
+  const topRightDiv = document.querySelector(".top-right");
+  const feelsLikeCelsiusDiv = topRightDiv.querySelector(
+    ".feels-like > .celsius"
+  );
+  const feelsLikeFahrenheitDiv = topRightDiv.querySelector(
+    ".feels-like > .fahrenheit"
+  );
+  const humidityDiv = topRightDiv.querySelector(".humidity > .value");
+  const rainChanceDiv = topRightDiv.querySelector(".chance-of-rain > .value");
+  const windSpeedDiv = topRightDiv.querySelector(".wind-speed > .value");
+
+  feelsLikeCelsiusDiv.textContent = data.currentData.feelsLikeC;
+  feelsLikeFahrenheitDiv.textContent = data.currentData.feelsLikeF;
+  humidityDiv.textContent = data.currentData.humidity;
+  rainChanceDiv.textContent = data.forecastData.weekData[0].rainChance;
+  windSpeedDiv.textContent = data.currentData.windSpeed;
+}
 
 function populateDailySlider(dayData) {
   const imageSlider = document.querySelector(".slider.daily");

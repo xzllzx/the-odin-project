@@ -12,21 +12,25 @@ import {
   addToggleSliders,
 } from "./dom";
 
-const clickBtn = document.querySelector("button.temp");
+const refreshButton = document.querySelector("button.refresh");
+refreshButton.addEventListener("click", loadEverythingElse);
 
-clickBtn.addEventListener("click", function () {
-  getWeather("Singapore");
-});
+function loadOnce() {
+  loadIcons();
 
-const data = getWeather("Singapore");
+  addToggleTemperature();
+  addToggleSliders();
+}
 
-loadIcons();
+async function loadEverythingElse() {
+  const data = await getWeather("Singapore");
 
-populateTopLeft(data);
-populateTopRight(data);
+  populateTopLeft(data);
+  populateTopRight(data);
 
-populateDailySlider(data.forecastData.dayData);
-populateWeeklySlider(data.forecastData.weekData);
+  populateDailySlider(data.forecastData.dayData);
+  populateWeeklySlider(data.forecastData.weekData);
+}
 
-addToggleTemperature();
-addToggleSliders();
+loadOnce();
+await loadEverythingElse();
