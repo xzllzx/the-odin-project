@@ -19,18 +19,25 @@ function loadIcons() {
   });
 }
 
-function populateSlider() {
-  const imageSlider = document.querySelector(".picture-slider");
-  for (const [index, image] of imageList.entries()) {
-    const navDot = document.createElement("span");
-    navDot.innerHTML = index;
+function populateSlider(weekData) {
+  const imageSlider = document.querySelector(".slider.daily");
 
-    navDot.addEventListener("click", function () {
-      skipToImage(index, image);
-    });
+  for (const [index, day] of weekData.entries()) {
+    const weekdayContainer = imageSlider.querySelector(
+      `#weekday-container-${index + 1}`
+    );
 
-    imageSlider.appendChild(navDot);
+    for (const attribute in day) {
+      const div = weekdayContainer.querySelector(`#${attribute}`);
+      if (div) {
+        div.textContent = day[attribute];
+      }
+    }
+
+    const conditionImage = weekdayContainer.querySelector(`img.condition-icon`);
+    conditionImage.alt = day.conditionText;
+    conditionImage.src = day.conditionIcon;
   }
 }
 
-export { loadImages, loadIcons };
+export { loadImages, loadIcons, populateSlider };

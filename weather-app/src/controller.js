@@ -11,6 +11,8 @@ function getWeather() {
   console.log(locationData);
   console.log(currentData);
   console.log(forecastData);
+
+  return { locationData, currentData, forecastData };
 }
 
 export { getWeather };

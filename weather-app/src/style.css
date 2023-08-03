@@ -22,7 +22,12 @@ body {
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 3fr 2fr;
+}
+
+/* GENERAL */
+.fahrenheit {
+  display: none;
 }
 
 /* MAIN CONTAINERS */
@@ -77,4 +82,18 @@ img.icon {
   margin: 40px;
   display: grid;
   grid-template-rows: 1fr 3fr;
+}
+
+.slider {
+  overflow-x: scroll;
+}
+
+.slider.daily {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.weekday-container {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
 }

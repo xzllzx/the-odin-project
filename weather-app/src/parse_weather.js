@@ -85,10 +85,10 @@ function parseDays(dayList) {
   for (const day of dayList) {
     const dateTime = new Date(day.date);
     const weekday = weekdays[dateTime.getDay()];
-    const maxTempC = day.day.maxtemp_c;
-    const minTempC = day.day.mintemp_c;
-    const maxTempF = day.day.maxtemp_f;
-    const minTempF = day.day.mintemp_f;
+    const maxTempC = day.day.maxtemp_c + " °C";
+    const minTempC = day.day.mintemp_c + " °C";
+    const maxTempF = day.day.maxtemp_f + " °F";
+    const minTempF = day.day.mintemp_f + " °F";
     const conditionText = day.day.condition.text;
     const conditionIcon = "https:" + day.day.condition.icon;
     weekData.push({
@@ -111,8 +111,8 @@ function parseHours(hourList) {
   for (const hour of hourList) {
     const dateTime = new Date(hour.date);
     const timeHour = dateTime.getHours();
-    const tempC = hour.temp_c;
-    const tempF = hour.temp_f;
+    const tempC = hour.temp_c + " °C";
+    const tempF = hour.temp_f + " °F";
     const conditionText = hour.condition.text;
     const conditionIcon = "https:" + hour.condition.icon;
     dayData.push({ timeHour, tempC, tempF, conditionText, conditionIcon });
