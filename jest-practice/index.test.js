@@ -13,7 +13,7 @@ it("reverse string", () => {
 });
 
 it("calculator - add", () => {
-  expect(index.calculator.add(1, 2)).toBe(3);
+  expect(index.calculator(1, 2).add()).toBe(3);
 });
 
 it("shift each character of string", () => {
