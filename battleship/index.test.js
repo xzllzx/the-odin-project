@@ -23,7 +23,7 @@ describe("Ship", () => {
 describe("Game Board", () => {
   let gameBoard;
 
-  beforeEach(() => {
+  beforeAll(() => {
     gameBoard = index.Gameboard();
   });
 
@@ -49,7 +49,7 @@ describe("Game Board", () => {
   });
 
   describe("Placing Ships on 4x4 Game Board", () => {
-    beforeEach(() => {
+    beforeAll(() => {
       gameBoard.createBoard(4, 4);
     });
 
@@ -118,4 +118,105 @@ describe("Game Board", () => {
       }).toThrow();
     });
   });
+
+  describe("Receiving ship attacks", () => {
+    beforeAll(() => {
+      gameBoard.createBoard(4, 4);
+    });
+
+    it("Register a hit / miss", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+      ]);
+
+      expect(gameBoard.receiveAttack(2, 0)).toEqual(true);
+      expect(gameBoard.receiveAttack(1, 0)).toEqual(false);
+    });
+
+    it("Reject non-numerical coordinates", () => {
+      expect(() => {
+        gameBoard.receiveAttack("A", 3);
+      }).toThrow(TypeError);
+    });
+
+    it("Reject attacks outside of board area", () => {
+      expect(() => {
+        gameBoard.receiveAttack(4, 5);
+      }).toThrow();
+    });
+
+    it("Ship does not sink before sufficient hits", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+      ]);
+
+      gameBoard.receiveAttack(2, 0);
+
+      expect(gameBoard.getAllShipsSunk()).toEqual(false);
+    });
+
+    it("Ship sinks after sufficient hits", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+      ]);
+
+      gameBoard.receiveAttack(2, 0);
+      gameBoard.receiveAttack(3, 0);
+
+      expect(gameBoard.getAllShipsSunk()).toEqual(true);
+    });
+
+    it("One ship sunk, but not all", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+        [
+          [2, 1],
+          [2, 2],
+          [2, 3],
+        ],
+      ]);
+
+      gameBoard.receiveAttack(2, 0);
+      gameBoard.receiveAttack(3, 0);
+
+      expect(gameBoard.getAllShipsSunk()).toEqual(false);
+    });
+
+    it("All ships sunk", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+        [
+          [2, 1],
+          [2, 2],
+          [2, 3],
+        ],
+      ]);
+
+      gameBoard.receiveAttack(2, 0);
+      gameBoard.receiveAttack(3, 0);
+
+      gameBoard.receiveAttack(2, 1);
+      gameBoard.receiveAttack(2, 2);
+      gameBoard.receiveAttack(2, 3);
+
+      expect(gameBoard.getAllShipsSunk()).toEqual(true);
+    });
+  });
+
+  describe("filler", () => {});
 });
