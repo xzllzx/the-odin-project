@@ -136,6 +136,14 @@ describe("Game Board", () => {
       expect(gameBoard.receiveAttack(1, 0)).toEqual(false);
     });
 
+    it("Reject attacks at previously selected coordinates", () => {
+      gameBoard.receiveAttack(2, 0);
+
+      expect(() => {
+        gameBoard.receiveAttack(2, 0);
+      }).toThrow();
+    });
+
     it("Reject non-numerical coordinates", () => {
       expect(() => {
         gameBoard.receiveAttack("A", 3);
@@ -220,3 +228,6 @@ describe("Game Board", () => {
 
   describe("filler", () => {});
 });
+
+// GAME BOARD
+describe("Player", () => {});
