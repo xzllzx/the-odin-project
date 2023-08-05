@@ -62,7 +62,7 @@ const Gameboard = (allCoordinates) => {
     // All coordinates in list must share either a row or a column
     // Whichever is unshared, must be consecutive
     // Cannot be out of range
-    let sortedList;
+    coordinateList.sort();
 
     // Ship is 1x1 only
     if (coordinateList.length <= 1)
@@ -76,20 +76,16 @@ const Gameboard = (allCoordinates) => {
       throw new Error("Coordinates provided are not in a straight line");
 
     // Check that the columns are consecutive
-    const { isConsecutive, sortedCoordinateList } = shipIsConsecutive(
-      coordinateList,
-      isHorizontal,
-      isVertical
-    );
+    const isConsecutive = shipIsConsecutive(coordinateList, isHorizontal);
     if (!isConsecutive)
       throw new Error("Coordinates provided are not consecutive");
 
     // Check if within box boundaries
     if (
-      !shipCoordinatesWithinBoundary(sortedCoordinateList[0], height, width) ||
-      !shipCoordinatesWithinBoundary(sortedCoordinateList[-1], height, width)
+      !shipCoordinatesWithinBoundary(coordinateList[0], height, width) ||
+      !shipCoordinatesWithinBoundary(coordinateList.at(-1), height, width)
     )
-      throw new Error("Coordinates are out of bounds");
+      throw new Error(coordinateList);
     else return true;
   };
 
@@ -114,36 +110,47 @@ const Gameboard = (allCoordinates) => {
     return { isHorizontal, isVertical };
   };
 
-  const shipIsConsecutive = (coordinateList, isHorizontal, isVertical) => {
-    if (isHorizontal) sortedList = coordinateList.map(([row, col]) => col);
-    else if (isVertical) sortedList = coordinateList.map(([row, col]) => row);
+  const shipIsConsecutive = (coordinateList, isHorizontal) => {
+    const rowOrCol = isHorizontal ? 1 : 0;
 
-    sortedList.sort();
+    coordinateList.sort();
 
-    for (let i = 0; i < sortedList.length; i++) {
-      if (sortedList[i] !== sortedList[0] + i) {
-        return { isConsecutive: false, sortedCoordinateList: sortedList };
+    for (let i = 0; i < coordinateList.length; i++) {
+      if (coordinateList[i][rowOrCol] !== coordinateList[0][rowOrCol] + i) {
+        return false;
       }
     }
-    return { isConsecutive: true, sortedCoordinateList: sortedList };
+    return true;
   };
 
   const receiveAttack = (row, col) => {
     row = Number(row);
     col = Number(col);
     try {
-      if (validateAttackCoordinates(row, col)) return true;
+      const validAttack = validateAttackCoordinates(
+        row,
+        col,
+        board.length,
+        board[0].length
+      );
+      if (validAttack) {
+        const shipId = board[row][col];
+        if (shipId !== -1) {
+          shipList[shipId].hit();
+        }
+        board[row][col] = -2;
+      }
     } catch (error) {
       throw error;
     }
   };
 
-  const validateAttackCoordinates = (row, col) => {
+  const validateAttackCoordinates = (row, col, height, width) => {
     if (row < 0 || row >= height || col < 0 || col >= width)
       throw new Error("This spot is out-of-bounds");
 
     if (isNaN(row) || isNaN(col))
-      throw new Error("Non-numerical input not accepted");
+      throw new TypeError("Non-numerical input not accepted");
 
     if (board[row][col] === -2)
       throw new Error("This spot has already been attacked");
