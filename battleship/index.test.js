@@ -1,7 +1,7 @@
 const index = require("./index");
 
 // SHIP
-describe("Ship factory function", () => {
+describe("Ship", () => {
   it("Ship sinks after sufficient hits, but not before", () => {
     const ship = index.Ship([
       [2, 1],
@@ -20,7 +20,7 @@ describe("Ship factory function", () => {
 });
 
 // GAME BOARD
-describe("Game Board factory function", () => {
+describe("Game Board", () => {
   let gameBoard;
 
   beforeEach(() => {
@@ -46,5 +46,76 @@ describe("Game Board factory function", () => {
     expect(() => {
       gameBoard.createBoard(-1, 3);
     }).toThrow(Error("Dimensions cannot be less than 1"));
+  });
+
+  describe("Placing Ships on 4x4 Game Board", () => {
+    beforeEach(() => {
+      gameBoard.createBoard(4, 4);
+    });
+
+    it("Place 1 ship on game board", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+      ]);
+
+      expect(gameBoard.getBoard()).toEqual([
+        [-1, -1, -1, -1],
+        [-1, -1, -1, -1],
+        [0, -1, -1, -1],
+        [0, -1, -1, -1],
+      ]);
+
+      expect(gameBoard.getShipList().length).toEqual(1);
+    });
+
+    it("Place 2 ships on game board", () => {
+      gameBoard.placeShips([
+        [
+          [2, 0],
+          [3, 0],
+        ],
+        [
+          [2, 1],
+          [2, 2],
+          [2, 3],
+        ],
+      ]);
+
+      expect(gameBoard.getBoard()).toEqual([
+        [-1, -1, -1, -1],
+        [-1, -1, -1, -1],
+        [0, 1, 1, 1],
+        [0, -1, -1, -1],
+      ]);
+
+      expect(gameBoard.getShipList().length).toEqual(2);
+    });
+
+    it("Reject non-straight ships", () => {
+      expect(() => {
+        gameBoard.placeShips([
+          [
+            [2, 1],
+            [2, 2],
+            [3, 2],
+          ],
+        ]);
+      }).toThrow();
+    });
+
+    it("Reject ships with gap", () => {
+      expect(() => {
+        gameBoard.placeShips([
+          [
+            [2, 1],
+            [2, 2],
+            [3, 2],
+          ],
+        ]);
+      }).toThrow();
+    });
   });
 });
