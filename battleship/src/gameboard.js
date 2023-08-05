@@ -38,7 +38,27 @@ const Gameboard = (allCoordinates) => {
     }
   };
 
-  const checkValidCoordinates = (coordinateList, height, width) => {
+  // For 10*10 board: 4*1, 3*2, 2*3, 1*4 ships - all straight lines
+  const placeShips = (allCoordinates) => {
+    shipList = [];
+    for (const [index, coordinateList] of allCoordinates.entries()) {
+      try {
+        if (
+          validateShipCoordinates(coordinateList, board.length, board[0].length)
+        ) {
+          for (const [row, col] of coordinateList) {
+            board[row][col] = index;
+          }
+          const newShip = Ship(coordinateList);
+          shipList.push(newShip);
+        }
+      } catch (error) {
+        throw error;
+      }
+    }
+  };
+
+  const validateShipCoordinates = (coordinateList, height, width) => {
     // All coordinates in list must share either a row or a column
     // Whichever is unshared, must be consecutive
     // Cannot be out of range
@@ -48,13 +68,14 @@ const Gameboard = (allCoordinates) => {
 
     // If it is both vertical and horizontal, or neither, then it is not a straight line
     const isHorizontal = coordinateList.every(
-      (row) => row === coordinateList[0][0]
+      ([row, col]) => row === coordinateList[0][0]
     );
     const isVertical = coordinateList.every(
-      (col) => col === coordinateList[0][1]
+      ([row, col]) => col === coordinateList[0][1]
     );
     if (isHorizontal === isVertical)
-      throw new Error("Coordinates provided are not in a straight line");
+      throw new Error(`${isHorizontal}, ${isVertical}`);
+    // throw new Error("Coordinates provided are not in a straight line");
 
     // Check that the columns are consecutive
     if (isHorizontal) sortedList = coordinateList.map(([row, col]) => col);
@@ -71,26 +92,27 @@ const Gameboard = (allCoordinates) => {
     return true;
   };
 
-  // For 10*10 board: 4*1, 3*2, 2*3, 1*4 ships - all straight lines
-  const placeShips = (allCoordinates) => {
-    shipList = [];
-    for (const [index, coordinateList] of allCoordinates.entries()) {
-      try {
-        if (checkValidCoordinates(coordinateList, height, width)) {
-          for (const [row, col] of coordinateList) {
-            board[row][col] = index;
-          }
-          const newShip = Ship(coordinateList);
-          shipList.push(newShip);
-        }
-      } catch (error) {
-        throw error;
-      }
+  const receiveAttack = (row, col) => {
+    row = Number(row);
+    col = Number(col);
+    try {
+      if (validateAttackCoordinates(row, col)) return true;
+    } catch (error) {
+      throw error;
     }
   };
 
-  const receiveAttack = (row, col) => {
-    if (coordinatesInShip) return true;
+  const validateAttackCoordinates = (row, col) => {
+    if (row < 0 || row >= height || col < 0 || col >= width)
+      throw new Error("This spot is out-of-bounds");
+
+    if (isNaN(row) || isNaN(col))
+      throw new Error("Non-numerical input not accepted");
+
+    if (board[row][col] === -2)
+      throw new Error("This spot has already been attacked");
+
+    return true;
   };
 
   return {
