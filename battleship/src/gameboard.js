@@ -64,20 +64,57 @@ const Gameboard = (allCoordinates) => {
     // Cannot be out of range
     let sortedList;
 
-    if (coordinateList.length <= 1) return true;
+    // Ship is 1x1 only
+    if (coordinateList.length <= 1)
+      if (shipCoordinatesWithinBoundary(coordinateList[0], height, width))
+        return true;
+      else throw new Error("Coordinates are out of bounds");
 
-    // If it is both vertical and horizontal, or neither, then it is not a straight line
+    // Check if ship is a straight line
+    const { isHorizontal, isVertical } = shipOrientation(coordinateList);
+    if (isHorizontal === isVertical)
+      throw new Error("Coordinates provided are not in a straight line");
+
+    // Check that the columns are consecutive
+    const { isConsecutive, sortedCoordinateList } = shipIsConsecutive(
+      coordinateList,
+      isHorizontal,
+      isVertical
+    );
+    if (!isConsecutive)
+      throw new Error("Coordinates provided are not consecutive");
+
+    // Check if within box boundaries
+    if (
+      !shipCoordinatesWithinBoundary(sortedCoordinateList[0], height, width) ||
+      !shipCoordinatesWithinBoundary(sortedCoordinateList[-1], height, width)
+    )
+      throw new Error("Coordinates are out of bounds");
+    else return true;
+  };
+
+  const shipCoordinatesWithinBoundary = (coordinates, height, width) => {
+    return (
+      coordinates[0] >= 0 &&
+      coordinates[0] < height &&
+      coordinates[1] >= 0 &&
+      coordinates[1] < width
+    );
+  };
+
+  const shipOrientation = (coordinateList) => {
     const isHorizontal = coordinateList.every(
       ([row, col]) => row === coordinateList[0][0]
     );
     const isVertical = coordinateList.every(
       ([row, col]) => col === coordinateList[0][1]
     );
-    if (isHorizontal === isVertical)
-      throw new Error(`${isHorizontal}, ${isVertical}`);
-    // throw new Error("Coordinates provided are not in a straight line");
+    // If it is both vertical and horizontal, or neither, then it is not a straight line
 
-    // Check that the columns are consecutive
+    return { isHorizontal, isVertical };
+  };
+
+  const shipIsConsecutive = (coordinateList, isHorizontal, isVertical) => {
     if (isHorizontal) sortedList = coordinateList.map(([row, col]) => col);
     else if (isVertical) sortedList = coordinateList.map(([row, col]) => row);
 
@@ -85,11 +122,10 @@ const Gameboard = (allCoordinates) => {
 
     for (let i = 0; i < sortedList.length; i++) {
       if (sortedList[i] !== sortedList[0] + i) {
-        throw new Error("Coordinates provided are not consecutive");
+        return { isConsecutive: false, sortedCoordinateList: sortedList };
       }
     }
-
-    return true;
+    return { isConsecutive: true, sortedCoordinateList: sortedList };
   };
 
   const receiveAttack = (row, col) => {
