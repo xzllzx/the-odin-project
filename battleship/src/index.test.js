@@ -1,9 +1,11 @@
-const index = require("./index");
+const { Ship } = require("./ship");
+const { Gameboard } = require("./gameboard");
+const { Player } = require("./player");
 
 // SHIP
 describe("Ship", () => {
   it("Ship sinks after sufficient hits, but not before", () => {
-    const ship = index.Ship([
+    const ship = Ship([
       [2, 1],
       [3, 1],
     ]);
@@ -24,7 +26,7 @@ describe("Game Board", () => {
   let gameBoard;
 
   beforeAll(() => {
-    gameBoard = index.Gameboard();
+    gameBoard = Gameboard();
   });
 
   it("Create 2x3 game board", () => {
