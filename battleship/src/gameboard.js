@@ -1,6 +1,8 @@
+const { Ship } = require("./ship");
+
 const Gameboard = (allCoordinates) => {
-  let board = [];
-  const shipList = [];
+  let board;
+  let shipList;
 
   // GET functions
   const getBoard = () => {
@@ -38,15 +40,13 @@ const Gameboard = (allCoordinates) => {
 
   // For 10*10 board: 4*1, 3*2, 2*3, 1*4 ships - all straight lines
   const placeShips = (allCoordinates) => {
+    shipList = [];
     for (const [index, coordinateList] of allCoordinates.entries()) {
-      console.log(coordinateList);
-      for (const c of coordinateList) {
-        console.log(c);
+      for (const [row, col] of coordinateList) {
+        board[row][col] = index;
       }
-      // const [row, col] = coordinate;
-      // board[row][col] = index;
-      const ship = Ship(coordinateList);
-      shipList.push(ship);
+      const newShip = Ship(coordinateList);
+      shipList.push(newShip);
     }
   };
 
