@@ -72,6 +72,7 @@ const Gameboard = (allCoordinates) => {
 
     // Check if ship is a straight line
     const { isHorizontal, isVertical } = shipOrientation(coordinateList);
+    // If both vertical and horizontal, or neither, then it is not a straight line
     if (isHorizontal === isVertical)
       throw new Error("Coordinates provided are not in a straight line");
 
@@ -85,7 +86,7 @@ const Gameboard = (allCoordinates) => {
       !shipCoordinatesWithinBoundary(coordinateList[0], height, width) ||
       !shipCoordinatesWithinBoundary(coordinateList.at(-1), height, width)
     )
-      throw new Error(coordinateList);
+      throw new Error("Coordinates are out of bounds");
     else return true;
   };
 
@@ -105,8 +106,6 @@ const Gameboard = (allCoordinates) => {
     const isVertical = coordinateList.every(
       ([row, col]) => col === coordinateList[0][1]
     );
-    // If it is both vertical and horizontal, or neither, then it is not a straight line
-
     return { isHorizontal, isVertical };
   };
 
@@ -126,6 +125,7 @@ const Gameboard = (allCoordinates) => {
   const receiveAttack = (row, col) => {
     row = Number(row);
     col = Number(col);
+
     try {
       const validAttack = validateAttackCoordinates(
         row,
@@ -137,21 +137,22 @@ const Gameboard = (allCoordinates) => {
         const shipId = board[row][col];
         if (shipId !== -1) {
           shipList[shipId].hit();
+          board[row][col] = -2;
+          return true;
         }
-        board[row][col] = -2;
       }
     } catch (error) {
       throw error;
     }
+
+    return false;
   };
 
   const validateAttackCoordinates = (row, col, height, width) => {
     if (row < 0 || row >= height || col < 0 || col >= width)
       throw new Error("This spot is out-of-bounds");
-
     if (isNaN(row) || isNaN(col))
       throw new TypeError("Non-numerical input not accepted");
-
     if (board[row][col] === -2)
       throw new Error("This spot has already been attacked");
 

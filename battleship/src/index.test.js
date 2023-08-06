@@ -96,6 +96,25 @@ describe("Game Board", () => {
       expect(gameBoard.getShipList().length).toEqual(2);
     });
 
+    it("Reject ships beyond box boundaries", () => {
+      expect(() => {
+        gameBoard.placeShips([[[3, 9]]]);
+      }).toThrow();
+    });
+
+    it("Reject ships beyond box boundaries 2", () => {
+      expect(() => {
+        gameBoard.placeShips([
+          [
+            [3, 1],
+            [3, 2],
+            [3, 3],
+            [3, 4],
+          ],
+        ]);
+      }).toThrow();
+    });
+
     it("Reject non-straight ships", () => {
       expect(() => {
         gameBoard.placeShips([
@@ -139,14 +158,13 @@ describe("Game Board", () => {
     });
 
     it("Reject attacks at previously selected coordinates", () => {
-      gameBoard.receiveAttack(2, 0);
-
       expect(() => {
+        gameBoard.receiveAttack(2, 0);
         gameBoard.receiveAttack(2, 0);
       }).toThrow();
     });
 
-    it("Reject non-numerical coordinates", () => {
+    it("Reject attacks at non-numerical coordinates", () => {
       expect(() => {
         gameBoard.receiveAttack("A", 3);
       }).toThrow(TypeError);
