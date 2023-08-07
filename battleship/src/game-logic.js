@@ -21,7 +21,9 @@ function attackPlayer(defenderId, row, col) {
 }
 
 function switchTurn() {
+  const turnDiv = document.querySelector(".turn");
   currentPlayerId = currentPlayerId ? 0 : 1;
+  turnDiv.textContent = `${playerList[currentPlayerId].playerName}'s turn`;
 }
 
 function triggerGameEnd() {

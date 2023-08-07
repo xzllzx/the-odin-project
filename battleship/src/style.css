@@ -17,6 +17,13 @@ body {
   display: grid;
 }
 
+/* ABOVE */
+.turn {
+  font-size: 36px;
+  justify-self: center;
+  align-self: center;
+}
+
 /* GAME BOARD */
 .game-container {
   display: grid;
