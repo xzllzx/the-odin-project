@@ -3,7 +3,8 @@ const Ship = (coordinateList) => {
   let timesHit = 0;
 
   const shipType = () => {
-    return ["Destroyer", "Submarine", "Battleship", "Carrier"][length - 1];
+    const shipTypeList = ["Destroyer", "Submarine", "Battleship", "Carrier"];
+    return shipTypeList[length - 1];
   };
   const hit = () => {
     timesHit++;

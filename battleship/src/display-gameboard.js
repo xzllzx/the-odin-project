@@ -1,9 +1,20 @@
 const { attackPlayer } = require("./game-logic");
+const { playerList } = require("./start-game");
 
-function displayGameboard(gameBoard) {
-  const body = document.querySelector("body");
+function displayGameboard(gameBoard, defenderId) {
+  const gameContainer = document.querySelector(".game-container");
+
+  const boardHeader = document.createElement("div");
+  boardHeader.classList.add("board-header");
+  boardHeader.textContent = playerList[defenderId].playerName;
+  // boardHeader.textContent = `Player ${defenderId + 1}`;
+
   const boardElement = document.createElement("div");
   boardElement.classList.add("board");
+  boardElement.id = `board-${defenderId}`;
+
+  gameContainer.appendChild(boardHeader);
+  gameContainer.appendChild(boardElement);
 
   gameBoard.getBoard().forEach((row, index) => {
     const rowElement = document.createElement("div");
@@ -19,10 +30,11 @@ function displayGameboard(gameBoard) {
     });
     boardElement.appendChild(rowElement);
   });
-  body.appendChild(boardElement);
 }
 
 function attackListener(e, defenderId) {
+  e.target.classList.add("attacked");
+
   const attackCol = e.target.classList[1].slice(-1);
   const attackRow = e.target.parentNode.classList[1].slice(-1);
   console.log(attackRow, attackCol);
@@ -30,12 +42,13 @@ function attackListener(e, defenderId) {
   attackPlayer(defenderId, attackRow, attackCol);
 }
 
-function addAllAttackListeners() {
-  const allCells = document.querySelectorAll("span");
+function addAllAttackListeners(defenderId) {
+  const defenderBoard = document.querySelector(`#board-${defenderId}`);
+  const allCells = defenderBoard.querySelectorAll("span");
 
   allCells.forEach((cell) => {
     cell.addEventListener("click", (e) => {
-      attackListener(e, 1);
+      attackListener(e, defenderId);
     });
   });
 }

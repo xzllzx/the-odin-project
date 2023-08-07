@@ -7,8 +7,8 @@ const playerList = [];
 
 function initGame(height, width) {
   // Create 2 Players with a Gameboard each
-  const player0 = createPlayer(height, width, 0);
-  const player1 = createPlayer(height, width, 1);
+  const player0 = createPlayer(height, width, 0, "Player");
+  const player1 = createPlayer(height, width, 1, "Computer");
 
   playerList.push(player0);
   playerList.push(player1);
@@ -16,11 +16,11 @@ function initGame(height, width) {
   return { player0, player1 };
 }
 
-function createPlayer(height, width, playerId) {
+function createPlayer(height, width, playerId, playerName) {
   const gameBoard = Gameboard();
   gameBoard.createBoard(height, width);
 
-  const player = Player(gameBoard, playerId);
+  const player = Player(gameBoard, playerId, playerName);
 
   return player;
 }

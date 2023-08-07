@@ -1,5 +1,5 @@
-const Player = (board, playerId) => {
-  return { board, playerId };
+const Player = (board, playerId, playerName) => {
+  return { board, playerId, playerName };
 };
 
 module.exports = {

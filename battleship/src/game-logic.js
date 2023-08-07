@@ -1,13 +1,31 @@
 const { playerList } = require("./start-game");
 
+let currentPlayerId = 0;
+
 function attackPlayer(defenderId, row, col) {
+  const gameStateDiv = document.querySelector(".game-state");
   const defenderBoard = playerList[defenderId].board;
+  let gameStateText = "";
   const { hit, ship } = defenderBoard.receiveAttack(row, col);
   if (hit) {
-    console.log("Ship hit!");
-    console.log(`Ship type is ${ship.shipType()}`);
-    if (ship.isSunk()) console.log("Ship has been sunk!");
-  } else console.log("Attack missed!");
+    gameStateText += `${ship.shipType()} has been hit! `;
+    if (ship.isSunk()) gameStateText += "Ship has been sunk! ";
+  } else gameStateText += "Attack missed! ";
+
+  gameStateDiv.textContent = gameStateText;
+
+  if (defenderBoard.getAllShipsSunk()) {
+    gameStateText = triggerGameEnd();
+    gameStateDiv.textContent = gameStateText;
+  } else switchTurn();
+}
+
+function switchTurn() {
+  currentPlayerId = currentPlayerId ? 0 : 1;
+}
+
+function triggerGameEnd() {
+  return `Congratulations, all ships have been sunk! ${playerList[defenderId].playerName} has won!`;
 }
 
 module.exports = {

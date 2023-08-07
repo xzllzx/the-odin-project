@@ -153,14 +153,21 @@ describe("Game Board", () => {
         ],
       ]);
 
-      expect(gameBoard.receiveAttack(2, 0)).toEqual(true);
-      expect(gameBoard.receiveAttack(1, 0)).toEqual(false);
+      expect(gameBoard.receiveAttack(2, 0).hit).toEqual(true);
+      expect(gameBoard.receiveAttack(1, 0).hit).toEqual(false);
     });
 
     it("Reject attacks at previously selected coordinates", () => {
       expect(() => {
         gameBoard.receiveAttack(2, 0);
         gameBoard.receiveAttack(2, 0);
+      }).toThrow();
+    });
+
+    it("Reject attacks at previously selected coordinates 2", () => {
+      expect(() => {
+        gameBoard.receiveAttack(1, 0);
+        gameBoard.receiveAttack(1, 0);
       }).toThrow();
     });
 
