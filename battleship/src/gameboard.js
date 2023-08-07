@@ -135,9 +135,9 @@ const Gameboard = () => {
       );
       if (validAttack) {
         const shipId = board[row][col];
+        board[row][col] = -2;
         if (shipId !== -1) {
           shipList[shipId].hit();
-          board[row][col] = -2;
           return { hit: true, ship: shipList[shipId] };
         }
       }
