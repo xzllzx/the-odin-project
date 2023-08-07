@@ -1,4 +1,7 @@
-const { displayGameboard } = require("./display-gameboard");
+const {
+  displayGameboard,
+  addAllAttackListeners,
+} = require("./display-gameboard");
 const { initGame, placeShipsPredetermined } = require("./start-game");
 
 function initialDisplay() {
@@ -8,6 +11,11 @@ function initialDisplay() {
 
   displayGameboard(player0.board);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Your code using document.querySelector() here
+  addAllAttackListeners();
+});
 
 module.exports = {
   initialDisplay,

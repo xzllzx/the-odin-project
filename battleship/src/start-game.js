@@ -2,10 +2,16 @@ const { Ship } = require("./ship");
 const { Gameboard } = require("./gameboard");
 const { Player } = require("./player");
 
+// GLOBAL ?
+const playerList = [];
+
 function initGame(height, width) {
   // Create 2 Players with a Gameboard each
   const player0 = createPlayer(height, width, 0);
   const player1 = createPlayer(height, width, 1);
+
+  playerList.push(player0);
+  playerList.push(player1);
 
   return { player0, player1 };
 }
@@ -44,6 +50,7 @@ function placeShipsPredetermined(player) {
 function attack(player, coordinates) {}
 
 module.exports = {
+  playerList,
   initGame,
   placeShipsPredetermined,
 };

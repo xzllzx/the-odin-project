@@ -138,14 +138,14 @@ const Gameboard = () => {
         if (shipId !== -1) {
           shipList[shipId].hit();
           board[row][col] = -2;
-          return true;
+          return { hit: true, ship: shipList[shipId] };
         }
       }
     } catch (error) {
       throw error;
     }
 
-    return false;
+    return { hit: false, ship: "None" };
   };
 
   const validateAttackCoordinates = (row, col, height, width) => {
