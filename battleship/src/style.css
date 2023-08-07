@@ -1,0 +1,18 @@
+/* GAME BOARD */
+.board {
+  height: 50vh;
+  width: 50vw;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.row {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+span.cell {
+  border-collapse: collapse;
+  border: 1px solid purple;
+}

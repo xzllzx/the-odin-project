@@ -1,6 +1,6 @@
 const { Ship } = require("./ship");
 
-const Gameboard = (allCoordinates) => {
+const Gameboard = () => {
   let board;
   let shipList;
 
