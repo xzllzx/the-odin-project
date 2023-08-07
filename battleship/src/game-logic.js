@@ -17,13 +17,39 @@ function attackPlayer(defenderId, row, col) {
   if (defenderBoard.getAllShipsSunk()) {
     gameStateText = triggerGameEnd();
     gameStateDiv.textContent = gameStateText;
-  } else switchTurn();
+  } else {
+    switchTurn();
+    return true;
+  }
+}
+
+function computerAttack() {
+  let row = Math.floor(Math.random() * 10);
+  let col = Math.floor(Math.random() * 10);
+
+  while (!attackPlayer(0, row, col)) {
+    let row = Math.floor(Math.random() * 10);
+    let col = Math.floor(Math.random() * 10);
+    attackPlayer(0, row, col);
+  }
+
+  const targetCell = document.querySelector(`.row-${row} > .col-${col}`);
+  targetCell.classList.add("attacked");
+
+  console.log(`Computer turn over: Attacked ${row}, ${col}`);
 }
 
 function switchTurn() {
   const turnDiv = document.querySelector(".turn");
   currentPlayerId = currentPlayerId ? 0 : 1;
   turnDiv.textContent = `${playerList[currentPlayerId].playerName}'s turn`;
+
+  if (currentPlayerId === 1) {
+    setTimeout(() => {
+      turnDiv.textContent += ` Computer is thinking...`;
+    }, 2000);
+    setTimeout(computerAttack, 3000);
+  }
 }
 
 function triggerGameEnd() {
