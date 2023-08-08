@@ -2,6 +2,7 @@ const {
   displayGameboard,
   addAllAttackListeners,
 } = require("./display-gameboard");
+const { addShipMouseoverListeners } = require("./display-ship-placement");
 const { initGame, placeShipsPredetermined } = require("./start-game");
 
 function initialDisplay() {
@@ -16,6 +17,7 @@ function initialDisplay() {
 document.addEventListener("DOMContentLoaded", function () {
   // Your code using document.querySelector() here
   addAllAttackListeners(1);
+  addShipMouseoverListeners(1);
 });
 
 module.exports = {

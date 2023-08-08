@@ -38,7 +38,7 @@ const Gameboard = () => {
     }
   };
 
-  // For 10*10 board: 4*1, 3*2, 2*3, 1*4 ships - all straight lines
+  // Total 5 ships for 10*10 board: 1*1, 2*2, 1*3, 1*4 ships - all straight lines
   const placeShips = (allCoordinates) => {
     shipList = [];
     for (const [index, coordinateList] of allCoordinates.entries()) {

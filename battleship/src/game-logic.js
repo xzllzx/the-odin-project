@@ -46,8 +46,8 @@ function switchTurn() {
 
   if (currentPlayerId === 1) {
     setTimeout(() => {
-      turnDiv.textContent += ` Computer is thinking...`;
-    }, 2000);
+      turnDiv.textContent = `Computer is thinking...`;
+    }, 500);
     setTimeout(computerAttack, 3000);
   }
 }

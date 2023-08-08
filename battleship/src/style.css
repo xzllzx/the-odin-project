@@ -19,6 +19,12 @@ body {
 
 /* ABOVE */
 .turn {
+  font-size: 48px;
+  justify-self: center;
+  align-self: center;
+}
+
+.game-state {
   font-size: 36px;
   justify-self: center;
   align-self: center;
@@ -79,4 +85,8 @@ span.cell.attacked {
 #board-1 > .row > span.cell.attacked:hover {
   background-color: red;
   cursor: not-allowed;
+}
+
+span.cell.highlight {
+  background-color: blue;
 }
