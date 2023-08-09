@@ -96,6 +96,23 @@ describe("Game Board", () => {
       expect(gameBoard.getShipList().length).toEqual(2);
     });
 
+    it("Reject ships in already occupied spots", () => {
+      expect(() => {
+        gameBoard.placeMultipleShips([
+          [
+            [2, 1],
+            [2, 2],
+            [2, 3],
+          ],
+          [
+            [1, 2],
+            [2, 2],
+            [3, 2],
+          ],
+        ]);
+      }).toThrow();
+    });
+
     it("Reject ships beyond box boundaries", () => {
       expect(() => {
         gameBoard.placeMultipleShips([[[3, 9]]]);
@@ -132,23 +149,6 @@ describe("Game Board", () => {
         gameBoard.placeMultipleShips([
           [
             [2, 1],
-            [2, 2],
-            [3, 2],
-          ],
-        ]);
-      }).toThrow();
-    });
-
-    it("Reject ships in already occupied spots", () => {
-      expect(() => {
-        gameBoard.placeMultipleShips([
-          [
-            [2, 1],
-            [2, 2],
-            [2, 3],
-          ],
-          [
-            [1, 2],
             [2, 2],
             [3, 2],
           ],

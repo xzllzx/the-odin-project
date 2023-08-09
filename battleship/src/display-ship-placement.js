@@ -2,11 +2,27 @@ const { placeCells } = require("./game-logic");
 
 let playerId = 0;
 let shipLength = 5;
-let shipCount = 0;
 let shipHorizontal = true;
 
-function toggleShipPlacementOrientation() {
+function toggleShipPlacementOrientation(e) {
   shipHorizontal = !shipHorizontal;
+
+  console.log(`Ship is now ${shipHorizontal ? "horizontal" : "vertical"}`);
+
+  e.target.textContent = shipHorizontal
+    ? "Place ships vertically"
+    : "Place ships horizontally";
+}
+
+function addToggleOrientationListener() {
+  const toggleOrientationButton = document.querySelector(
+    "button.toggle-orientation"
+  );
+
+  toggleOrientationButton.addEventListener(
+    "click",
+    toggleShipPlacementOrientation
+  );
 }
 
 function displayShipPlacement(gameBoard) {
@@ -88,4 +104,5 @@ function _highlightCells(cellList) {
 
 module.exports = {
   addShipMouseoverListeners,
+  addToggleOrientationListener,
 };
