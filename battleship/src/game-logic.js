@@ -56,6 +56,22 @@ function triggerGameEnd() {
   return `Congratulations, all ships have been sunk! ${playerList[defenderId].playerName} has won!`;
 }
 
+function placeCells(coordinateList, divList) {
+  const validPlacement = _validatePlacement(coordinateList);
+
+  if (validPlacement)
+    // Add class to relevant cells
+    divList.forEach((element) => {
+      if (element) element.classList.add("player-ship");
+    });
+}
+
+function _validatePlacement(coordinateList) {
+  console.log(coordinateList);
+  return true;
+}
+
 module.exports = {
   attackPlayer,
+  placeCells,
 };

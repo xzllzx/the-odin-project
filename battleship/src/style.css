@@ -90,3 +90,7 @@ span.cell.attacked {
 span.cell.highlight {
   background-color: blue;
 }
+
+span.cell.player-ship {
+  background-color: goldenrod;
+}
