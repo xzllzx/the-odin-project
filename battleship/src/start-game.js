@@ -44,7 +44,7 @@ function placeShipsPredetermined(player) {
       [7, 3],
     ],
   ];
-  player.board.placeShips(coordinateList);
+  player.board.placeMultipleShips(coordinateList);
 }
 
 function attack(player, coordinates) {}

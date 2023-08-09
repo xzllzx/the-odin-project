@@ -56,7 +56,7 @@ describe("Game Board", () => {
     });
 
     it("Place 1 ship on game board", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -74,7 +74,7 @@ describe("Game Board", () => {
     });
 
     it("Place 2 ships on game board", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -98,13 +98,13 @@ describe("Game Board", () => {
 
     it("Reject ships beyond box boundaries", () => {
       expect(() => {
-        gameBoard.placeShips([[[3, 9]]]);
+        gameBoard.placeMultipleShips([[[3, 9]]]);
       }).toThrow();
     });
 
     it("Reject ships beyond box boundaries 2", () => {
       expect(() => {
-        gameBoard.placeShips([
+        gameBoard.placeMultipleShips([
           [
             [3, 1],
             [3, 2],
@@ -117,7 +117,7 @@ describe("Game Board", () => {
 
     it("Reject non-straight ships", () => {
       expect(() => {
-        gameBoard.placeShips([
+        gameBoard.placeMultipleShips([
           [
             [2, 1],
             [2, 2],
@@ -129,7 +129,7 @@ describe("Game Board", () => {
 
     it("Reject ships with gap", () => {
       expect(() => {
-        gameBoard.placeShips([
+        gameBoard.placeMultipleShips([
           [
             [2, 1],
             [2, 2],
@@ -141,7 +141,7 @@ describe("Game Board", () => {
 
     it("Reject ships in already occupied spots", () => {
       expect(() => {
-        gameBoard.placeShips([
+        gameBoard.placeMultipleShips([
           [
             [2, 1],
             [2, 2],
@@ -149,7 +149,7 @@ describe("Game Board", () => {
           ],
         ]);
 
-        gameBoard.placeShips([
+        gameBoard.placeMultipleShips([
           [
             [1, 2],
             [2, 2],
@@ -166,7 +166,7 @@ describe("Game Board", () => {
     });
 
     it("Register a hit / miss", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -204,7 +204,7 @@ describe("Game Board", () => {
     });
 
     it("Ship does not sink before sufficient hits", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -217,7 +217,7 @@ describe("Game Board", () => {
     });
 
     it("Ship sinks after sufficient hits", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -231,7 +231,7 @@ describe("Game Board", () => {
     });
 
     it("One ship sunk, but not all", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],
@@ -250,7 +250,7 @@ describe("Game Board", () => {
     });
 
     it("All ships sunk", () => {
-      gameBoard.placeShips([
+      gameBoard.placeMultipleShips([
         [
           [2, 0],
           [3, 0],

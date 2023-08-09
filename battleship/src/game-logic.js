@@ -1,5 +1,6 @@
 const { playerList } = require("./start-game");
 
+let shipCount = 0;
 let currentPlayerId = 0;
 
 function attackPlayer(defenderId, row, col) {
@@ -59,15 +60,22 @@ function triggerGameEnd() {
 function placeCells(coordinateList, divList) {
   const validPlacement = _validatePlacement(coordinateList);
 
-  if (validPlacement)
+  if (validPlacement) {
     // Add class to relevant cells
     divList.forEach((element) => {
       if (element) element.classList.add("player-ship");
     });
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function _validatePlacement(coordinateList) {
-  console.log(coordinateList);
+  const board = playerList[0].board;
+  const validPlacement = board.placeOneShip(shipCount, coordinateList);
+  shipCount++;
+  console.log(board.getBoard());
   return true;
 }
 

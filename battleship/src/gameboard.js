@@ -2,7 +2,7 @@ const { Ship } = require("./ship");
 
 const Gameboard = () => {
   let board;
-  let shipList;
+  let shipList = [];
 
   // GET functions
   const getBoard = () => {
@@ -39,26 +39,29 @@ const Gameboard = () => {
   };
 
   // Total 5 ships for 10*10 board: 1*1, 2*2, 1*3, 1*4 ships - all straight lines
-  const placeShips = (allCoordinates) => {
-    shipList = [];
+  const placeMultipleShips = (allCoordinates) => {
     for (const [index, coordinateList] of allCoordinates.entries()) {
       try {
-        if (
-          _validateShipCoordinates(
-            coordinateList,
-            board.length,
-            board[0].length
-          )
-        ) {
-          for (const [row, col] of coordinateList) {
-            board[row][col] = index;
-          }
-          const newShip = Ship(coordinateList);
-          shipList.push(newShip);
-        }
+        placeOneShip(index, coordinateList);
       } catch (error) {
         throw error;
       }
+    }
+  };
+
+  const placeOneShip = (index, coordinateList) => {
+    try {
+      if (
+        _validateShipCoordinates(coordinateList, board.length, board[0].length)
+      ) {
+        for (const [row, col] of coordinateList) {
+          board[row][col] = index;
+        }
+        const newShip = Ship(coordinateList);
+        shipList.push(newShip);
+      }
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -183,7 +186,8 @@ const Gameboard = () => {
     getShipList,
     getAllShipsSunk,
     createBoard,
-    placeShips,
+    placeMultipleShips,
+    placeOneShip,
     receiveAttack,
   };
 };

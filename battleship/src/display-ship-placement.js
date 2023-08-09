@@ -2,6 +2,7 @@ const { placeCells } = require("./game-logic");
 
 let playerId = 0;
 let shipLength = 5;
+let shipCount = 0;
 let shipHorizontal = true;
 
 function toggleShipPlacementOrientation() {
@@ -48,7 +49,7 @@ function _locateShipPositions(row, col, eventType) {
       const colElement = document.querySelector(
         `#board-${playerId} > .row-${row} > .col-${col + i}`
       );
-      coordinateList.push([row, colElement]);
+      coordinateList.push([row, col + i]);
       divList.push(colElement);
     }
   } else {
@@ -56,7 +57,7 @@ function _locateShipPositions(row, col, eventType) {
       const rowElement = document.querySelector(
         `#board-${playerId} > .row-${row + i} > .col-${col}`
       );
-      coordinateList.push([rowElement, col]);
+      coordinateList.push([row + i, col]);
       divList.push(rowElement);
     }
   }
@@ -64,7 +65,8 @@ function _locateShipPositions(row, col, eventType) {
   if (eventType === "mouseover") {
     _highlightCells(divList);
   } else if (eventType === "click") {
-    placeCells(coordinateList, divList);
+    const shipPlaced = placeCells(coordinateList, divList);
+    if (shipPlaced) shipLength--;
   }
 }
 
