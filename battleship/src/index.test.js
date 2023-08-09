@@ -138,6 +138,26 @@ describe("Game Board", () => {
         ]);
       }).toThrow();
     });
+
+    it("Reject ships in already occupied spots", () => {
+      expect(() => {
+        gameBoard.placeShips([
+          [
+            [2, 1],
+            [2, 2],
+            [2, 3],
+          ],
+        ]);
+
+        gameBoard.placeShips([
+          [
+            [1, 2],
+            [2, 2],
+            [3, 2],
+          ],
+        ]);
+      }).toThrow();
+    });
   });
 
   describe("Receiving ship attacks", () => {

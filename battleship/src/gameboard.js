@@ -44,7 +44,11 @@ const Gameboard = () => {
     for (const [index, coordinateList] of allCoordinates.entries()) {
       try {
         if (
-          validateShipCoordinates(coordinateList, board.length, board[0].length)
+          _validateShipCoordinates(
+            coordinateList,
+            board.length,
+            board[0].length
+          )
         ) {
           for (const [row, col] of coordinateList) {
             board[row][col] = index;
@@ -58,7 +62,7 @@ const Gameboard = () => {
     }
   };
 
-  const validateShipCoordinates = (coordinateList, height, width) => {
+  const _validateShipCoordinates = (coordinateList, height, width) => {
     // All coordinates in list must share either a row or a column
     // Whichever is unshared, must be consecutive
     // Cannot be out of range
@@ -66,31 +70,36 @@ const Gameboard = () => {
 
     // Ship is 1x1 only
     if (coordinateList.length <= 1)
-      if (shipCoordinatesWithinBoundary(coordinateList[0], height, width))
+      if (_shipCoordinatesWithinBoundary(coordinateList[0], height, width))
         return true;
       else throw new Error("Coordinates are out of bounds");
 
     // Check if ship is a straight line
-    const { isHorizontal, isVertical } = shipOrientation(coordinateList);
+    const { isHorizontal, isVertical } = _shipOrientation(coordinateList);
     // If both vertical and horizontal, or neither, then it is not a straight line
     if (isHorizontal === isVertical)
       throw new Error("Coordinates provided are not in a straight line");
 
     // Check that the columns are consecutive
-    const isConsecutive = shipIsConsecutive(coordinateList, isHorizontal);
+    const isConsecutive = _shipIsConsecutive(coordinateList, isHorizontal);
     if (!isConsecutive)
       throw new Error("Coordinates provided are not consecutive");
 
+    // Check that ship does not occupy an already occupied spot
+    const isOccupied = _shipCellsOccupied(coordinateList);
+    if (isOccupied)
+      throw new Error("Coordinates have been occupied by another ship");
+
     // Check if within box boundaries
     if (
-      !shipCoordinatesWithinBoundary(coordinateList[0], height, width) ||
-      !shipCoordinatesWithinBoundary(coordinateList.at(-1), height, width)
+      !_shipCoordinatesWithinBoundary(coordinateList[0], height, width) ||
+      !_shipCoordinatesWithinBoundary(coordinateList.at(-1), height, width)
     )
       throw new Error("Coordinates are out of bounds");
     else return true;
   };
 
-  const shipCoordinatesWithinBoundary = (coordinates, height, width) => {
+  const _shipCoordinatesWithinBoundary = (coordinates, height, width) => {
     return (
       coordinates[0] >= 0 &&
       coordinates[0] < height &&
@@ -99,7 +108,7 @@ const Gameboard = () => {
     );
   };
 
-  const shipOrientation = (coordinateList) => {
+  const _shipOrientation = (coordinateList) => {
     const isHorizontal = coordinateList.every(
       ([row, col]) => row === coordinateList[0][0]
     );
@@ -109,7 +118,7 @@ const Gameboard = () => {
     return { isHorizontal, isVertical };
   };
 
-  const shipIsConsecutive = (coordinateList, isHorizontal) => {
+  const _shipIsConsecutive = (coordinateList, isHorizontal) => {
     const rowOrCol = isHorizontal ? 1 : 0;
 
     coordinateList.sort();
@@ -120,6 +129,16 @@ const Gameboard = () => {
       }
     }
     return true;
+  };
+
+  const _shipCellsOccupied = (coordinateList) => {
+    const noneOccupied = coordinateList.reduce(
+      (noneOccupied, coordinates) =>
+        noneOccupied && board[coordinates[0]][coordinates[1]] === -1,
+      true
+    );
+
+    return !noneOccupied;
   };
 
   const receiveAttack = (row, col) => {
