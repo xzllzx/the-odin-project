@@ -5,7 +5,7 @@ const { Player } = require("./player");
 // SHIP
 describe("Ship", () => {
   it("Ship sinks after sufficient hits, but not before", () => {
-    const ship = Ship([
+    const ship = Ship(0, [
       [2, 1],
       [3, 1],
     ]);
@@ -147,9 +147,6 @@ describe("Game Board", () => {
             [2, 2],
             [2, 3],
           ],
-        ]);
-
-        gameBoard.placeMultipleShips([
           [
             [1, 2],
             [2, 2],

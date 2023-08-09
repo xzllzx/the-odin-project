@@ -1,10 +1,11 @@
-const Ship = (coordinateList) => {
+const Ship = (shipId, coordinateList) => {
+  const shipTypeList = ["Destroyer", "Submarine", "Battleship", "Carrier"];
+
   let length = coordinateList.length;
   let timesHit = 0;
 
   const shipType = () => {
-    const shipTypeList = ["Destroyer", "Submarine", "Battleship", "Carrier"];
-    return shipTypeList[length - 1];
+    return shipTypeList[shipId];
   };
   const hit = () => {
     timesHit++;
@@ -13,7 +14,7 @@ const Ship = (coordinateList) => {
   const isSunk = () => {
     return timesHit >= length;
   };
-  return { shipType, hit, isSunk };
+  return { shipId, shipType, hit, isSunk };
 };
 
 module.exports = {

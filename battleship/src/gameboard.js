@@ -38,8 +38,20 @@ const Gameboard = () => {
     }
   };
 
+  const resetBoard = () => {
+    shipList = [];
+
+    for (let i = 0; i < board.length; i++) {
+      for (let j = 0; j < board[i].length; j++) {
+        board[i][j] = -1;
+      }
+    }
+  };
+
   // Total 5 ships for 10*10 board: 1*1, 2*2, 1*3, 1*4 ships - all straight lines
   const placeMultipleShips = (allCoordinates) => {
+    resetBoard();
+
     for (const [index, coordinateList] of allCoordinates.entries()) {
       try {
         placeOneShip(index, coordinateList);
@@ -51,13 +63,17 @@ const Gameboard = () => {
 
   const placeOneShip = (index, coordinateList) => {
     try {
-      if (
-        _validateShipCoordinates(coordinateList, board.length, board[0].length)
-      ) {
+      const validShipPlacement = _validateShipCoordinates(
+        coordinateList,
+        board.length,
+        board[0].length
+      );
+
+      if (validShipPlacement) {
         for (const [row, col] of coordinateList) {
           board[row][col] = index;
         }
-        const newShip = Ship(coordinateList);
+        const newShip = Ship(index, coordinateList);
         shipList.push(newShip);
       }
     } catch (error) {
