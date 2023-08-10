@@ -20,8 +20,24 @@
   </head>
   <body>
     <div class="heading-container">
-      <div class="portrait-container"></div>
-      <div class="header name">Joe Biden</div>
+      <div class="portrait-container">
+        <picture class="portrait-container">
+          <source
+            media="(max-width: 600px)"
+            srcset="./images/portrait-1-narrowest.jpg"
+          />
+          <source
+            media="(max-width: 1000px)"
+            srcset="./images/portrait-1-middle.jpg"
+          />
+          <img
+            src="images/portrait-1-widest.jpg"
+            alt="Portrait of myself"
+            class="portrait"
+          />
+        </picture>
+      </div>
+      <div class="name">Joe Biden</div>
       <div class="introduction-container">
         <div class="header">About Me</div>
         <description
@@ -49,76 +65,119 @@
       <div class="project-container">
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
           <div class="header-container">
             <div class="project-name">Project name</div>
             <a href="" class="button-link"
               ><i class="devicon-github-original"></i></a
-            ><a href="" class="button-link"></a>
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
           </div>
-          <div class="description"></div>
+          <div class="description">Short description of project.</div>
         </div>
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
-          <div class="header-container"></div>
-          <div class="description"></div>
+          <div class="header-container">
+            <div class="project-name">Project name</div>
+            <a href="" class="button-link"
+              ><i class="devicon-github-original"></i></a
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
+          </div>
+          <div class="description">Short description of project.</div>
         </div>
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
-          <div class="header-container"></div>
-          <div class="description"></div>
+          <div class="header-container">
+            <div class="project-name">Project name</div>
+            <a href="" class="button-link"
+              ><i class="devicon-github-original"></i></a
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
+          </div>
+          <div class="description">Short description of project.</div>
         </div>
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
-          <div class="header-container"></div>
-          <div class="description"></div>
+          <div class="header-container">
+            <div class="project-name">Project name</div>
+            <a href="" class="button-link"
+              ><i class="devicon-github-original"></i></a
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
+          </div>
+          <div class="description">Short description of project.</div>
         </div>
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
-          <div class="header-container"></div>
-          <div class="description"></div>
+          <div class="header-container">
+            <div class="project-name">Project name</div>
+            <a href="" class="button-link"
+              ><i class="devicon-github-original"></i></a
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
+          </div>
+          <div class="description">Short description of project.</div>
         </div>
         <div class="project">
           <picture class="screenshot-container">
-            <source srcset="" media="" />
+            <source media="(max-width: 600px)" srcset="" />
             <img src="" alt="Screenshot of project" class="screenshot" />
           </picture>
-          <div class="header-container"></div>
-          <div class="description"></div>
+          <div class="header-container">
+            <div class="project-name">Project name</div>
+            <a href="" class="button-link"
+              ><i class="devicon-github-original"></i></a
+            ><a href="" class="button-link"
+              ><img src="./images/open-in-new.svg" alt="Open in new tab"
+            /></a>
+          </div>
+          <div class="description">Short description of project.</div>
         </div>
       </div>
-      <!-- .main-title+.project-container>(.project>(picture.screenshot-container>source[srcset][media]+img.screenshot)+.header+.description)*6 -->
+      <!-- .main-title+.project-container>(.project>(picture.screenshot-container>source[dia](max-width: 600px)+ srcset][meimg.screenshot)+.header+.description)*6 -->
     </div>
     <div class="footer-container">
-      <div class="header">Contact me</div>
-      <div class="description">
-        Please get in touch if you think our work could be mutually beneficial!
-      </div>
-      <div class="address">1234 Random Road Random Town, California 12345</div>
-      <div class="phone container">555-555-5555</div>
-      <div class="email container">ashleywilliams.is.not.real@gmail.com</div>
-      <div class="footer">
-        <a href="" class="button-link">
-          <i class="devicon-github-original"></i></a
-        ><a href="" class="button-link"
-          ><i class="devicon-linkedin-plain"></i></a
-        ><a href="" class="button-link"
-          ><i class="devicon-twitter-original"></i
-        ></a>
+      <div class="footer-text">
+        <div class="header">Contact me</div>
+        <div class="description">
+          Please get in touch if you think our work could be mutually
+          beneficial!
+        </div>
+        <div class="address">
+          1234 Random Road Random Town, California 12345
+        </div>
+        <div class="phone container">555-555-5555</div>
+        <div class="email container">ashleywilliams.is.not.real@gmail.com</div>
+        <div class="footer">
+          <a href="" class="button-link">
+            <i class="devicon-github-original"></i></a
+          ><a href="" class="button-link"
+            ><i class="devicon-linkedin-plain"></i></a
+          ><a href="" class="button-link"
+            ><i class="devicon-twitter-original"></i
+          ></a>
+        </div>
+        <div class="footer-portrait"></div>
       </div>
     </div>
   </body>
