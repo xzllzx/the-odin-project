@@ -1,17 +1,30 @@
-function General() {
+import { useState } from "react";
+
+function GeneralInformation() {}
+
+function GeneralInput() {
+  const [fullName, setFullName] = useState("testing");
+
+  function handleNameChange(e) {
+    setFullName(e.target.value);
+  }
+
   return (
     <div className="general container">
       <h2>Personal Details</h2>
       <form>
-        <label for="full-name">
-          Full Name
-          <input type="text" id="full-name" name="full-name" required></input>
-        </label>
-        <label for="email">
+        <LabelledInput
+          id="full-name"
+          attributeName="Full Name"
+          type="text"
+          value={fullName}
+          handleChange={handleNameChange}
+        />
+        <label htmlFor="email">
           Email
           <input type="email" id="email" name="email" required></input>
         </label>
-        <label for="phone-number">
+        <label htmlFor="phone-number">
           Phone number
           <input
             type="tel"
@@ -25,12 +38,28 @@ function General() {
   );
 }
 
+function LabelledInput({ id, attributeName, type, value, handleChange }) {
+  return (
+    <label htmlFor={id}>
+      {attributeName}
+      <input
+        type={type}
+        id={id}
+        name={id}
+        value={value}
+        required
+        onChange={handleChange}
+      ></input>
+    </label>
+  );
+}
+
 function ResumeHeader() {
   return (
     <>
-      <h1>Your Name</h1>
+      <h1>Test</h1>
     </>
   );
 }
 
-export { General, ResumeHeader };
+export { GeneralInput, ResumeHeader };
