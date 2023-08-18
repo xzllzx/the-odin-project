@@ -1,21 +1,13 @@
-function Header() {
-  return (
-    <>
-      <h1>Your Name</h1>
-    </>
-  );
-}
-
-function EducationSection() {}
-
-function ExperienceSection() {}
+import { ResumeHeader } from "./GeneralInfo";
+import { ResumeEducation } from "./Education";
+import { ResumeExperience } from "./Experience";
 
 function ResumeContainer() {
   return (
     <div className="resume container">
-      <Header />
-      <EducationSection />
-      <ExperienceSection />
+      <ResumeHeader />
+      <ResumeEducation />
+      <ResumeExperience />
     </div>
   );
 }
