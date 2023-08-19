@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { hyphenToCamel, camelToHyphen, camelToNormalCase } from "./utils";
 
 function GeneralInput() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -22,32 +23,13 @@ function GeneralInput() {
     description: "",
   });
 
-  function handlePersonalInfoChange(e) {
-    const newPersonalInfo = { ...personalInfo };
+  function handleChange(e, setState) {
+    const fieldName = hyphenToCamel(e.target.id);
 
-    if (e.target.id === "full-name") newPersonalInfo.fullName = e.target.value;
-    if (e.target.id === "email") newPersonalInfo.email = e.target.value;
-    if (e.target.id === "phone-number")
-      newPersonalInfo.phoneNumber = e.target.value;
-
-    setPersonalInfo(newPersonalInfo);
-  }
-
-  function handleEducationInfoChange(e) {
-    const newEducationInfo = { ...educationInfo };
-
-    if (e.target.id === "school") newEducationInfo.school = e.target.value;
-
-    setEducationInfo(newEducationInfo);
-  }
-
-  function handleExperienceInfoChange(e) {
-    const newExperienceInfo = { ...experienceInfo };
-
-    if (e.target.id === "company") newExperienceInfo.company = e.target.value;
-    console.log(newExperienceInfo);
-
-    setExperienceInfo(newExperienceInfo);
+    setState((personalInfo) => ({
+      ...personalInfo,
+      [fieldName]: e.target.value,
+    }));
   }
 
   return (
@@ -55,53 +37,42 @@ function GeneralInput() {
       <div className="input-container">
         <div className="personal-details form container">
           <h2>Personal Details</h2>
-          <form>
-            <LabelledInput
-              id="full-name"
-              attributeName="Full Name"
-              type="text"
-              value={personalInfo.fullName}
-              handleChange={handlePersonalInfoChange}
-            />
-            <LabelledInput
-              id="email"
-              attributeName="Email"
-              type="email"
-              value={personalInfo.email}
-              handleChange={handlePersonalInfoChange}
-            />
-            <LabelledInput
-              id="phone-number"
-              attributeName="Phone Number"
-              type="phone-number"
-              value={personalInfo.phoneNumber}
-              handleChange={handlePersonalInfoChange}
-            />
-          </form>
+          <FormContainer
+            configs={[
+              { id: "full-name", type: "text" },
+              { id: "email", type: "email" },
+              { id: "phone-number", type: "phone-number" },
+            ]}
+            value={personalInfo}
+            handleChange={(e) => handleChange(e, setPersonalInfo)}
+          />
         </div>
         <div className="education-details form container">
           <h2>Education</h2>
-          <form>
-            <LabelledInput
-              id="school"
-              attributeName="School"
-              type="text"
-              value={educationInfo.school}
-              handleChange={handleEducationInfoChange}
-            />
-          </form>
+          <FormContainer
+            configs={[
+              { id: "school", type: "text" },
+              { id: "degree", type: "text" },
+              { id: "start-date", type: "date" },
+              { id: "end-date", type: "date" },
+            ]}
+            value={educationInfo}
+            handleChange={(e) => handleChange(e, setEducationInfo)}
+          />
         </div>
         <div className="experience-details form container">
           <h2>Experience</h2>
-          <form>
-            <LabelledInput
-              id="company"
-              attributeName="Company"
-              type="text"
-              value={experienceInfo.company}
-              handleChange={handleExperienceInfoChange}
-            />
-          </form>
+          <FormContainer
+            configs={[
+              { id: "company", type: "text" },
+              { id: "position", type: "text" },
+              { id: "description", type: "text" },
+              { id: "start-date", type: "date" },
+              { id: "end-date", type: "date" },
+            ]}
+            value={educationInfo}
+            handleChange={(e) => handleChange(e, setEducationInfo)}
+          />
         </div>
       </div>
       <div className="resume container">
@@ -110,28 +81,52 @@ function GeneralInput() {
           <h2>{personalInfo.email}</h2>
           <h2>{personalInfo.phoneNumber}</h2>
         </div>
+        <hr />
         <div className="education">
           <h1>{educationInfo.school}</h1>
+          <h3>{educationInfo.school}</h3>
+          <h3>{educationInfo.school}</h3>
+          <h3>{educationInfo.school}</h3>
         </div>
+        <hr />
         <div className="experience">
           <h1>{experienceInfo.company}</h1>
+          <h4>{experienceInfo.company}</h4>
+          <h4>{experienceInfo.company}</h4>
+          <h4>{experienceInfo.company}</h4>
+          <h4>{experienceInfo.company}</h4>
         </div>
       </div>
     </>
   );
 }
 
-function LabelledInput({ id, attributeName, type, value, handleChange }) {
+function FormContainer({ configs, value, handleChange }) {
+  return (
+    <form>
+      {configs.map((config) => (
+        <LabelledInput
+          id={config.id}
+          type={config.type}
+          value={value}
+          handleChange={handleChange}
+        />
+      ))}
+    </form>
+  );
+}
+
+function LabelledInput({ id, type, value, handleChange }) {
   return (
     <label htmlFor={id}>
-      {attributeName}
+      {camelToNormalCase(hyphenToCamel(id))}
       <input
         type={type}
         id={id}
         name={id}
-        value={value}
-        required
+        value={value[hyphenToCamel(id)]}
         onChange={handleChange}
+        required
       ></input>
     </label>
   );
