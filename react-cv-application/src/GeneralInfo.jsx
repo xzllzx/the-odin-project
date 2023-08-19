@@ -1,40 +1,59 @@
 import { useState } from "react";
 
-function GeneralInformation() {}
-
 function GeneralInput() {
-  const [fullName, setFullName] = useState("testing");
+  const [personalInfo, setPersonalInfo] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+  });
 
-  function handleNameChange(e) {
-    setFullName(e.target.value);
+  function handlePersonalInfoChange(e) {
+    const newPersonalInfo = { ...personalInfo };
+
+    if (e.target.id === "full-name") newPersonalInfo.fullName = e.target.value;
+    if (e.target.id === "email") newPersonalInfo.email = e.target.value;
+    if (e.target.id === "phone-number")
+      newPersonalInfo.phoneNumber = e.target.value;
+
+    setPersonalInfo(newPersonalInfo);
   }
 
   return (
-    <div className="general container">
-      <h2>Personal Details</h2>
-      <form>
-        <LabelledInput
-          id="full-name"
-          attributeName="Full Name"
-          type="text"
-          value={fullName}
-          handleChange={handleNameChange}
-        />
-        <label htmlFor="email">
-          Email
-          <input type="email" id="email" name="email" required></input>
-        </label>
-        <label htmlFor="phone-number">
-          Phone number
-          <input
-            type="tel"
+    <>
+      <div className="general container">
+        <h2>Personal Details</h2>
+        <form>
+          <LabelledInput
+            id="full-name"
+            attributeName="Full Name"
+            type="text"
+            value={personalInfo.fullName}
+            handleChange={handlePersonalInfoChange}
+          />
+          <LabelledInput
+            id="email"
+            attributeName="Email"
+            type="email"
+            value={personalInfo.email}
+            handleChange={handlePersonalInfoChange}
+          />
+          <LabelledInput
             id="phone-number"
-            name="phone-number"
-            required
-          ></input>
-        </label>
-      </form>
-    </div>
+            attributeName="Phone Number"
+            type="phone-number"
+            value={personalInfo.phoneNumber}
+            handleChange={handlePersonalInfoChange}
+          />
+        </form>
+      </div>
+      <div className="resume container">
+        <div className="header">
+          <h1>{personalInfo.fullName}</h1>
+          <h2>{personalInfo.email}</h2>
+          <h2>{personalInfo.phoneNumber}</h2>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -54,12 +73,4 @@ function LabelledInput({ id, attributeName, type, value, handleChange }) {
   );
 }
 
-function ResumeHeader() {
-  return (
-    <>
-      <h1>Test</h1>
-    </>
-  );
-}
-
-export { GeneralInput, ResumeHeader };
+export { GeneralInput };

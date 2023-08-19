@@ -2,14 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { InputContainer } from "./Input.jsx";
-import { ResumeContainer } from "./Resume.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <div className="content">
       <InputContainer />
-      <ResumeContainer />
     </div>
   </React.StrictMode>
 );
