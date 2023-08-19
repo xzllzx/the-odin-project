@@ -70,31 +70,31 @@ function GeneralInput() {
               { id: "start-date", type: "date" },
               { id: "end-date", type: "date" },
             ]}
-            value={educationInfo}
-            handleChange={(e) => handleChange(e, setEducationInfo)}
+            value={experienceInfo}
+            handleChange={(e) => handleChange(e, setExperienceInfo)}
           />
         </div>
       </div>
       <div className="resume container">
         <div className="header">
-          <h1>{personalInfo.fullName}</h1>
-          <h2>{personalInfo.email}</h2>
-          <h2>{personalInfo.phoneNumber}</h2>
+          <h1 className="full-name">{personalInfo.fullName}</h1>
+          <h2 className="email">{personalInfo.email}</h2>
+          <h2 className="phone-number">{personalInfo.phoneNumber}</h2>
         </div>
         <hr />
         <div className="education">
           <h1>{educationInfo.school}</h1>
-          <h3>{educationInfo.school}</h3>
-          <h3>{educationInfo.school}</h3>
-          <h3>{educationInfo.school}</h3>
+          <h3>{educationInfo.degree}</h3>
+          <h3>{educationInfo.startDate}</h3>
+          <h3>{educationInfo.endDate}</h3>
         </div>
         <hr />
         <div className="experience">
           <h1>{experienceInfo.company}</h1>
-          <h4>{experienceInfo.company}</h4>
-          <h4>{experienceInfo.company}</h4>
-          <h4>{experienceInfo.company}</h4>
-          <h4>{experienceInfo.company}</h4>
+          <h4>{experienceInfo.position}</h4>
+          <h4>{experienceInfo.description}</h4>
+          <h4>{experienceInfo.startDate}</h4>
+          <h4>{experienceInfo.endDate}</h4>
         </div>
       </div>
     </>
