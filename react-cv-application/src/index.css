@@ -25,6 +25,8 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -71,8 +73,11 @@ button:focus-visible {
 
 /* START HERE */
 .content {
+  margin: 10px;
+  padding: 20px;
   display: grid;
-  grid-template-columns: 30vw 70vw;
+  grid-template-columns: 30vw 65vw;
+  justify-items: stretch;
 }
 
 .container {
@@ -82,8 +87,12 @@ button:focus-visible {
   margin: 10px;
   padding: 20px;
   text-align: start;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  /* display: grid; */
+  /* grid-template-rows: repeat(3, 1fr); */
+}
+
+.input.container {
+  grid-column: 1;
 }
 
 .resume.container {
@@ -91,8 +100,12 @@ button:focus-visible {
   grid-row: 1/4;
 }
 
+.form.container > h2 {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
 label {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  justify-items: start;
 }

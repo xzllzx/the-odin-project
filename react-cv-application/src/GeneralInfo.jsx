@@ -37,10 +37,6 @@ function GeneralInput() {
     const newEducationInfo = { ...educationInfo };
 
     if (e.target.id === "school") newEducationInfo.school = e.target.value;
-    // if (e.target.id === "email") newEducationInfo.email = e.target.value;
-    // if (e.target.id === "phone-number")
-    //   newEducationInfo.phoneNumber = e.target.value;
-    console.log(newEducationInfo);
 
     setEducationInfo(newEducationInfo);
   }
@@ -56,8 +52,8 @@ function GeneralInput() {
 
   return (
     <>
-      <div className="general container">
-        <div className="personal-details form-container">
+      <div className="input-container">
+        <div className="personal-details form container">
           <h2>Personal Details</h2>
           <form>
             <LabelledInput
@@ -83,7 +79,7 @@ function GeneralInput() {
             />
           </form>
         </div>
-        <div className="education-details form-container">
+        <div className="education-details form container">
           <h2>Education</h2>
           <form>
             <LabelledInput
@@ -95,7 +91,7 @@ function GeneralInput() {
             />
           </form>
         </div>
-        <div className="experience-details form-container">
+        <div className="experience-details form container">
           <h2>Experience</h2>
           <form>
             <LabelledInput
