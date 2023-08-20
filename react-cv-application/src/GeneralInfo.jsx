@@ -3,25 +3,28 @@ import { hyphenToCamel, camelToHyphen, camelToNormalCase } from "./utils";
 
 function GeneralInput() {
   const [personalInfo, setPersonalInfo] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
+    fullName: "Michael",
+    email: "test@gmail.com",
+    phoneNumber: "6235-3535",
   });
 
   const [educationInfo, setEducationInfo] = useState({
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
+    school: "Harvard",
+    degree: "Ph.D",
+    startDate: "2023-09-01",
+    endDate: "2023-09-09",
   });
 
   const [experienceInfo, setExperienceInfo] = useState({
-    company: "",
-    position: "",
-    startDate: "",
-    endDate: "",
-    description: "",
+    company: "Apple",
+    position: "CEO",
+    startDate: "2022-09-09",
+    endDate: "2023-08-09",
+    description: "God mode",
   });
+
+  const [educationList, setEducationList] = useState([]);
+  const [experienceList, setExperienceList] = useState([]);
 
   function handleChange(e, setState) {
     const fieldName = hyphenToCamel(e.target.id);
@@ -30,6 +33,48 @@ function GeneralInput() {
       ...personalInfo,
       [fieldName]: e.target.value,
     }));
+  }
+
+  function validateForm(formData) {
+    const formHasEmptyValues = Object.values(formData).some(
+      (value) => value === ""
+    );
+    const startBeforeEndDate = formData.startDate < formData.endDate;
+
+    console.log(!formHasEmptyValues && startBeforeEndDate);
+
+    return !formHasEmptyValues && startBeforeEndDate;
+  }
+
+  function addEducationInfo(e) {
+    if (validateForm(educationInfo)) {
+      setEducationList([...educationList, educationInfo]);
+
+      setEducationInfo({
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+      });
+    }
+    console.log([...educationList, educationInfo]);
+    e.preventDefault();
+  }
+
+  function addExperienceInfo(e) {
+    if (validateForm(experienceInfo)) {
+      setExperienceList([...experienceList, experienceInfo]);
+
+      setExperienceInfo({
+        company: "",
+        position: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+      });
+    }
+    console.log([...experienceList, experienceInfo]);
+    e.preventDefault();
   }
 
   return (
@@ -58,6 +103,7 @@ function GeneralInput() {
             ]}
             value={educationInfo}
             handleChange={(e) => handleChange(e, setEducationInfo)}
+            handleSave={(e) => addEducationInfo(e)}
           />
         </div>
         <div className="experience-details form container">
@@ -72,6 +118,7 @@ function GeneralInput() {
             ]}
             value={experienceInfo}
             handleChange={(e) => handleChange(e, setExperienceInfo)}
+            handleSave={(e) => addExperienceInfo(e)}
           />
         </div>
       </div>
@@ -84,6 +131,7 @@ function GeneralInput() {
         <hr />
         <div className="education">
           <div className="header">Education</div>
+          <ResumeEducationList educationList={educationList} />
           <ResumeEducation id={0} info={educationInfo} />
         </div>
         <hr />
@@ -100,17 +148,23 @@ function GeneralInput() {
   );
 }
 
-function FormContainer({ configs, value, handleChange }) {
+function FormContainer({ configs, value, handleChange, handleSave }) {
   return (
     <form>
       {configs.map((config) => (
         <LabelledInput
+          key={config.id}
           id={config.id}
           type={config.type}
           value={value}
           handleChange={handleChange}
         />
       ))}
+      {handleSave && (
+        <button className="add-info" onClick={handleSave}>
+          Save
+        </button>
+      )}
     </form>
   );
 }
@@ -128,6 +182,16 @@ function LabelledInput({ id, type, value, handleChange }) {
         required
       ></input>
     </label>
+  );
+}
+
+function ResumeEducationList({ educationList }) {
+  return (
+    <>
+      {educationList.map((education, index) => (
+        <ResumeEducation key={index} id={index + 1} info={education} />
+      ))}
+    </>
   );
 }
 
