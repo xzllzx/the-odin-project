@@ -3,14 +3,14 @@ import { hyphenToCamel, camelToHyphen, camelToNormalCase } from "./utils";
 
 function GeneralInput() {
   const [personalInfo, setPersonalInfo] = useState({
-    fullName: "Michael",
+    fullName: "Barack Obama",
     email: "test@gmail.com",
-    phoneNumber: "6235-3535",
+    phoneNumber: "1234-5678",
   });
 
   const [educationInfo, setEducationInfo] = useState({
-    school: "Harvard",
-    degree: "Ph.D",
+    school: "Harvard University",
+    degree: "Masters in Sustainability",
     startDate: "2023-09-01",
     endDate: "2023-09-09",
   });
@@ -20,7 +20,8 @@ function GeneralInput() {
     position: "CEO",
     startDate: "2022-09-09",
     endDate: "2023-08-09",
-    description: "God mode",
+    description:
+      "Invented the iPhone, as well as the iMac, the iTouch, the iRobot, and the iMultiversalSpaceTimeTraversalDevice",
   });
 
   const [educationList, setEducationList] = useState([]);
@@ -131,17 +132,20 @@ function GeneralInput() {
         <hr />
         <div className="education">
           <div className="header">Education</div>
-          <ResumeEducationList educationList={educationList} />
+          <ResumeList
+            infoList={educationList}
+            ResumeComponent={ResumeEducation}
+          />
           <ResumeEducation id={0} info={educationInfo} />
         </div>
         <hr />
+        <div className="header">Experience</div>
         <div className="experience">
-          <div className="header">Experience</div>
-          <h1>{experienceInfo.company}</h1>
-          <h4>{experienceInfo.position}</h4>
-          <h4>{experienceInfo.description}</h4>
-          <h4>{experienceInfo.startDate}</h4>
-          <h4>{experienceInfo.endDate}</h4>
+          <ResumeList
+            infoList={experienceList}
+            ResumeComponent={ResumeExperience}
+          />
+          <ResumeExperience id={0} info={experienceInfo} />
         </div>
       </div>
     </>
@@ -185,11 +189,11 @@ function LabelledInput({ id, type, value, handleChange }) {
   );
 }
 
-function ResumeEducationList({ educationList }) {
+function ResumeList({ infoList, ResumeComponent }) {
   return (
     <>
-      {educationList.map((education, index) => (
-        <ResumeEducation key={index} id={index + 1} info={education} />
+      {infoList.map((info, index) => (
+        <ResumeComponent key={index} id={index + 1} info={info} />
       ))}
     </>
   );
@@ -198,10 +202,24 @@ function ResumeEducationList({ educationList }) {
 function ResumeEducation({ id, info }) {
   return (
     <div className="details" id={`education-${id}`}>
-      <div className="start-date">{info.startDate}</div>
-      <div className="end-date">{info.endDate}</div>
+      <div className="date-range">
+        {info.startDate} — {info.endDate}
+      </div>
       <div className="school">{info.school}</div>
       <div className="degree">{info.degree}</div>
+    </div>
+  );
+}
+
+function ResumeExperience({ id, info }) {
+  return (
+    <div className="details" id={`experience-${id}`}>
+      <div className="date-range">
+        {info.startDate} — {info.endDate}
+      </div>
+      <div className="company">{info.company}</div>
+      <div className="position">{info.position}</div>
+      <div className="description">{info.description}</div>
     </div>
   );
 }
