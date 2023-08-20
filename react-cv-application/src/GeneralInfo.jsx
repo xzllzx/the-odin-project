@@ -76,20 +76,19 @@ function GeneralInput() {
         </div>
       </div>
       <div className="resume container">
-        <div className="header">
-          <h1 className="full-name">{personalInfo.fullName}</h1>
-          <h2 className="email">{personalInfo.email}</h2>
-          <h2 className="phone-number">{personalInfo.phoneNumber}</h2>
+        <div className="personal-info">
+          <div className="full-name">{personalInfo.fullName}</div>
+          <div className="email">{personalInfo.email}</div>
+          <div className="phone-number">{personalInfo.phoneNumber}</div>
         </div>
         <hr />
         <div className="education">
-          <h1>{educationInfo.school}</h1>
-          <h3>{educationInfo.degree}</h3>
-          <h3>{educationInfo.startDate}</h3>
-          <h3>{educationInfo.endDate}</h3>
+          <div className="header">Education</div>
+          <ResumeEducation id={0} info={educationInfo} />
         </div>
         <hr />
         <div className="experience">
+          <div className="header">Experience</div>
           <h1>{experienceInfo.company}</h1>
           <h4>{experienceInfo.position}</h4>
           <h4>{experienceInfo.description}</h4>
@@ -129,6 +128,17 @@ function LabelledInput({ id, type, value, handleChange }) {
         required
       ></input>
     </label>
+  );
+}
+
+function ResumeEducation({ id, info }) {
+  return (
+    <div className="details" id={`education-${id}`}>
+      <div className="start-date">{info.startDate}</div>
+      <div className="end-date">{info.endDate}</div>
+      <div className="school">{info.school}</div>
+      <div className="degree">{info.degree}</div>
+    </div>
   );
 }
 
