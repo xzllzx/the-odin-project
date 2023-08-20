@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { hyphenToCamel, camelToHyphen, camelToNormalCase } from "./utils";
+import { hyphenToCamel } from "./utils";
+import { FormContainer } from "./components/input";
+import {
+  ResumeEducation,
+  ResumeExperience,
+  ResumeList,
+} from "./components/resume";
 
-function GeneralInput() {
+function MainContent() {
   const [personalInfo, setPersonalInfo] = useState({
     fullName: "Barack Obama",
     email: "test@gmail.com",
@@ -152,76 +158,4 @@ function GeneralInput() {
   );
 }
 
-function FormContainer({ configs, value, handleChange, handleSave }) {
-  return (
-    <form>
-      {configs.map((config) => (
-        <LabelledInput
-          key={config.id}
-          id={config.id}
-          type={config.type}
-          value={value}
-          handleChange={handleChange}
-        />
-      ))}
-      {handleSave && (
-        <button className="add-info" onClick={handleSave}>
-          Save
-        </button>
-      )}
-    </form>
-  );
-}
-
-function LabelledInput({ id, type, value, handleChange }) {
-  return (
-    <label htmlFor={id}>
-      {camelToNormalCase(hyphenToCamel(id))}
-      <input
-        type={type}
-        id={id}
-        name={id}
-        value={value[hyphenToCamel(id)]}
-        onChange={handleChange}
-        required
-      ></input>
-    </label>
-  );
-}
-
-function ResumeList({ infoList, ResumeComponent }) {
-  return (
-    <>
-      {infoList.map((info, index) => (
-        <ResumeComponent key={index} id={index + 1} info={info} />
-      ))}
-    </>
-  );
-}
-
-function ResumeEducation({ id, info }) {
-  return (
-    <div className="details" id={`education-${id}`}>
-      <div className="date-range">
-        {info.startDate} — {info.endDate}
-      </div>
-      <div className="school">{info.school}</div>
-      <div className="degree">{info.degree}</div>
-    </div>
-  );
-}
-
-function ResumeExperience({ id, info }) {
-  return (
-    <div className="details" id={`experience-${id}`}>
-      <div className="date-range">
-        {info.startDate} — {info.endDate}
-      </div>
-      <div className="company">{info.company}</div>
-      <div className="position">{info.position}</div>
-      <div className="description">{info.description}</div>
-    </div>
-  );
-}
-
-export { GeneralInput };
+export { MainContent };

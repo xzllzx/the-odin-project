@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { InputContainer } from "./Input.jsx";
+import { MainContent } from "./entrypoint";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <div className="content">
-      <InputContainer />
+      <MainContent />
     </div>
   </React.StrictMode>
 );
