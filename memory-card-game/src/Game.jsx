@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Card } from "./components/Card";
+import { Header } from "./components/Header";
+import { Scoreboard } from "./components/Score";
+import { Gameboard } from "./components/Gameboard";
 import "./game.css";
 
 function Game() {
-  const [count, setCount] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  const [selectedCards, setSelectedCards] = useState([]);
 
   return (
-    <>
-      <p className="hello-world">Hello World! How are you?</p>
-      <Card />
-    </>
+    <div className="content">
+      <Header />
+      <Scoreboard currentScore={currentScore} highScore={highScore} />
+      <Gameboard selectedCards={selectedCards} />
+    </div>
   );
 }
 

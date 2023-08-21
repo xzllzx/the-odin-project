@@ -1,14 +1,14 @@
 import { useState } from "react";
-import "./game.css";
+import { GenerateMultipleCards, Card } from "./Card";
 
-function Gameboard() {
-  const [currentScore, setCurrentScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+function Gameboard({ selectedCards }) {
+  const [pokemon, setPokemon] = useState("mew");
 
   return (
-    <>
-      <p className="hello-world">Hello World! How are you?</p>
-    </>
+    <div className="gameboard">
+      <GenerateMultipleCards numCards={12} />
+      <Card pokemonName={pokemon} />
+    </div>
   );
 }
 

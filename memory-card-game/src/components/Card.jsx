@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 
-function Card() {
-  const [pokemon, setPokemon] = useState("ditto");
+function GenerateMultipleCards({ numCards }) {
+  for (let i = 0; i < numCards; i++) {
+    return <div className="test-name">testing</div>;
+  }
+}
+
+function Card({ pokemonName }) {
   const [imageUrl, setImageUrl] = useState(null);
 
   // Function to fetch image
   useEffect(() => {
-    const getPokemonImage = async () => {
-      const image = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    const getPokemonImageUrl = async (pokemonUrl) => {
+      const imageUrl = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonUrl}`
+      )
         .then((response) => response.json())
-        .then((response) => {
-          return response.sprites.front_default;
-        });
-      setImageUrl(image);
+        .then((response) => response.sprites.front_default);
+
+      return imageUrl;
     };
 
-    getPokemonImage();
-  }, [pokemon]);
+    getPokemonImageUrl(pokemonName).then((imageUrl) => setImageUrl(imageUrl));
+  }, [pokemonName]);
 
   return (
     <>
@@ -25,4 +31,4 @@ function Card() {
   );
 }
 
-export { Card };
+export { GenerateMultipleCards, Card };
