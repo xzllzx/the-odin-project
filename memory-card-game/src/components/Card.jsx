@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 
-function GenerateMultipleCards({ numCards }) {
-  for (let i = 0; i < numCards; i++) {
-    return <div className="test-name">testing</div>;
-  }
+function GenerateMultipleCards({ pokemonList }) {
+  console.log(pokemonList);
+  return (
+    <div className="card-list">
+      {pokemonList.map((pokemon, index) => (
+        <Card key={index} pokemonName={pokemon} />
+      ))}
+    </div>
+  );
 }
 
-function Card({ pokemonName }) {
+function Card({ key, pokemonName }) {
   const [imageUrl, setImageUrl] = useState(null);
 
   // Function to fetch image
@@ -25,9 +30,15 @@ function Card({ pokemonName }) {
   }, [pokemonName]);
 
   return (
-    <>
-      <img src={imageUrl} alt="Pokemon Image" />
-    </>
+    <div className="card">
+      <img
+        className="pokemon-image"
+        key={key}
+        src={imageUrl}
+        alt="Pokemon Image"
+      />
+      <div className="pokemon-name">{pokemonName}</div>
+    </div>
   );
 }
 
