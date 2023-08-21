@@ -44,6 +44,11 @@
   justify-self: center;
   justify-items: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px 10px #088fff; /* Adjust color and spread as needed */
 }
 
 img.pokemon-image {
@@ -56,6 +61,7 @@ img.pokemon-image {
 }
 
 .pokemon-name {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
 }

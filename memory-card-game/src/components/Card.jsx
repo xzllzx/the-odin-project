@@ -1,3 +1,4 @@
+import capitalizeFirstLetter from "../utils";
 import { useState, useEffect } from "react";
 
 function GenerateMultipleCards({ pokemonList }) {
@@ -37,7 +38,7 @@ function Card({ key, pokemonName }) {
         src={imageUrl}
         alt="Pokemon Image"
       />
-      <div className="pokemon-name">{pokemonName}</div>
+      <div className="pokemon-name">{capitalizeFirstLetter(pokemonName)}</div>
     </div>
   );
 }

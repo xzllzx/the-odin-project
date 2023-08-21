@@ -3,18 +3,18 @@ import { GenerateMultipleCards, Card } from "./Card";
 
 function Gameboard({ selectedCards }) {
   const pokemonList = [
-    "Arceus",
-    "Mewtwo",
-    "Mew",
-    "Rayquaza",
-    "Lugia",
-    "Ditto",
-    "Palkia",
-    "Dialga",
-    "Kyurem",
-    "Eternatus",
-    "Xerneas",
-    "Yveltal",
+    "arceus",
+    "mewtwo",
+    "slaking",
+    "zacian",
+    "rayquaza",
+    "lugia",
+    "palkia",
+    "dialga",
+    "kyurem",
+    "eternatus",
+    "xerneas",
+    "yveltal",
   ];
 
   const [cardList, setCardList] = useState([]);
