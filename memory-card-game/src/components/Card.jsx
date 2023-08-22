@@ -21,25 +21,22 @@ function Card({ index, pokemonName }) {
   const cardContext = useContext(CardContext);
 
   function handleClick(e) {
-    const card = e.target.closest(".card");
-    const cardId = card.id.slice(-1);
+    const cardId = e.target.closest(".card").id.slice(-1);
 
     // Select a previously selected card
     if (cardContext.selectedCards[cardId]) {
-      const unselectedCards = new Array(12).fill(false);
-      unselectedCards[cardId] = true;
-      cardContext.setCurrentScore(1);
-      cardContext.setSelectedCards(unselectedCards);
+      // Create new array of unselected cards
+      cardContext.setSelectedCards(new Array(12).fill(false));
+      cardContext.setCurrentScore(0);
       // Select a new card
     } else {
-      console.log(cardContext.selectedCards[cardId]);
-      cardContext.setCurrentScore(cardContext.currentScore + 1);
       const newSelectedCards = [...cardContext.selectedCards];
       newSelectedCards[cardId] = true;
       cardContext.setSelectedCards(newSelectedCards);
+      cardContext.setCurrentScore(cardContext.currentScore + 1);
     }
 
-    console.log(cardId, cardContext.selectedCards, cardContext.currentScore);
+    console.log(cardContext.selectedCards);
   }
 
   // Function to fetch image
