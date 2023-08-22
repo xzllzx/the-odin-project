@@ -1,12 +1,12 @@
-import capitalizeFirstLetter from "../utils";
+import { capitalizeFirstLetter } from "../utils";
 import { useState, useEffect, useContext } from "react";
 import { CardContext } from "../Game";
 
-function GenerateMultipleCards({ pokemonList }) {
+function GenerateMultipleCards({ pokemonObject }) {
   return (
     <div className="card-list">
-      {pokemonList.map((pokemon, index) => (
-        <Card key={index} index={index} pokemonName={pokemon} />
+      {Object.keys(pokemonObject).map((key) => (
+        <Card key={key} index={key} pokemonName={pokemonObject[key]} />
       ))}
     </div>
   );
