@@ -22,7 +22,10 @@ function Gameboard() {
 
   return (
     <div className="gameboard">
-      <GenerateMultipleCards pokemonObject={pokemonObject} />
+      <GenerateMultipleCards
+        randomArray={randomArray}
+        pokemonObject={pokemonObject}
+      />
     </div>
   );
 }

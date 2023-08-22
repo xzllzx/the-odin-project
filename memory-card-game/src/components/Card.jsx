@@ -2,11 +2,15 @@ import { capitalizeFirstLetter } from "../utils";
 import { useState, useEffect, useContext } from "react";
 import { CardContext } from "../Game";
 
-function GenerateMultipleCards({ pokemonObject }) {
+function GenerateMultipleCards({ randomArray, pokemonObject }) {
   return (
     <div className="card-list">
-      {Object.keys(pokemonObject).map((key) => (
-        <Card key={key} index={key} pokemonName={pokemonObject[key]} />
+      {randomArray.map((element) => (
+        <Card
+          key={element}
+          index={element}
+          pokemonName={pokemonObject[element]}
+        />
       ))}
     </div>
   );
