@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 75vw 15vw;
+  grid-template-columns: 70vw 20vw;
   grid-template-rows: 10vh 80vh;
   justify-items: stretch;
   font-weight: bold;
@@ -27,6 +27,9 @@
 /* SCOREBOARD */
 .scoreboard {
   grid-column: 2;
+  padding: 0px 10px 0px 10px;
+  background-color: #008333;
+  border: 3px solid #0a0000;
   display: grid;
   grid-template-rows: 36px 36px;
 }

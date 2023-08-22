@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GenerateMultipleCards, Card } from "./Card";
 
-function Gameboard({ selectedCards }) {
+function Gameboard() {
   const pokemonList = [
     "arceus",
     "mewtwo",
@@ -16,8 +16,6 @@ function Gameboard({ selectedCards }) {
     "xerneas",
     "yveltal",
   ];
-
-  const [cardList, setCardList] = useState([]);
 
   return (
     <div className="gameboard">
