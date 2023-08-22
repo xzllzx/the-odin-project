@@ -4,16 +4,6 @@ let playerId = 0;
 let shipLength = 5;
 let shipHorizontal = true;
 
-function toggleShipPlacementOrientation(e) {
-  shipHorizontal = !shipHorizontal;
-
-  console.log(`Ship is now ${shipHorizontal ? "horizontal" : "vertical"}`);
-
-  e.target.textContent = shipHorizontal
-    ? "Place ships vertically"
-    : "Place ships horizontally";
-}
-
 function addToggleOrientationListener() {
   const toggleOrientationButton = document.querySelector(
     "button.toggle-orientation"
@@ -21,8 +11,18 @@ function addToggleOrientationListener() {
 
   toggleOrientationButton.addEventListener(
     "click",
-    toggleShipPlacementOrientation
+    _toggleShipPlacementOrientation
   );
+}
+
+function _toggleShipPlacementOrientation(e) {
+  shipHorizontal = !shipHorizontal;
+
+  console.log(`Ship is now ${shipHorizontal ? "horizontal" : "vertical"}`);
+
+  e.target.textContent = shipHorizontal
+    ? "Place ships vertically"
+    : "Place ships horizontally";
 }
 
 function displayShipPlacement(gameBoard) {
