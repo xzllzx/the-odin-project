@@ -10,8 +10,11 @@ export async function action() {
 export default function Root() {
   return (
     <>
-      <Navbar />
+      <div id="header"></div>
       <div id="sidebar">
+        <Navbar />
+      </div>
+      <div>
         <h1>React Router Contacts</h1>
         <div>
           <form id="search-form" role="search">
@@ -29,8 +32,6 @@ export default function Root() {
             <button type="submit">New</button>
           </Form>
         </div>
-      </div>
-      <div id="detail">
         <Outlet />
       </div>
     </>

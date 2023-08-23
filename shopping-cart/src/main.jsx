@@ -6,6 +6,7 @@ import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./routes/error-page";
 import Shop from "./routes/shop";
+import { Cart, Checkout, Payment } from "./routes/cart";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/shop/",
+        path: "shop",
         element: <Shop />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "cart/checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "cart/payment",
+        element: <Payment />,
       },
     ],
   },
