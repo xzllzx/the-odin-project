@@ -5,8 +5,7 @@ import { ProductList } from "../components/Product";
 
 function Cart() {
   return (
-    <div>
-      Shopping cart is here
+    <div className="cart">
       <ProductList isShop={false} />
       <Link to="/cart/checkout">Checkout</Link>
     </div>

@@ -28,7 +28,7 @@ function ShopProduct({ id, name }) {
   const cartContext = useContext(CartContext);
 
   function addToCart(e) {
-    const productId = e.target.closest(".shop-product").id.slice(-1);
+    const productId = e.target.closest(".product").id.slice(-1);
     console.log(productId);
     const updatedCart = [...cartContext.cart];
     updatedCart[productId]++;
@@ -37,7 +37,7 @@ function ShopProduct({ id, name }) {
   }
 
   return (
-    <div className="shop-product" id={`shop-product-${id}`}>
+    <div className="shop product" id={`shop-product-${id}`}>
       <Product id={id} name={name} />
       <button className="add-to-cart" onClick={addToCart}>
         Add to Cart
@@ -50,7 +50,7 @@ function CartProduct({ id, name }) {
   const cartContext = useContext(CartContext);
 
   function removeFromCart(e) {
-    const productId = e.target.closest(".cart-product").id.slice(-1);
+    const productId = e.target.closest(".product").id.slice(-1);
     console.log(productId);
     const updatedCart = [...cartContext.cart];
     updatedCart[productId]--;
@@ -63,7 +63,7 @@ function CartProduct({ id, name }) {
   }
 
   return (
-    <div className="cart-product" id={`cart-product-${id}`}>
+    <div className="cart product" id={`cart-product-${id}`}>
       <Product id={id} name={name} />
       <div className="cart-items">Number in cart: {cartContext.cart[id]}</div>
       <button className="remove-from-cart" onClick={removeFromCart}>

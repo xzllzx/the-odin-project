@@ -72,6 +72,7 @@ button:focus-visible {
 #root {
   width: 100%;
   height: 100vh;
+  box-sizing: border-box;
   display: grid;
   grid-template-rows: 15vh 85vh;
 }
@@ -79,7 +80,6 @@ button:focus-visible {
 /* TOP NAVIGATION BAR */
 #header {
   grid-row: 1;
-  grid-column: 1/3;
   background-color: #004040;
 }
 
@@ -89,5 +89,39 @@ button:focus-visible {
 }
 
 /* HOME PAGE */
-#home-page {
+
+/* SHOP PAGE */
+p.welcome-message {
+  margin-left: 30px;
+}
+
+/* CART PAGE */
+.product-list {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.product {
+  margin: 30px;
+  padding: 20px;
+  background-color: #000080;
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.cart.product {
+  width: 92vw;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.cart.product > button {
+  background-color: #250505;
+}
+
+.cart > Link {
+  justify-self: end;
 }
