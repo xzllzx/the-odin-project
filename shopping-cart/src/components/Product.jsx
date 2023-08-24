@@ -2,23 +2,23 @@ import { useState, useEffect, useContext } from "react";
 
 import { capitalizeFirstLetter } from "../utils";
 
-import { productObject } from "../data";
+import { productList } from "../data";
 import { CartContext } from "../routes/root";
 
 function ProductList({ isShop }) {
   if (isShop)
     return (
       <>
-        {Object.keys(productObject).map((key) => (
-          <ShopProduct id={key} name={productObject[key]} />
+        {productList.map((element, index) => (
+          <ShopProduct id={index} key={index} name={element} />
         ))}
       </>
     );
   else
     return (
       <>
-        {Object.keys(productObject).map((key) => (
-          <CartProduct id={key} name={productObject[key]} />
+        {productList.map((element, index) => (
+          <CartProduct id={index} key={index} name={element} />
         ))}
       </>
     );
@@ -29,11 +29,9 @@ function ShopProduct({ id, name }) {
 
   function addToCart(e) {
     const productId = e.target.closest(".product").id.slice(-1);
-    console.log(productId);
     const updatedCart = [...cartContext.cart];
     updatedCart[productId]++;
     cartContext.setCart(updatedCart);
-    console.log(cartContext.cart);
   }
 
   return (
@@ -51,11 +49,9 @@ function CartProduct({ id, name }) {
 
   function removeFromCart(e) {
     const productId = e.target.closest(".product").id.slice(-1);
-    console.log(productId);
     const updatedCart = [...cartContext.cart];
     updatedCart[productId]--;
     cartContext.setCart(updatedCart);
-    console.log(cartContext.cart);
   }
 
   if (cartContext.cart[id] <= 0) {
@@ -75,8 +71,6 @@ function CartProduct({ id, name }) {
 
 function Product({ id, name }) {
   const [imageUrl, setImageUrl] = useState(null);
-  const [price, setPrice] = useState(null);
-
   const cartContext = useContext(CartContext);
 
   // Function to fetch image
@@ -86,21 +80,28 @@ function Product({ id, name }) {
         `https://pokeapi.co/api/v2/pokemon/${pokemonUrl}`
       ).then((response) => response.json());
 
-      console.log(responseJson);
-
       return responseJson;
     };
 
     getPokemonJson(name).then((response) => {
       setImageUrl(response.sprites.front_default);
-      setPrice((response.id + response.base_experience / 100).toFixed(2));
+
+      const newPrice = (response.id + response.base_experience / 100).toFixed(
+        2
+      );
+
+      const newProductDetails = { ...cartContext.productDetails };
+      newProductDetails[id].price = newPrice;
+
+      cartContext.setProductDetails(newProductDetails);
     });
   }, [name]);
 
   return (
     <>
       <div className="name">
-        Product {id} is {capitalizeFirstLetter(name)} at ${price}
+        Product {id} is {capitalizeFirstLetter(name)} at $
+        {cartContext.productDetails[id].price}
       </div>
       <img className="product-image" src={imageUrl} alt="Product Image" />
     </>

@@ -16,4 +16,17 @@ function genRandomArray(arrayLength) {
   return arrayToTwelve;
 }
 
-export { capitalizeFirstLetter, genRandomArray };
+function mapArrayToObject(arr) {
+  const product = {};
+
+  arr.forEach((element, index) => {
+    product[index] = {
+      name: element,
+      price: 0,
+      count: 0,
+    };
+  });
+  return product;
+}
+
+export { capitalizeFirstLetter, genRandomArray, mapArrayToObject };
