@@ -4,9 +4,7 @@ function Cart() {
   return (
     <div>
       Shopping cart is here
-      <div className="navigation">
-        <Link to="/cart/checkout">Checkout</Link>
-      </div>
+      <Link to="/cart/checkout">Checkout</Link>
     </div>
   );
 }
@@ -15,9 +13,7 @@ function Checkout() {
   return (
     <div>
       Checkout here
-      <div className="navigation">
-        <Link to="/cart/payment">Payment</Link>
-      </div>
+      <Link to="/cart/payment">Payment</Link>
     </div>
   );
 }
