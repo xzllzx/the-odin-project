@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
 import { productObject } from "../data";
-import { ShopProductList } from "../components/Product";
+import { ProductList } from "../components/Product";
 
 function Cart() {
   return (
     <div>
       Shopping cart is here
-      <ShopProductList />
+      <ProductList isShop={false} />
       <Link to="/cart/checkout">Checkout</Link>
     </div>
   );
