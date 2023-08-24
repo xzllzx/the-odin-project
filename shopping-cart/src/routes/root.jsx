@@ -19,7 +19,7 @@ export default function Root() {
       <div id="header">
         <Navbar />
       </div>
-      <div>
+      <div id="main-content">
         <Outlet />
       </div>
     </CartContext.Provider>
