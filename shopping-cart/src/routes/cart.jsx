@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 
+import { productObject } from "../data";
+import { ShopProductList } from "../components/Product";
+
 function Cart() {
   return (
     <div>
       Shopping cart is here
+      <ShopProductList />
       <Link to="/cart/checkout">Checkout</Link>
     </div>
   );
