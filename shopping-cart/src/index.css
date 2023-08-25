@@ -156,13 +156,13 @@ p.welcome-message {
   justify-self: end;
 }
 
-.cart-items {
+.change-count {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
 }
 
-.cart-items > * {
+.change-count > * {
   height: 80px;
   width: 80px;
   box-sizing: border-box;

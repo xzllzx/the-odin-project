@@ -25,18 +25,38 @@ function ProductList({ isShop }) {
 }
 
 function ShopProduct({ id, name }) {
+  const [count, setCount] = useState(0);
   const cartContext = useContext(CartContext);
 
   function addToCart(e) {
     const productId = e.target.closest(".product").id.slice(-1);
     const updatedCart = [...cartContext.cart];
-    updatedCart[productId]++;
+    updatedCart[productId] += count;
+    setCount(0);
     cartContext.setCart(updatedCart);
+  }
+
+  function changeShopItemCount(e, toAdd) {
+    const product = e.target.closest(".product");
+    const input = product.querySelector("input").value;
+    if (toAdd) setCount(Math.max(0, Number(input) + 1));
+    else setCount(Math.max(0, Number(input) - 1));
   }
 
   return (
     <div className="shop product" id={`shop-product-${id}`}>
       <Product id={id} name={name} />
+      <div className="change-count">
+        <button onClick={(e) => changeShopItemCount(e, true)}>+</button>
+        <input
+          type="text"
+          name="shop-count"
+          id="shop-count"
+          value={count}
+          onChange={(e) => setCount(e.target.value)}
+        />
+        <button onClick={(e) => changeShopItemCount(e, false)}>-</button>
+      </div>
       <button className="add-to-cart" onClick={addToCart}>
         Add to Cart
       </button>
@@ -57,7 +77,7 @@ function CartProduct({ id, name }) {
     cartContext.setCart(updatedCart);
   }
 
-  function changeItemCount(e, newCount) {
+  function changeCartItemCount(e, newCount) {
     const productId = e.target.closest(".product").id.slice(-1);
     const updatedCart = [...cartContext.cart];
     if (newCount === "-") updatedCart[productId]--;
@@ -73,27 +93,17 @@ function CartProduct({ id, name }) {
   return (
     <div className="cart product" id={`cart-product-${id}`}>
       <Product id={id} name={name} />
-      <div className="cart-items">
-        <button
-          className="change-count"
-          onClick={(e) => changeItemCount(e, "+")}
-        >
-          +
-        </button>
+      <div className="change-count">
+        <button onClick={(e) => changeCartItemCount(e, "+")}>+</button>
         <input
           type="text"
           name="cart-count"
           id="cart-count"
           value={cartContext.cart[id]}
-          onChange={(e) => changeItemCount(e, e.target.value)}
+          onChange={(e) => changeCartItemCount(e, e.target.value)}
         />
         {/* <div className="cart-count">{cartContext.cart[id]}</div> */}
-        <button
-          className="change-count"
-          onClick={(e) => changeItemCount(e, "-")}
-        >
-          -
-        </button>
+        <button onClick={(e) => changeCartItemCount(e, "-")}>-</button>
       </div>
       <div className="price">Total price: ${totalItemPrice}</div>
       <button className="remove-from-cart" onClick={removeFromCart}>
