@@ -62,7 +62,7 @@ function CartProduct({ id, name }) {
     const updatedCart = [...cartContext.cart];
     if (newCount === "-") updatedCart[productId]--;
     else if (newCount === "+") updatedCart[productId]++;
-    else updatedCart[productId] = Number(newCount);
+    else updatedCart[productId] = Math.max(0, Number(newCount));
     cartContext.setCart(updatedCart);
   }
 
@@ -81,7 +81,7 @@ function CartProduct({ id, name }) {
           +
         </button>
         <input
-          type="number"
+          type="text"
           name="cart-count"
           id="cart-count"
           value={cartContext.cart[id]}
