@@ -155,3 +155,22 @@ p.welcome-message {
 .cart > a {
   justify-self: end;
 }
+
+.cart-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+}
+
+.cart-items > * {
+  height: 70px;
+  width: auto;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 0%;
+}
+
+.cart-count {
+  align-self: center;
+}

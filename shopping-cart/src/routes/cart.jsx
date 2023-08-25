@@ -17,7 +17,9 @@ function Cart() {
   return (
     <div className="cart">
       <ProductList isShop={false} />
-      <div className="price">${totalPrice}</div>
+      <div className="price">
+        Total price for Cart: ${totalPrice.toFixed(2)}
+      </div>
       <Link to="/cart/checkout">Checkout</Link>
     </div>
   );

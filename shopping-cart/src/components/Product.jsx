@@ -46,11 +46,23 @@ function ShopProduct({ id, name }) {
 
 function CartProduct({ id, name }) {
   const cartContext = useContext(CartContext);
+  const totalItemPrice = (
+    cartContext.cart[id] * cartContext.productDetails[id].price
+  ).toFixed(2);
 
   function removeFromCart(e) {
     const productId = e.target.closest(".product").id.slice(-1);
     const updatedCart = [...cartContext.cart];
-    updatedCart[productId]--;
+    updatedCart[productId] = 0;
+    cartContext.setCart(updatedCart);
+  }
+
+  function changeItemCount(e, newCount) {
+    const productId = e.target.closest(".product").id.slice(-1);
+    const updatedCart = [...cartContext.cart];
+    if (newCount === "-") updatedCart[productId]--;
+    else if (newCount === "+") updatedCart[productId]++;
+    else updatedCart[productId] = Number(newCount);
     cartContext.setCart(updatedCart);
   }
 
@@ -61,7 +73,29 @@ function CartProduct({ id, name }) {
   return (
     <div className="cart product" id={`cart-product-${id}`}>
       <Product id={id} name={name} />
-      <div className="cart-items">Number in cart: {cartContext.cart[id]}</div>
+      <div className="cart-items">
+        <button
+          className="change-count"
+          onClick={(e) => changeItemCount(e, "+")}
+        >
+          +
+        </button>
+        <input
+          type="number"
+          name="cart-count"
+          id="cart-count"
+          value={cartContext.cart[id]}
+          onChange={(e) => changeItemCount(e, e.target.value)}
+        />
+        {/* <div className="cart-count">{cartContext.cart[id]}</div> */}
+        <button
+          className="change-count"
+          onClick={(e) => changeItemCount(e, "-")}
+        >
+          -
+        </button>
+      </div>
+      <div className="price">Total price: ${totalItemPrice}</div>
       <button className="remove-from-cart" onClick={removeFromCart}>
         Remove from Cart
       </button>
